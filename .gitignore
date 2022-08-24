@@ -1,0 +1,36 @@
+# Original file from https://github.com/github/gitignore
+# Modified for Phunware
+
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+## User settings
+xcuserdata/
+
+## Obj-C/Swift specific
+*.hmap
+
+## App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+.build/
+
+# CocoaPods
+#
+# Phunware recommends not having the Pods folder checked in. Podfile.lock is fine.
+#
+Pods/
+
+# Carthage
+Carthage/Build
+
+# OS X
+.DS_Store
