@@ -1,0 +1,11 @@
+framework module PhunwareMapping {
+  umbrella header "PhunwareMapping.h"
+
+  export *
+  module * { export * }
+}
+
+module PhunwareMapping.Swift {
+    header "PhunwareMapping-Swift.h"
+    requires objc
+}
