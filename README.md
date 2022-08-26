@@ -4,6 +4,10 @@
 
 Phunware Mapping is a module that provides mapping and routing functionalities.
 
+|Blue Dot|Route Builder|Route Directions|POI Categories|POI Search|
+|:-:|:-:|:-:|:-:|:-:|
+|![Blue Dot](https://raw.githubusercontent.com/phunware/maas-mapping-module-ios/master/Resources/bluedot.png)|![Route Builder](https://raw.githubusercontent.com/phunware/maas-mapping-module-ios/master/Resources/route-builder.png)|![Blue Dot](https://raw.githubusercontent.com/phunware/maas-mapping-module-ios/master/Resources/route-directions.png)|![POI Categories](https://raw.githubusercontent.com/phunware/maas-mapping-module-ios/master/Resources/poi-categories.png)|![Blue Dot](https://raw.githubusercontent.com/phunware/maas-mapping-module-ios/master/Resources/poi-search.png)|
+
 ## Requirements
 
 - iOS 13+

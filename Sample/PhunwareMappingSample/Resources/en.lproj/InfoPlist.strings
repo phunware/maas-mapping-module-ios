@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  PhunwareMappingSample
+
+  Copyright © 2022 Phunware, Inc. All rights reserved.
+*/
+
+NSLocationAlwaysUsageDescription = "Your precise location is used to show your position on the map, get directions, estimate travel times, turn by turn directions.";
+NSLocationAlwaysAndWhenInUseUsageDescription = "Your precise location is used to show your position on the map, get directions, estimate travel times, turn by turn directions.";
+NSLocationWhenInUseUsageDescription = "Your precise location is used to show your position on the map, get directions, estimate travel times, turn by turn directions.";
