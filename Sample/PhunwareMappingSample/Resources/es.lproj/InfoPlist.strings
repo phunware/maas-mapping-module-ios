@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  PhunwareMappingSample
+
+  Copyright © 2022 Phunware, Inc. All rights reserved.
+*/
+
+NSLocationAlwaysUsageDescription = "Su ubicación precisa se utiliza para mostrar su posición en el mapa, obtener direcciones, estimar los tiempos de viaje, indicaciones detalladas.";
+NSLocationAlwaysAndWhenInUseUsageDescription = "Su ubicación precisa se utiliza para mostrar su posición en el mapa, obtener direcciones, estimar los tiempos de viaje, indicaciones detalladas.";
+NSLocationWhenInUseUsageDescription = "Su ubicación precisa se utiliza para mostrar su posición en el mapa, obtener direcciones, estimar los tiempos de viaje, indicaciones detalladas.";
