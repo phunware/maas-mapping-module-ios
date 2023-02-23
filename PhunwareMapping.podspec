@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name                = "PhunwareMapping"
-  spec.version             = "1.4.0"
+  spec.version             = "1.7.0"
   spec.summary             = "A Phunware module that provides mapping and routing functionalities."
   spec.homepage            = "https://www.phunware.com"
   spec.license             = { :type => "Copyright", :text => "Copyright 2009-present Phunware, Inc. All rights reserved." }
@@ -14,8 +14,8 @@ Pod::Spec.new do |spec|
   
   spec.dependency 'PhunwareFoundation', '~> 1.0.0'
   spec.dependency 'PhunwareNetworking', '~> 1.1.0'
-  spec.dependency 'PhunwareTheming', '~> 1.0.0'
-  spec.dependency 'PhunwarePermissionPriming', '~> 1.2.0'
-  spec.dependency 'PWMapKit', '~> 3.13.0'
+  spec.dependency 'PhunwareTheming', '~> 1.0.2'
+  spec.dependency 'PhunwarePermissionPriming', '~> 1.2.1'
+  spec.dependency 'PWMapKit', '~> 3.15.0'
   
 end

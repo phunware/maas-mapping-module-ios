@@ -4,14 +4,10 @@
 
 Phunware Mapping is a module that provides mapping and routing functionalities.
 
-|Blue Dot|Route Builder|Route Directions|POI Categories|POI Search|
-|:-:|:-:|:-:|:-:|:-:|
-|![Blue Dot](https://raw.githubusercontent.com/phunware/maas-mapping-module-ios/master/Resources/bluedot.png)|![Route Builder](https://raw.githubusercontent.com/phunware/maas-mapping-module-ios/master/Resources/route-builder.png)|![Blue Dot](https://raw.githubusercontent.com/phunware/maas-mapping-module-ios/master/Resources/route-directions.png)|![POI Categories](https://raw.githubusercontent.com/phunware/maas-mapping-module-ios/master/Resources/poi-categories.png)|![Blue Dot](https://raw.githubusercontent.com/phunware/maas-mapping-module-ios/master/Resources/poi-search.png)|
-
 ## Requirements
 
 - iOS 13+
-- Xcode 13+
+- Xcode 14+
 
 ## Installation
 
@@ -59,7 +55,8 @@ cordinator.start()
 
 ### Routing
 
-After precise location permission has been granted, launching the mapping experience is achieved by starting a `RoutingCoordinator`: 
+After precise location permission has been granted, launching the mapping experience is achieved by starting a `RoutingCoordinator`:
+
 ```swift
 let coordinator = RoutingCoordinator(navigationController: navigationController,
                                      mapConfig: mapConfig,

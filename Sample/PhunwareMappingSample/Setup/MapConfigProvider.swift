@@ -54,25 +54,18 @@ private extension StubMapConfigProvider {
         
         return """
         {
-          "features": {
-            "featureA": {
-              "roles": [
-                "contractor",
-                "regular"
-              ],
-              "config": ""
-            }
-          },
           "languages": [
             {
               "code": "en",
               "displayText": "English",
-              "stringsFile": "strings_localization_en"
+              "stringsFile": "strings_localization_en",
+              "defaultSpokenLanguageRegion": "US"
             },
             {
               "code": "es",
               "displayText": "Español",
-              "stringsFile": "strings_localization_es"
+              "stringsFile": "strings_localization_es",
+              "defaultSpokenLanguageRegion": "MX"
             }
           ],
           "mapSettings": {
@@ -90,8 +83,8 @@ private extension StubMapConfigProvider {
                   }
                 ],
                 "offCampusGeofenceMeters": 1000,
-                "lat": 33.0219,
-                "long": -117.0826,
+                "lat": \(latitude),
+                "long": \(longitude),
                 "iOSInitialZoomLatDelta": 0.0015,
                 "iOSInitialZoomLongDelta": 0.0015,
                 "iOSPOIZoomLatDelta": 0.00025,
@@ -100,9 +93,15 @@ private extension StubMapConfigProvider {
                 "androidPOIZoomLevel": 21,
                 "routeSnappingTolerance": "toleranceHigh",
                 "enableManagedCompass": true,
-                "enableHometoVenue": true,
+                "enableHomeToVenue": false,
                 "enableBlueDotLocation": true,
-                "enableAccessibleRoutesByDefault": false
+                "enableMeetingRoomStatus": true,
+                "meetingRoomStatusRefreshIntervalMilliSeconds": 60000,
+                "enableAccessibleRoutesByDefault": false,
+                "enableLandmarkBasedRouting": false,
+                "poiListDistanceDisplayMode": "distance",
+                "routeSummaryDistanceDisplayMode": "distance",
+                "travelTimeMetersPerSecond": 1.4
               },
               {
                 "mapName": "Multi-Building",
@@ -117,8 +116,8 @@ private extension StubMapConfigProvider {
                   }
                 ],
                 "offCampusGeofenceMeters": 1000,
-                "lat": 33.0219,
-                "long": -117.0826,
+                "lat": \(latitude),
+                "long": \(longitude),
                 "iOSInitialZoomLatDelta": 0.00085,
                 "iOSInitialZoomLongDelta": 0.00085,
                 "iOSPOIZoomLatDelta": 0.00025,
@@ -126,10 +125,15 @@ private extension StubMapConfigProvider {
                 "androidInitialZoomLevel": 18,
                 "androidPOIZoomLevel": 21,
                 "routeSnappingTolerance": "toleranceHigh",
-                "enableManagedCompass": true,
                 "enableHomeToVenue": true,
                 "enableBlueDotLocation": true,
-                "enableAccessibleRoutesByDefault": false
+                "enableMeetingRoomStatus": true,
+                "meetingRoomStatusRefreshIntervalMilliSeconds": 60000,
+                "enableAccessibleRoutesByDefault": false,
+                "enableLandmarkBasedRouting": false,
+                "poiListDistanceDisplayMode": "distance",
+                "routeSummaryDistanceDisplayMode": "distance",
+                "travelTimeMetersPerSecond": 1.4
               }
             ]
           },
@@ -304,6 +308,9 @@ private extension StubMapConfigProvider {
             "offRouteTimeThresholdMilliseconds": 5000,
             "offRouteIdleTimeThresholdMilliseconds": 20000,
             "alertGracePeriodMilliSeconds": 10000
+          },
+          "routeArrivalConfig": {
+            "arrivalThreshold": 5
           }
         }
         """

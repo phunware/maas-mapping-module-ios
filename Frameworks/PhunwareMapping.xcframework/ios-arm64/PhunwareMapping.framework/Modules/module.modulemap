@@ -6,6 +6,6 @@ framework module PhunwareMapping {
 }
 
 module PhunwareMapping.Swift {
-    header "PhunwareMapping-Swift.h"
-    requires objc
+  header "PhunwareMapping-Swift.h"
+  requires objc
 }
