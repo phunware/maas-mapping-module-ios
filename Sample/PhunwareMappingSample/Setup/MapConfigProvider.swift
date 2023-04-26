@@ -11,6 +11,8 @@ import PhunwareMapping
 typealias MapConfigResult = Result<MapConfig, Error>
 
 protocol MapConfigProvider {
+    
+    var mapConfigKey: String { get set }
 
     /// Returns the mapping configuration required for rendering the mapping module.
     ///  - Parameter completion: Called when the operation completes
@@ -20,6 +22,24 @@ protocol MapConfigProvider {
 // MARK: - StubMapConfigProvider
 class StubMapConfigProvider: MapConfigProvider {
 
+    private static let defaultMapConfigKey = "map_config"
+
+    var mapConfigKey = defaultMapConfigKey
+
+    private var configJSONData: Data {
+        let jsonString: String
+
+        switch mapConfigKey {
+        case Self.defaultMapConfigKey:
+            jsonString = Self.configData
+
+        default:
+            jsonString = Self.configData
+        }
+        
+        return Data(jsonString.utf8)
+    }
+    
     func fetchMapConfig(_ completion: @escaping (MapConfigResult) -> Void) {
 
         func parse() -> MapConfig? {
@@ -45,11 +65,22 @@ private extension StubMapConfigProvider {
 
     static let configData: String = {
         let invalidID = 0
+        let invalidLatLong = 0
+        
         let buildingID = invalidID
+        let buildingLatitude = invalidLatLong
+        let buildingLongitude = invalidLatLong
+
         let campusID = invalidID
+        let campusLatitude = invalidLatLong
+        let campusLongitude = invalidLatLong
         
         guard [buildingID, campusID].contains(where: { $0 != invalidID }) else {
-            fatalError("A building ID or campus ID is required but missing.")
+            fatalError("A building ID and/or campus ID is required but missing.")
+        }
+        
+        guard [buildingLatitude, buildingLongitude, campusLatitude, campusLongitude].contains(where: { $0 != invalidLatLong }) else {
+            fatalError("the latitude and longitude of the building and/or campus is required but missing.")
         }
         
         return """
@@ -83,8 +114,8 @@ private extension StubMapConfigProvider {
                   }
                 ],
                 "offCampusGeofenceMeters": 1000,
-                "lat": \(latitude),
-                "long": \(longitude),
+                "lat": \(buildingLatitude),
+                "long": \(buildingLongitude),
                 "iOSInitialZoomLatDelta": 0.0015,
                 "iOSInitialZoomLongDelta": 0.0015,
                 "iOSPOIZoomLatDelta": 0.00025,
@@ -116,8 +147,8 @@ private extension StubMapConfigProvider {
                   }
                 ],
                 "offCampusGeofenceMeters": 1000,
-                "lat": \(latitude),
-                "long": \(longitude),
+                "lat": \(campusLatitude),
+                "long": \(campusLongitude),
                 "iOSInitialZoomLatDelta": 0.00085,
                 "iOSInitialZoomLongDelta": 0.00085,
                 "iOSPOIZoomLatDelta": 0.00025,

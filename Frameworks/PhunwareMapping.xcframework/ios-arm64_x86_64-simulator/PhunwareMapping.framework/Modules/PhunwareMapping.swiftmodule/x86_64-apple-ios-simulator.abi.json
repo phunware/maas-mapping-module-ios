@@ -274,12 +274,12 @@
                   {
                     "kind": "TypeFunc",
                     "name": "Function",
-                    "printedName": "(PhunwareMapping.MappingDeeplink.RouteBuilderDestination.Type) -> (Swift.String, Swift.Int) -> PhunwareMapping.MappingDeeplink.RouteBuilderDestination",
+                    "printedName": "(PhunwareMapping.MappingDeeplink.RouteBuilderDestination.Type) -> (Swift.String?, Swift.String, Swift.Int) -> PhunwareMapping.MappingDeeplink.RouteBuilderDestination",
                     "children": [
                       {
                         "kind": "TypeFunc",
                         "name": "Function",
-                        "printedName": "(Swift.String, Swift.Int) -> PhunwareMapping.MappingDeeplink.RouteBuilderDestination",
+                        "printedName": "(Swift.String?, Swift.String, Swift.Int) -> PhunwareMapping.MappingDeeplink.RouteBuilderDestination",
                         "children": [
                           {
                             "kind": "TypeNominal",
@@ -290,8 +290,22 @@
                           {
                             "kind": "TypeNominal",
                             "name": "Tuple",
-                            "printedName": "(mapName: Swift.String, id: Swift.Int)",
+                            "printedName": "(mapConfigKey: Swift.String?, mapName: Swift.String, id: Swift.Int)",
                             "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Optional",
+                                "printedName": "Swift.String?",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "String",
+                                    "printedName": "Swift.String",
+                                    "usr": "s:SS"
+                                  }
+                                ],
+                                "usr": "s:Sq"
+                              },
                               {
                                 "kind": "TypeNominal",
                                 "name": "String",
@@ -325,8 +339,8 @@
                   }
                 ],
                 "declKind": "EnumElement",
-                "usr": "s:15PhunwareMapping0B8DeeplinkO23RouteBuilderDestinationO15pointOfInterestyAESS_SitcAEmF",
-                "mangledName": "$s15PhunwareMapping0B8DeeplinkO23RouteBuilderDestinationO15pointOfInterestyAESS_SitcAEmF",
+                "usr": "s:15PhunwareMapping0B8DeeplinkO23RouteBuilderDestinationO15pointOfInterestyAESSSg_SSSitcAEmF",
+                "mangledName": "$s15PhunwareMapping0B8DeeplinkO23RouteBuilderDestinationO15pointOfInterestyAESSSg_SSSitcAEmF",
                 "moduleName": "PhunwareMapping",
                 "declAttributes": [
                   "RawDocComment"
@@ -340,12 +354,12 @@
                   {
                     "kind": "TypeFunc",
                     "name": "Function",
-                    "printedName": "(PhunwareMapping.MappingDeeplink.RouteBuilderDestination.Type) -> (Swift.String, Swift.Double, Swift.Double, Swift.Int) -> PhunwareMapping.MappingDeeplink.RouteBuilderDestination",
+                    "printedName": "(PhunwareMapping.MappingDeeplink.RouteBuilderDestination.Type) -> (Swift.String?, Swift.String, Swift.Double, Swift.Double, Swift.Int) -> PhunwareMapping.MappingDeeplink.RouteBuilderDestination",
                     "children": [
                       {
                         "kind": "TypeFunc",
                         "name": "Function",
-                        "printedName": "(Swift.String, Swift.Double, Swift.Double, Swift.Int) -> PhunwareMapping.MappingDeeplink.RouteBuilderDestination",
+                        "printedName": "(Swift.String?, Swift.String, Swift.Double, Swift.Double, Swift.Int) -> PhunwareMapping.MappingDeeplink.RouteBuilderDestination",
                         "children": [
                           {
                             "kind": "TypeNominal",
@@ -356,8 +370,22 @@
                           {
                             "kind": "TypeNominal",
                             "name": "Tuple",
-                            "printedName": "(mapName: Swift.String, latitude: Swift.Double, longitude: Swift.Double, floorId: Swift.Int)",
+                            "printedName": "(mapConfigKey: Swift.String?, mapName: Swift.String, latitude: Swift.Double, longitude: Swift.Double, floorId: Swift.Int)",
                             "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Optional",
+                                "printedName": "Swift.String?",
+                                "children": [
+                                  {
+                                    "kind": "TypeNominal",
+                                    "name": "String",
+                                    "printedName": "Swift.String",
+                                    "usr": "s:SS"
+                                  }
+                                ],
+                                "usr": "s:Sq"
+                              },
                               {
                                 "kind": "TypeNominal",
                                 "name": "String",
@@ -403,8 +431,8 @@
                   }
                 ],
                 "declKind": "EnumElement",
-                "usr": "s:15PhunwareMapping0B8DeeplinkO23RouteBuilderDestinationO10coordinateyAESS_S2dSitcAEmF",
-                "mangledName": "$s15PhunwareMapping0B8DeeplinkO23RouteBuilderDestinationO10coordinateyAESS_S2dSitcAEmF",
+                "usr": "s:15PhunwareMapping0B8DeeplinkO23RouteBuilderDestinationO10coordinateyAESSSg_SSS2dSitcAEmF",
+                "mangledName": "$s15PhunwareMapping0B8DeeplinkO23RouteBuilderDestinationO10coordinateyAESSSg_SSS2dSitcAEmF",
                 "moduleName": "PhunwareMapping",
                 "declAttributes": [
                   "RawDocComment"
@@ -476,6 +504,63 @@
             "usr": "s:15PhunwareMapping0B8DeeplinkO12routeBuilderyA2C05RouteE11DestinationO_tcACmF",
             "mangledName": "$s15PhunwareMapping0B8DeeplinkO12routeBuilderyA2C05RouteE11DestinationO_tcACmF",
             "moduleName": "PhunwareMapping"
+          },
+          {
+            "kind": "Var",
+            "name": "mapConfigKey",
+            "printedName": "mapConfigKey",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:15PhunwareMapping0B8DeeplinkO12mapConfigKeySSSgvp",
+            "mangledName": "$s15PhunwareMapping0B8DeeplinkO12mapConfigKeySSSgvp",
+            "moduleName": "PhunwareMapping",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:15PhunwareMapping0B8DeeplinkO12mapConfigKeySSSgvg",
+                "mangledName": "$s15PhunwareMapping0B8DeeplinkO12mapConfigKeySSSgvg",
+                "moduleName": "PhunwareMapping",
+                "accessorKind": "get"
+              }
+            ]
           },
           {
             "kind": "Var",
@@ -5416,6 +5501,39 @@
           },
           {
             "kind": "Function",
+            "name": "containerViewController",
+            "printedName": "containerViewController(_:didMinimizeTopContent:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContainerViewController",
+                "printedName": "PhunwareMapping.ContainerViewController",
+                "usr": "c:@M@PhunwareMapping@objc(cs)ContainerViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContainerContentEmbedding",
+                "printedName": "PhunwareMapping.ContainerContentEmbedding",
+                "usr": "s:15PhunwareMapping25ContainerContentEmbeddingP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:15PhunwareMapping14POICoordinatorC23containerViewController_21didMinimizeTopContentyAA09ContainereF0C_AA0kJ9Embedding_ptF",
+            "mangledName": "$s15PhunwareMapping14POICoordinatorC23containerViewController_21didMinimizeTopContentyAA09ContainereF0C_AA0kJ9Embedding_ptF",
+            "moduleName": "PhunwareMapping",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "viewModelDidSelectSearch",
             "printedName": "viewModelDidSelectSearch(_:)",
             "children": [
@@ -9715,497 +9833,6 @@
       },
       {
         "kind": "Import",
-        "name": "UIKit",
-        "printedName": "UIKit",
-        "declKind": "Import",
-        "moduleName": "PhunwareMapping",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "PhunwareTheming",
-        "printedName": "PhunwareTheming",
-        "declKind": "Import",
-        "moduleName": "PhunwareMapping"
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "BorderedButton",
-        "printedName": "BorderedButton",
-        "children": [
-          {
-            "kind": "Var",
-            "name": "isEnabled",
-            "printedName": "isEnabled",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "c:@M@PhunwareMapping@objc(cs)BorderedButton(py)enabled",
-            "mangledName": "$s15PhunwareMapping14BorderedButtonC9isEnabledSbvp",
-            "moduleName": "PhunwareMapping",
-            "overriding": true,
-            "objc_name": "enabled",
-            "declAttributes": [
-              "Dynamic",
-              "ObjC",
-              "Custom",
-              "Override",
-              "AccessControl"
-            ],
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Bool",
-                    "printedName": "Swift.Bool",
-                    "usr": "s:Sb"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@M@PhunwareMapping@objc(cs)BorderedButton(im)isEnabled",
-                "mangledName": "$s15PhunwareMapping14BorderedButtonC9isEnabledSbvg",
-                "moduleName": "PhunwareMapping",
-                "overriding": true,
-                "implicit": true,
-                "objc_name": "isEnabled",
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "accessorKind": "get"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Set",
-                "printedName": "Set()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Bool",
-                    "printedName": "Swift.Bool",
-                    "usr": "s:Sb"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "c:@M@PhunwareMapping@objc(cs)BorderedButton(im)setEnabled:",
-                "mangledName": "$s15PhunwareMapping14BorderedButtonC9isEnabledSbvs",
-                "moduleName": "PhunwareMapping",
-                "overriding": true,
-                "implicit": true,
-                "objc_name": "setEnabled:",
-                "declAttributes": [
-                  "Dynamic",
-                  "ObjC"
-                ],
-                "accessorKind": "set"
-              }
-            ]
-          },
-          {
-            "kind": "Function",
-            "name": "backgroundImageColor",
-            "printedName": "backgroundImageColor(for:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "UIKit.UIColor?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "UIColor",
-                    "printedName": "UIKit.UIColor",
-                    "usr": "c:objc(cs)UIColor"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "State",
-                "printedName": "UIKit.UIControl.State",
-                "usr": "c:@E@UIControlState"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:15PhunwareMapping14BorderedButtonC20backgroundImageColor3forSo7UIColorCSgSo14UIControlStateV_tF",
-            "mangledName": "$s15PhunwareMapping14BorderedButtonC20backgroundImageColor3forSo7UIColorCSgSo14UIControlStateV_tF",
-            "moduleName": "PhunwareMapping",
-            "declAttributes": [
-              "Custom",
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "borderColor",
-            "printedName": "borderColor(for:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "UIKit.UIColor?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "UIColor",
-                    "printedName": "UIKit.UIColor",
-                    "usr": "c:objc(cs)UIColor"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "State",
-                "printedName": "UIKit.UIControl.State",
-                "usr": "c:@E@UIControlState"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:15PhunwareMapping14BorderedButtonC11borderColor3forSo7UIColorCSgSo14UIControlStateV_tF",
-            "mangledName": "$s15PhunwareMapping14BorderedButtonC11borderColor3forSo7UIColorCSgSo14UIControlStateV_tF",
-            "moduleName": "PhunwareMapping",
-            "declAttributes": [
-              "Custom",
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "setBackgroundImageColor",
-            "printedName": "setBackgroundImageColor(_:for:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "UIKit.UIColor?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "UIColor",
-                    "printedName": "UIKit.UIColor",
-                    "usr": "c:objc(cs)UIColor"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "State",
-                "printedName": "UIKit.UIControl.State",
-                "usr": "c:@E@UIControlState"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:15PhunwareMapping14BorderedButtonC23setBackgroundImageColor_3forySo7UIColorCSg_So14UIControlStateVtF",
-            "mangledName": "$s15PhunwareMapping14BorderedButtonC23setBackgroundImageColor_3forySo7UIColorCSg_So14UIControlStateVtF",
-            "moduleName": "PhunwareMapping",
-            "declAttributes": [
-              "Custom",
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "setBorderColor",
-            "printedName": "setBorderColor(_:for:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "UIKit.UIColor?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "UIColor",
-                    "printedName": "UIKit.UIColor",
-                    "usr": "c:objc(cs)UIColor"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "State",
-                "printedName": "UIKit.UIControl.State",
-                "usr": "c:@E@UIControlState"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:15PhunwareMapping14BorderedButtonC14setBorderColor_3forySo7UIColorCSg_So14UIControlStateVtF",
-            "mangledName": "$s15PhunwareMapping14BorderedButtonC14setBorderColor_3forySo7UIColorCSg_So14UIControlStateVtF",
-            "moduleName": "PhunwareMapping",
-            "declAttributes": [
-              "Custom",
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "traitCollectionDidChange",
-            "printedName": "traitCollectionDidChange(_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "UIKit.UITraitCollection?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "UITraitCollection",
-                    "printedName": "UIKit.UITraitCollection",
-                    "usr": "c:objc(cs)UITraitCollection"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "c:@M@PhunwareMapping@objc(cs)BorderedButton(im)traitCollectionDidChange:",
-            "mangledName": "$s15PhunwareMapping14BorderedButtonC24traitCollectionDidChangeyySo07UITraitF0CSgF",
-            "moduleName": "PhunwareMapping",
-            "overriding": true,
-            "objc_name": "traitCollectionDidChange:",
-            "declAttributes": [
-              "Dynamic",
-              "ObjC",
-              "Custom",
-              "Override",
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "configureBorderedButton",
-            "printedName": "configureBorderedButton(_:for:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "TextConfiguration",
-                "printedName": "PhunwareTheming.TextConfiguration",
-                "usr": "c:@M@PhunwareTheming@objc(cs)TextConfiguration"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "State",
-                "printedName": "UIKit.UIControl.State",
-                "usr": "c:@E@UIControlState"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:15PhunwareMapping14BorderedButtonC09configurecD0_3fory0A7Theming17TextConfigurationC_So14UIControlStateVtF",
-            "mangledName": "$s15PhunwareMapping14BorderedButtonC09configurecD0_3fory0A7Theming17TextConfigurationC_So14UIControlStateVtF",
-            "moduleName": "PhunwareMapping",
-            "declAttributes": [
-              "Custom",
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(frame:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "BorderedButton",
-                "printedName": "PhunwareMapping.BorderedButton",
-                "usr": "c:@M@PhunwareMapping@objc(cs)BorderedButton"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "CGRect",
-                "printedName": "CoreFoundation.CGRect",
-                "usr": "c:@S@CGRect"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "c:@M@PhunwareMapping@objc(cs)BorderedButton(im)initWithFrame:",
-            "mangledName": "$s15PhunwareMapping14BorderedButtonC5frameACSo6CGRectV_tcfc",
-            "moduleName": "PhunwareMapping",
-            "overriding": true,
-            "implicit": true,
-            "objc_name": "initWithFrame:",
-            "declAttributes": [
-              "Dynamic",
-              "ObjC",
-              "Custom",
-              "Override"
-            ],
-            "init_kind": "Designated"
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(coder:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "PhunwareMapping.BorderedButton?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "BorderedButton",
-                    "printedName": "PhunwareMapping.BorderedButton",
-                    "usr": "c:@M@PhunwareMapping@objc(cs)BorderedButton"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "NSCoder",
-                "printedName": "Foundation.NSCoder",
-                "usr": "c:objc(cs)NSCoder"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "c:@M@PhunwareMapping@objc(cs)BorderedButton(im)initWithCoder:",
-            "mangledName": "$s15PhunwareMapping14BorderedButtonC5coderACSgSo7NSCoderC_tcfc",
-            "moduleName": "PhunwareMapping",
-            "overriding": true,
-            "implicit": true,
-            "objc_name": "initWithCoder:",
-            "declAttributes": [
-              "Dynamic",
-              "ObjC",
-              "Custom",
-              "Required"
-            ],
-            "init_kind": "Designated"
-          }
-        ],
-        "declKind": "Class",
-        "usr": "c:@M@PhunwareMapping@objc(cs)BorderedButton",
-        "mangledName": "$s15PhunwareMapping14BorderedButtonC",
-        "moduleName": "PhunwareMapping",
-        "declAttributes": [
-          "Custom",
-          "AccessControl",
-          "ObjC"
-        ],
-        "superclassUsr": "c:objc(cs)UIButton",
-        "inheritsConvenienceInitializers": true,
-        "superclassNames": [
-          "UIKit.UIButton",
-          "UIKit.UIControl",
-          "UIKit.UIView",
-          "UIKit.UIResponder",
-          "ObjectiveC.NSObject"
-        ],
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CVarArg",
-            "printedName": "CVarArg",
-            "usr": "s:s7CVarArgP",
-            "mangledName": "$ss7CVarArgP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "_KeyValueCodingAndObservingPublishing",
-            "printedName": "_KeyValueCodingAndObservingPublishing",
-            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
-            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "_KeyValueCodingAndObserving",
-            "printedName": "_KeyValueCodingAndObserving",
-            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
-            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CustomStringConvertible",
-            "printedName": "CustomStringConvertible",
-            "usr": "s:s23CustomStringConvertibleP",
-            "mangledName": "$ss23CustomStringConvertibleP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CustomDebugStringConvertible",
-            "printedName": "CustomDebugStringConvertible",
-            "usr": "s:s28CustomDebugStringConvertibleP",
-            "mangledName": "$ss28CustomDebugStringConvertibleP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "__DefaultCustomPlaygroundQuickLookable",
-            "printedName": "__DefaultCustomPlaygroundQuickLookable",
-            "usr": "s:s38__DefaultCustomPlaygroundQuickLookableP",
-            "mangledName": "$ss38__DefaultCustomPlaygroundQuickLookableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Sendable",
-            "printedName": "Sendable",
-            "usr": "s:s8SendableP",
-            "mangledName": "$ss8SendableP"
-          }
-        ]
-      },
-      {
-        "kind": "Import",
         "name": "PhunwareTheming",
         "printedName": "PhunwareTheming",
         "declKind": "Import",
@@ -12861,6 +12488,42 @@
             ],
             "reqNewWitnessTableEntry": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "containerViewController",
+            "printedName": "containerViewController(_:didMinimizeTopContent:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContainerViewController",
+                "printedName": "PhunwareMapping.ContainerViewController",
+                "usr": "c:@M@PhunwareMapping@objc(cs)ContainerViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContainerContentEmbedding",
+                "printedName": "PhunwareMapping.ContainerContentEmbedding",
+                "usr": "s:15PhunwareMapping25ContainerContentEmbeddingP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:15PhunwareMapping31ContainerViewControllerDelegateP09containerdE0_21didMinimizeTopContentyAA0cdE0C_AA0cK9Embedding_ptF",
+            "mangledName": "$s15PhunwareMapping31ContainerViewControllerDelegateP09containerdE0_21didMinimizeTopContentyAA0cdE0C_AA0cK9Embedding_ptF",
+            "moduleName": "PhunwareMapping",
+            "genericSig": "<τ_0_0 where τ_0_0 : PhunwareMapping.ContainerViewControllerDelegate>",
+            "sugared_genericSig": "<Self where Self : PhunwareMapping.ContainerViewControllerDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Protocol",
@@ -13495,6 +13158,32 @@
             "init_kind": "Designated"
           },
           {
+            "kind": "Function",
+            "name": "viewDidLayoutSubviews",
+            "printedName": "viewDidLayoutSubviews()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@PhunwareMapping@objc(cs)ContainerViewController(im)viewDidLayoutSubviews",
+            "mangledName": "$s15PhunwareMapping23ContainerViewControllerC21viewDidLayoutSubviewsyyF",
+            "moduleName": "PhunwareMapping",
+            "overriding": true,
+            "objc_name": "viewDidLayoutSubviews",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(coder:)",
@@ -13873,6 +13562,52 @@
             "declKind": "Func",
             "usr": "s:15PhunwareMapping23ContainerViewControllerC16popToRootContent8animatedSayAA0cI9Embedding_pGSgSb_tF",
             "mangledName": "$s15PhunwareMapping23ContainerViewControllerC16popToRootContent8animatedSayAA0cI9Embedding_pGSgSb_tF",
+            "moduleName": "PhunwareMapping",
+            "declAttributes": [
+              "Custom",
+              "DiscardableResult",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "popThroughDimmedContent",
+            "printedName": "popThroughDimmedContent(animated:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[PhunwareMapping.ContainerContentEmbedding]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[PhunwareMapping.ContainerContentEmbedding]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ContainerContentEmbedding",
+                        "printedName": "PhunwareMapping.ContainerContentEmbedding",
+                        "usr": "s:15PhunwareMapping25ContainerContentEmbeddingP"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:15PhunwareMapping23ContainerViewControllerC23popThroughDimmedContent8animatedSayAA0cI9Embedding_pGSgSb_tF",
+            "mangledName": "$s15PhunwareMapping23ContainerViewControllerC23popThroughDimmedContent8animatedSayAA0cI9Embedding_pGSgSb_tF",
             "moduleName": "PhunwareMapping",
             "declAttributes": [
               "Custom",
@@ -20068,6 +19803,39 @@
             "declKind": "Func",
             "usr": "s:15PhunwareMapping24ShareLocationCoordinatorC30containerViewControllerDidExityyAA09ContainergH0CF",
             "mangledName": "$s15PhunwareMapping24ShareLocationCoordinatorC30containerViewControllerDidExityyAA09ContainergH0CF",
+            "moduleName": "PhunwareMapping",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "containerViewController",
+            "printedName": "containerViewController(_:didMinimizeTopContent:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContainerViewController",
+                "printedName": "PhunwareMapping.ContainerViewController",
+                "usr": "c:@M@PhunwareMapping@objc(cs)ContainerViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContainerContentEmbedding",
+                "printedName": "PhunwareMapping.ContainerContentEmbedding",
+                "usr": "s:15PhunwareMapping25ContainerContentEmbeddingP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:15PhunwareMapping24ShareLocationCoordinatorC23containerViewController_21didMinimizeTopContentyAA09ContainergH0C_AA0mL9Embedding_ptF",
+            "mangledName": "$s15PhunwareMapping24ShareLocationCoordinatorC23containerViewController_21didMinimizeTopContentyAA09ContainergH0C_AA0mL9Embedding_ptF",
             "moduleName": "PhunwareMapping",
             "declAttributes": [
               "AccessControl"
@@ -27418,6 +27186,39 @@
             "declKind": "Func",
             "usr": "s:15PhunwareMapping18RoutingCoordinatorC30containerViewControllerDidExityyAA09ContainerfG0CF",
             "mangledName": "$s15PhunwareMapping18RoutingCoordinatorC30containerViewControllerDidExityyAA09ContainerfG0CF",
+            "moduleName": "PhunwareMapping",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "containerViewController",
+            "printedName": "containerViewController(_:didMinimizeTopContent:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContainerViewController",
+                "printedName": "PhunwareMapping.ContainerViewController",
+                "usr": "c:@M@PhunwareMapping@objc(cs)ContainerViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContainerContentEmbedding",
+                "printedName": "PhunwareMapping.ContainerContentEmbedding",
+                "usr": "s:15PhunwareMapping25ContainerContentEmbeddingP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:15PhunwareMapping18RoutingCoordinatorC23containerViewController_21didMinimizeTopContentyAA09ContainerfG0C_AA0lK9Embedding_ptF",
+            "mangledName": "$s15PhunwareMapping18RoutingCoordinatorC23containerViewController_21didMinimizeTopContentyAA09ContainerfG0C_AA0lK9Embedding_ptF",
             "moduleName": "PhunwareMapping",
             "declAttributes": [
               "AccessControl"
@@ -34936,9 +34737,56 @@
             "printedName": "ModuleNavigation",
             "children": [
               {
+                "kind": "TypeDecl",
+                "name": "ExitButton",
+                "printedName": "ExitButton",
+                "children": [
+                  {
+                    "kind": "Constructor",
+                    "name": "init",
+                    "printedName": "init(iconTint:backgroundTint:)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ExitButton",
+                        "printedName": "PhunwareMapping.MapTheme.ModuleNavigation.ExitButton",
+                        "usr": "s:15PhunwareMapping8MapThemeV16ModuleNavigationV10ExitButtonV"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "declKind": "Constructor",
+                    "usr": "s:15PhunwareMapping8MapThemeV16ModuleNavigationV10ExitButtonV8iconTint010backgroundJ0AGSo7UIColorC_AKtcfc",
+                    "mangledName": "$s15PhunwareMapping8MapThemeV16ModuleNavigationV10ExitButtonV8iconTint010backgroundJ0AGSo7UIColorC_AKtcfc",
+                    "moduleName": "PhunwareMapping",
+                    "declAttributes": [
+                      "AccessControl"
+                    ],
+                    "init_kind": "Designated"
+                  }
+                ],
+                "declKind": "Struct",
+                "usr": "s:15PhunwareMapping8MapThemeV16ModuleNavigationV10ExitButtonV",
+                "mangledName": "$s15PhunwareMapping8MapThemeV16ModuleNavigationV10ExitButtonV",
+                "moduleName": "PhunwareMapping",
+                "declAttributes": [
+                  "AccessControl"
+                ]
+              },
+              {
                 "kind": "Constructor",
                 "name": "init",
-                "printedName": "init(exitButtonTint:)",
+                "printedName": "init(exitButton:)",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -34948,14 +34796,14 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "UIColor",
-                    "printedName": "UIKit.UIColor",
-                    "usr": "c:objc(cs)UIColor"
+                    "name": "ExitButton",
+                    "printedName": "PhunwareMapping.MapTheme.ModuleNavigation.ExitButton",
+                    "usr": "s:15PhunwareMapping8MapThemeV16ModuleNavigationV10ExitButtonV"
                   }
                 ],
                 "declKind": "Constructor",
-                "usr": "s:15PhunwareMapping8MapThemeV16ModuleNavigationV14exitButtonTintAESo7UIColorC_tcfc",
-                "mangledName": "$s15PhunwareMapping8MapThemeV16ModuleNavigationV14exitButtonTintAESo7UIColorC_tcfc",
+                "usr": "s:15PhunwareMapping8MapThemeV16ModuleNavigationV10exitButtonA2E04ExitH0V_tcfc",
+                "mangledName": "$s15PhunwareMapping8MapThemeV16ModuleNavigationV10exitButtonA2E04ExitH0V_tcfc",
                 "moduleName": "PhunwareMapping",
                 "declAttributes": [
                   "AccessControl"
@@ -35600,7 +35448,7 @@
               {
                 "kind": "Constructor",
                 "name": "init",
-                "printedName": "init(title:arrivalEstimation:locationDetails:actionLink:actionLinkIcon:closeButtonTint:contentHeader:contentText:)",
+                "printedName": "init(title:arrivalEstimation:locationDetails:actionLink:actionLinkIcon:closeButton:contentHeader:contentText:)",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -35640,9 +35488,9 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "UIColor",
-                    "printedName": "UIKit.UIColor",
-                    "usr": "c:objc(cs)UIColor"
+                    "name": "ColorConfiguration",
+                    "printedName": "PhunwareTheming.ColorConfiguration",
+                    "usr": "c:@M@PhunwareTheming@objc(cs)ColorConfiguration"
                   },
                   {
                     "kind": "TypeNominal",
@@ -35658,8 +35506,8 @@
                   }
                 ],
                 "declKind": "Constructor",
-                "usr": "s:15PhunwareMapping8MapThemeV6DetailV5title17arrivalEstimation15locationDetails10actionLink0kL4Icon15closeButtonTint13contentHeader0Q4TextAeC0S5StyleV_A3OSo7UIColorCAq2Otcfc",
-                "mangledName": "$s15PhunwareMapping8MapThemeV6DetailV5title17arrivalEstimation15locationDetails10actionLink0kL4Icon15closeButtonTint13contentHeader0Q4TextAeC0S5StyleV_A3OSo7UIColorCAq2Otcfc",
+                "usr": "s:15PhunwareMapping8MapThemeV6DetailV5title17arrivalEstimation15locationDetails10actionLink0kL4Icon11closeButton13contentHeader0P4TextAeC0R5StyleV_A3OSo7UIColorC0A7Theming18ColorConfigurationCA2Otcfc",
+                "mangledName": "$s15PhunwareMapping8MapThemeV6DetailV5title17arrivalEstimation15locationDetails10actionLink0kL4Icon11closeButton13contentHeader0P4TextAeC0R5StyleV_A3OSo7UIColorC0A7Theming18ColorConfigurationCA2Otcfc",
                 "moduleName": "PhunwareMapping",
                 "declAttributes": [
                   "AccessControl"
@@ -36596,7 +36444,7 @@
               {
                 "kind": "Constructor",
                 "name": "init",
-                "printedName": "init(arrivalText:title:doneButton:linkButton:)",
+                "printedName": "init(arrivalText:title:linkButton:closeButton:)",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -36624,14 +36472,14 @@
                   },
                   {
                     "kind": "TypeNominal",
-                    "name": "SolidColorButton",
-                    "printedName": "PhunwareMapping.MapTheme.SolidColorButton",
-                    "usr": "s:15PhunwareMapping8MapThemeV16SolidColorButtonV"
+                    "name": "ColorConfiguration",
+                    "printedName": "PhunwareTheming.ColorConfiguration",
+                    "usr": "c:@M@PhunwareTheming@objc(cs)ColorConfiguration"
                   }
                 ],
                 "declKind": "Constructor",
-                "usr": "s:15PhunwareMapping8MapThemeV11ArrivalCardV11arrivalText5title10doneButton04linkK0AeC0H5StyleV_AkC010SolidColorK0VAMtcfc",
-                "mangledName": "$s15PhunwareMapping8MapThemeV11ArrivalCardV11arrivalText5title10doneButton04linkK0AeC0H5StyleV_AkC010SolidColorK0VAMtcfc",
+                "usr": "s:15PhunwareMapping8MapThemeV11ArrivalCardV11arrivalText5title10linkButton05closeK0AeC0H5StyleV_AkC010SolidColorK0V0A7Theming0O13ConfigurationCtcfc",
+                "mangledName": "$s15PhunwareMapping8MapThemeV11ArrivalCardV11arrivalText5title10linkButton05closeK0AeC0H5StyleV_AkC010SolidColorK0V0A7Theming0O13ConfigurationCtcfc",
                 "moduleName": "PhunwareMapping",
                 "declAttributes": [
                   "AccessControl"
@@ -48282,70 +48130,84 @@
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
       "kind": "StringLiteral",
-      "offset": 7466,
+      "offset": 8500,
+      "length": 16,
+      "value": "\"map_config_key\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
+      "kind": "StringLiteral",
+      "offset": 8540,
       "length": 10,
       "value": "\"map_name\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
       "kind": "StringLiteral",
-      "offset": 7506,
+      "offset": 8580,
       "length": 8,
       "value": "\"poi_id\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
       "kind": "StringLiteral",
-      "offset": 7539,
+      "offset": 8613,
       "length": 5,
       "value": "\"lat\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
       "kind": "StringLiteral",
-      "offset": 7570,
+      "offset": 8644,
       "length": 6,
       "value": "\"long\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
       "kind": "StringLiteral",
-      "offset": 7600,
+      "offset": 8674,
       "length": 10,
       "value": "\"floor_id\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
       "kind": "StringLiteral",
-      "offset": 7466,
+      "offset": 8500,
+      "length": 16,
+      "value": "\"map_config_key\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
+      "kind": "StringLiteral",
+      "offset": 8540,
       "length": 10,
       "value": "\"map_name\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
       "kind": "StringLiteral",
-      "offset": 7506,
+      "offset": 8580,
       "length": 8,
       "value": "\"poi_id\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
       "kind": "StringLiteral",
-      "offset": 7539,
+      "offset": 8613,
       "length": 5,
       "value": "\"lat\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
       "kind": "StringLiteral",
-      "offset": 7570,
+      "offset": 8644,
       "length": 6,
       "value": "\"long\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
       "kind": "StringLiteral",
-      "offset": 7600,
+      "offset": 8674,
       "length": 10,
       "value": "\"floor_id\""
     },
@@ -49017,7 +48879,7 @@
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/RouteBuilder\/ViewModel\/RouteBuilderViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 2778,
+      "offset": 2780,
       "length": 4,
       "value": "true"
     },
@@ -49031,154 +48893,175 @@
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "StringLiteral",
-      "offset": 1737,
+      "offset": 1995,
       "length": 79,
       "value": "\"com.phunware.mapping.containerViewController.visibleBackgroundAreaLayoutGuide\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "StringLiteral",
-      "offset": 2110,
+      "offset": 2368,
       "length": 83,
       "value": "\"com.phunware.mapping.containerViewController.safeVisibleBackgroundAreaLayoutGuide\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "StringLiteral",
-      "offset": 2445,
+      "offset": 2703,
       "length": 69,
       "value": "\"com.phunware.mapping.containerViewController.bottomSheetLayoutGuide\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "StringLiteral",
-      "offset": 2792,
+      "offset": 3050,
       "length": 73,
       "value": "\"com.phunware.mapping.containerViewController.safeBottomSheetLayoutGuide\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 2953,
+      "offset": 3211,
       "length": 3,
       "value": "150"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 3005,
+      "offset": 3263,
       "length": 3,
       "value": "500"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 3049,
+      "offset": 3307,
       "length": 2,
       "value": "10"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 3468,
+      "offset": 3726,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 3678,
+      "offset": 3936,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 3900,
+      "offset": 4158,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "StringLiteral",
-      "offset": 4025,
-      "length": 26,
-      "value": "\"chevron.left.circle.fill\""
+      "offset": 4407,
+      "length": 11,
+      "value": "\"icon_back\""
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
+      "kind": "FloatLiteral",
+      "offset": 4493,
+      "length": 4,
+      "value": "0.75"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "StringLiteral",
-      "offset": 4141,
+      "offset": 4679,
       "length": 27,
       "value": "\"map_view_back_description\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 4336,
+      "offset": 4874,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "FloatLiteral",
-      "offset": 4406,
+      "offset": 4944,
       "length": 3,
       "value": "0.5"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
-      "kind": "BooleanLiteral",
-      "offset": 4435,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
-      "kind": "IntegerLiteral",
-      "offset": 4461,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "StringLiteral",
-      "offset": 580,
+      "offset": 838,
       "length": 23,
       "value": "\"PhunwareMapping.ContainerViewController\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 15454,
+      "offset": 16631,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18779,
+      "length": 2,
+      "value": "10"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18829,
+      "length": 2,
+      "value": "12"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18876,
+      "length": 2,
+      "value": "40"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18888,
+      "length": 2,
+      "value": "40"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 32042,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 29483,
+      "offset": 33343,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 30784,
+      "offset": 34902,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 32343,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerViewController.swift",
-      "kind": "BooleanLiteral",
-      "offset": 33918,
+      "offset": 36698,
       "length": 4,
       "value": "true"
     },
@@ -49213,7 +49096,7 @@
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Detail\/View\/DetailViewController.swift",
       "kind": "Array",
-      "offset": 1418,
+      "offset": 1497,
       "length": 2,
       "value": "[]"
     },
@@ -49241,7 +49124,7 @@
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Container\/ContainerContentEmbedding.swift",
       "kind": "BooleanLiteral",
-      "offset": 892,
+      "offset": 1154,
       "length": 5,
       "value": "false"
     },
@@ -49283,7 +49166,7 @@
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/View\/MapViewController.swift",
       "kind": "FloatLiteral",
-      "offset": 20066,
+      "offset": 20338,
       "length": 3,
       "value": "0.0"
     },
@@ -49906,168 +49789,168 @@
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "StringLiteral",
-      "offset": 1829,
+      "offset": 1910,
       "length": 19,
       "value": "\"PhunwareMapping.MapContainerWrapper\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 2146,
+      "offset": 2227,
       "length": 14,
       "value": "1"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 2146,
+      "offset": 2227,
       "length": 14,
       "value": "1"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "StringLiteral",
-      "offset": 2278,
+      "offset": 2359,
       "length": 16,
       "value": "\"isMapViewMuted\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 2388,
+      "offset": 2469,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 2717,
+      "offset": 2798,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 2791,
+      "offset": 2872,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 2866,
+      "offset": 2947,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 3062,
+      "offset": 3143,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 4281,
+      "offset": 4362,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 5362,
+      "offset": 5443,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 5437,
+      "offset": 5518,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 5652,
+      "offset": 5733,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 5944,
+      "offset": 6025,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 6207,
+      "offset": 6288,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 7575,
+      "offset": 7656,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 9625,
+      "offset": 9706,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 9794,
+      "offset": 9875,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "Array",
-      "offset": 10865,
+      "offset": 10946,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "StringLiteral",
-      "offset": 2177,
+      "offset": 2258,
       "length": 12,
       "value": "\"PhunwareMapping.MapViewModel\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 18973,
+      "offset": 19054,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 42122,
+      "offset": 42720,
       "length": 2,
       "value": "10"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 42217,
+      "offset": 42815,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Map\/ViewModel\/MapViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 42293,
+      "offset": 42891,
       "length": 1,
       "value": "1"
     },
@@ -50179,7 +50062,7 @@
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Detail\/ViewModel\/DetailViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 2008,
+      "offset": 2009,
       "length": 5,
       "value": "false"
     },
@@ -50318,463 +50201,456 @@
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1446,
+      "length": 2,
+      "value": "85"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 2067,
+      "offset": 2640,
       "length": 4,
       "value": "0.85"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 2130,
+      "offset": 2703,
       "length": 2,
       "value": "28"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 2305,
+      "offset": 2878,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 2397,
+      "offset": 2970,
       "length": 4,
       "value": "0.15"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 2486,
+      "offset": 3059,
       "length": 4,
       "value": "0.05"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 4519,
+      "offset": 5092,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 4658,
+      "offset": 5231,
       "length": 4,
       "value": "0.40"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 4724,
+      "offset": 5297,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 4814,
+      "offset": 5387,
       "length": 4,
       "value": "0.85"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 4976,
+      "offset": 5549,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 5160,
+      "offset": 5733,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 5339,
+      "offset": 5912,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 5447,
+      "offset": 6020,
       "length": 4,
       "value": "0.85"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 5610,
+      "offset": 6183,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 5863,
+      "offset": 6436,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 6113,
+      "offset": 6686,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 6692,
+      "offset": 7265,
       "length": 2,
       "value": "18"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 7442,
+      "offset": 8015,
       "length": 4,
       "value": "0.85"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 7505,
+      "offset": 8078,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 7680,
+      "offset": 8253,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 7776,
+      "offset": 8349,
       "length": 4,
       "value": "0.40"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 9218,
+      "offset": 9791,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 9401,
+      "offset": 9974,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 10475,
+      "offset": 11048,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 10655,
+      "offset": 11228,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 10796,
+      "offset": 11369,
       "length": 4,
       "value": "0.65"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 10862,
+      "offset": 11435,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 11049,
+      "offset": 11622,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 11795,
+      "offset": 12368,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 11969,
+      "offset": 12542,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 12065,
+      "offset": 12638,
       "length": 4,
       "value": "0.05"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 13008,
+      "offset": 13581,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 13283,
+      "offset": 13856,
       "length": 4,
       "value": "0.50"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 13350,
+      "offset": 13923,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 13452,
+      "offset": 14025,
       "length": 4,
       "value": "0.15"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 14177,
+      "offset": 14690,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 14271,
+      "offset": 14784,
       "length": 4,
       "value": "0.85"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 15742,
+      "offset": 16261,
       "length": 2,
       "value": "28"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 15931,
+      "offset": 16450,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 16115,
+      "offset": 16634,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 16294,
+      "offset": 16813,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 16452,
+      "offset": 17080,
       "length": 4,
       "value": "0.85"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 16615,
+      "offset": 17261,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 16795,
+      "offset": 17441,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 18385,
+      "offset": 19031,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 18556,
+      "offset": 19202,
       "length": 2,
       "value": "18"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 18742,
+      "offset": 19388,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 19032,
+      "offset": 19678,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 19327,
+      "offset": 19973,
       "length": 4,
       "value": "0.50"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 19398,
+      "offset": 20044,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 19506,
+      "offset": 20152,
       "length": 4,
       "value": "0.15"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 19712,
+      "offset": 20358,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 19893,
+      "offset": 20539,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 20077,
+      "offset": 20723,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 20174,
+      "offset": 20820,
       "length": 4,
       "value": "0.05"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 21093,
+      "offset": 21739,
       "length": 2,
       "value": "18"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 21269,
+      "offset": 21915,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 21440,
+      "offset": 22086,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 21611,
+      "offset": 22257,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 21788,
+      "offset": 22434,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 22418,
+      "offset": 23064,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 22558,
+      "offset": 23204,
       "length": 4,
       "value": "0.40"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 23663,
+      "offset": 24309,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 23839,
-      "length": 2,
-      "value": "14"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
-      "kind": "IntegerLiteral",
-      "offset": 24023,
-      "length": 2,
-      "value": "14"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
-      "kind": "IntegerLiteral",
-      "offset": 24324,
+      "offset": 24485,
       "length": 2,
       "value": "14"
     },
@@ -50787,323 +50663,316 @@
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
-      "kind": "FloatLiteral",
-      "offset": 24779,
-      "length": 4,
-      "value": "0.50"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 25101,
-      "length": 2,
-      "value": "14"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
-      "kind": "FloatLiteral",
-      "offset": 25398,
-      "length": 4,
-      "value": "0.50"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
-      "kind": "IntegerLiteral",
-      "offset": 25469,
+      "offset": 24970,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 26320,
+      "offset": 25315,
+      "length": 2,
+      "value": "14"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
+      "kind": "FloatLiteral",
+      "offset": 25425,
+      "length": 4,
+      "value": "0.50"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
+      "kind": "IntegerLiteral",
+      "offset": 25747,
+      "length": 2,
+      "value": "14"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
+      "kind": "FloatLiteral",
+      "offset": 26044,
+      "length": 4,
+      "value": "0.50"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
+      "kind": "IntegerLiteral",
+      "offset": 26115,
+      "length": 2,
+      "value": "14"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
+      "kind": "IntegerLiteral",
+      "offset": 26966,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "StringLiteral",
-      "offset": 26401,
+      "offset": 27047,
       "length": 13,
       "value": "\"ic_question\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 27241,
+      "offset": 27887,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 28269,
+      "offset": 28915,
       "length": 2,
       "value": "18"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 28460,
+      "offset": 29106,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 28652,
+      "offset": 29298,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "StringLiteral",
-      "offset": 29615,
+      "offset": 30261,
       "length": 18,
       "value": "\"ic_pin-filled_lg\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 30947,
+      "offset": 31593,
       "length": 4,
       "value": "0.85"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 31010,
+      "offset": 31656,
       "length": 2,
       "value": "28"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 31112,
+      "offset": 31758,
       "length": 4,
       "value": "0.85"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 31275,
+      "offset": 31921,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 31456,
+      "offset": 32102,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 31632,
+      "offset": 32278,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 31810,
+      "offset": 32456,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 31997,
+      "offset": 32643,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 32181,
-      "length": 2,
-      "value": "14"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
-      "kind": "FloatLiteral",
       "offset": 32827,
+      "length": 2,
+      "value": "14"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
+      "kind": "FloatLiteral",
+      "offset": 33473,
       "length": 4,
       "value": "0.85"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 32890,
+      "offset": 33536,
       "length": 2,
       "value": "28"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 32991,
+      "offset": 33637,
       "length": 4,
       "value": "0.85"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 33150,
+      "offset": 33796,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 33794,
+      "offset": 34440,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 34839,
+      "offset": 35485,
       "length": 4,
       "value": "0.40"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 34909,
+      "offset": 35555,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 35007,
+      "offset": 35653,
       "length": 4,
       "value": "0.40"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 35674,
+      "offset": 36320,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 36951,
+      "offset": 37597,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 37169,
+      "offset": 37815,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 37396,
+      "offset": 38042,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 37574,
+      "offset": 38220,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 37758,
+      "offset": 38404,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 38637,
+      "offset": 39295,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 38806,
+      "offset": 39464,
       "length": 2,
       "value": "28"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 39108,
+      "offset": 39766,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 39453,
+      "offset": 40111,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 39563,
-      "length": 4,
-      "value": "0.15"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
-      "kind": "IntegerLiteral",
-      "offset": 39885,
-      "length": 2,
-      "value": "14"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
-      "kind": "FloatLiteral",
-      "offset": 40184,
-      "length": 4,
-      "value": "0.50"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
-      "kind": "IntegerLiteral",
-      "offset": 40255,
-      "length": 2,
-      "value": "14"
-    },
-    {
-      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
-      "kind": "FloatLiteral",
-      "offset": 40367,
+      "offset": 40221,
       "length": 4,
       "value": "0.15"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "FloatLiteral",
-      "offset": 41342,
+      "offset": 40459,
+      "length": 4,
+      "value": "0.85"
+    },
+    {
+      "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
+      "kind": "FloatLiteral",
+      "offset": 41412,
       "length": 4,
       "value": "0.85"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 41498,
+      "offset": 41568,
       "length": 2,
       "value": "12"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Common\/Theme\/MapTheme.swift",
       "kind": "IntegerLiteral",
-      "offset": 41680,
+      "offset": 41750,
       "length": 2,
       "value": "12"
     },
@@ -51124,28 +50993,28 @@
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Arrival\/ViewModel\/ArrivalViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 1098,
+      "offset": 1081,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Arrival\/ViewModel\/ArrivalViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 1159,
+      "offset": 1142,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Arrival\/ViewModel\/ArrivalViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 1214,
+      "offset": 1197,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/artifact-mapping-module-ios\/PhunwareMapping\/Arrival\/ViewModel\/ArrivalViewModel.swift",
       "kind": "StringLiteral",
-      "offset": 7712,
+      "offset": 7103,
       "length": 33,
       "value": "\"ic_phunware_mapping_default_poi\""
     },

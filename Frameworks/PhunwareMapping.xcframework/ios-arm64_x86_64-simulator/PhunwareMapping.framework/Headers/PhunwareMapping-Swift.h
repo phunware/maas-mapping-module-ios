@@ -258,19 +258,9 @@ using UInt = size_t;
 #endif
 
 #if defined(__OBJC__)
-@class UITraitCollection;
-@class NSCoder;
-
-SWIFT_CLASS("_TtC15PhunwareMapping14BorderedButton")
-@interface BorderedButton : UIButton
-@property (nonatomic, getter=isEnabled) BOOL enabled;
-- (void)traitCollectionDidChange:(UITraitCollection * _Nullable)previousTraitCollection;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
 @class NSString;
 @class NSBundle;
+@class NSCoder;
 
 SWIFT_CLASS("_TtC15PhunwareMapping20BrowseViewController")
 @interface BrowseViewController : UIViewController
@@ -381,6 +371,7 @@ SWIFT_CLASS("_TtC15PhunwareMapping15CategoryRowCell")
 /// for navigating hierarchical content using a bottom sheet style UI.
 SWIFT_CLASS("_TtC15PhunwareMapping23ContainerViewController")
 @interface ContainerViewController : UIViewController
+- (void)viewDidLayoutSubviews;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
@@ -404,6 +395,7 @@ SWIFT_CLASS("_TtC15PhunwareMapping23ContainerViewController")
 
 
 
+@class UITraitCollection;
 
 SWIFT_CLASS("_TtC15PhunwareMapping20DetailViewController")
 @interface DetailViewController : UIViewController
@@ -542,11 +534,6 @@ SWIFT_CLASS("_TtC15PhunwareMapping17MapViewController")
 
 
 
-@interface MapViewController (SWIFT_EXTENSION(PhunwareMapping)) <UICollectionViewDataSource>
-- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
-
 @class UIScrollView;
 
 @interface MapViewController (SWIFT_EXTENSION(PhunwareMapping)) <UIScrollViewDelegate>
@@ -554,6 +541,11 @@ SWIFT_CLASS("_TtC15PhunwareMapping17MapViewController")
 - (void)scrollViewWillEndDragging:(UIScrollView * _Nonnull)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(CGPoint * _Nonnull)targetContentOffset;
 @end
 
+
+@interface MapViewController (SWIFT_EXTENSION(PhunwareMapping)) <UICollectionViewDataSource>
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
 
 
 @interface MapViewController (SWIFT_EXTENSION(PhunwareMapping)) <UICollectionViewDelegateFlowLayout>
@@ -762,6 +754,7 @@ SWIFT_CLASS("_TtC15PhunwareMapping14POICoordinator")
 
 
 
+
 @class CLLocation;
 
 @interface POICoordinator (SWIFT_EXTENSION(PhunwareMapping)) <CLLocationManagerDelegate>
@@ -805,6 +798,7 @@ SWIFT_CLASS("_TtC15PhunwareMapping18RoutingCoordinator")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 
@@ -1183,19 +1177,9 @@ using UInt = size_t;
 #endif
 
 #if defined(__OBJC__)
-@class UITraitCollection;
-@class NSCoder;
-
-SWIFT_CLASS("_TtC15PhunwareMapping14BorderedButton")
-@interface BorderedButton : UIButton
-@property (nonatomic, getter=isEnabled) BOOL enabled;
-- (void)traitCollectionDidChange:(UITraitCollection * _Nullable)previousTraitCollection;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
 @class NSString;
 @class NSBundle;
+@class NSCoder;
 
 SWIFT_CLASS("_TtC15PhunwareMapping20BrowseViewController")
 @interface BrowseViewController : UIViewController
@@ -1306,6 +1290,7 @@ SWIFT_CLASS("_TtC15PhunwareMapping15CategoryRowCell")
 /// for navigating hierarchical content using a bottom sheet style UI.
 SWIFT_CLASS("_TtC15PhunwareMapping23ContainerViewController")
 @interface ContainerViewController : UIViewController
+- (void)viewDidLayoutSubviews;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
@@ -1329,6 +1314,7 @@ SWIFT_CLASS("_TtC15PhunwareMapping23ContainerViewController")
 
 
 
+@class UITraitCollection;
 
 SWIFT_CLASS("_TtC15PhunwareMapping20DetailViewController")
 @interface DetailViewController : UIViewController
@@ -1467,11 +1453,6 @@ SWIFT_CLASS("_TtC15PhunwareMapping17MapViewController")
 
 
 
-@interface MapViewController (SWIFT_EXTENSION(PhunwareMapping)) <UICollectionViewDataSource>
-- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
-
 @class UIScrollView;
 
 @interface MapViewController (SWIFT_EXTENSION(PhunwareMapping)) <UIScrollViewDelegate>
@@ -1479,6 +1460,11 @@ SWIFT_CLASS("_TtC15PhunwareMapping17MapViewController")
 - (void)scrollViewWillEndDragging:(UIScrollView * _Nonnull)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(CGPoint * _Nonnull)targetContentOffset;
 @end
 
+
+@interface MapViewController (SWIFT_EXTENSION(PhunwareMapping)) <UICollectionViewDataSource>
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
 
 
 @interface MapViewController (SWIFT_EXTENSION(PhunwareMapping)) <UICollectionViewDelegateFlowLayout>
@@ -1687,6 +1673,7 @@ SWIFT_CLASS("_TtC15PhunwareMapping14POICoordinator")
 
 
 
+
 @class CLLocation;
 
 @interface POICoordinator (SWIFT_EXTENSION(PhunwareMapping)) <CLLocationManagerDelegate>
@@ -1730,6 +1717,7 @@ SWIFT_CLASS("_TtC15PhunwareMapping18RoutingCoordinator")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
 
 
 

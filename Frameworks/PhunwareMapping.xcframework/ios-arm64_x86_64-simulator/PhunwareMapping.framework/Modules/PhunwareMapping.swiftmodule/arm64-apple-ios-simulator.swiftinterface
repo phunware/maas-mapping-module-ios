@@ -28,10 +28,13 @@ import _StringProcessing
 }
 public enum MappingDeeplink {
   public enum RouteBuilderDestination {
-    case pointOfInterest(mapName: String, id: Int)
-    case coordinate(mapName: String, latitude: Double, longitude: Double, floorId: Int)
+    case pointOfInterest(mapConfigKey: String?, mapName: String, id: Int)
+    case coordinate(mapConfigKey: String?, mapName: String, latitude: Double, longitude: Double, floorId: Int)
   }
   case routeBuilder(destination: RouteBuilderDestination)
+  public var mapConfigKey: String? {
+    get
+  }
   public var mapName: String? {
     get
   }
@@ -243,6 +246,7 @@ extension POICoordinator : RouteBuilderViewModelDelegate {
 }
 extension POICoordinator : ContainerViewControllerDelegate {
   public func containerViewControllerDidExit(_ viewController: ContainerViewController)
+  public func containerViewController(_ viewController: ContainerViewController, didMinimizeTopContent topContent: ContainerContentEmbedding)
 }
 extension POICoordinator : BrowseViewModelDelegate {
   public func viewModelDidSelectSearch(_ viewModel: BrowseViewModel)
@@ -405,21 +409,6 @@ public class MapPoint : Equatable {
   public static func == (lhs: MapPoint, rhs: MapPoint) -> Bool
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class BorderedButton : UIButton {
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isEnabled: Bool {
-    @objc get
-    @objc set
-  }
-  @_Concurrency.MainActor(unsafe) public func backgroundImageColor(for state: UIControl.State) -> UIColor?
-  @_Concurrency.MainActor(unsafe) public func borderColor(for state: UIControl.State) -> UIColor?
-  @_Concurrency.MainActor(unsafe) public func setBackgroundImageColor(_ color: UIColor?, for state: UIControl.State)
-  @_Concurrency.MainActor(unsafe) public func setBorderColor(_ color: UIColor?, for state: UIControl.State)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
-  @_Concurrency.MainActor(unsafe) public func configureBorderedButton(_ config: TextConfiguration, for state: UIControl.State)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
 public struct ExternalMappingAppDeeplink {
   public static let appleMapsDrivingDirections: PhunwareMapping.ExternalMappingAppDeeplink
   public static let googleMapsDrivingDirections: PhunwareMapping.ExternalMappingAppDeeplink
@@ -506,6 +495,7 @@ extension RouteBuilderViewModel {
 }
 public protocol ContainerViewControllerDelegate : AnyObject {
   func containerViewControllerDidExit(_ viewController: ContainerViewController)
+  func containerViewController(_ viewController: ContainerViewController, didMinimizeTopContent topContent: ContainerContentEmbedding)
 }
 @objc @_Concurrency.MainActor(unsafe) public class ContainerViewController : UIViewController {
   public enum ContentContainerState {
@@ -535,6 +525,7 @@ public protocol ContainerViewControllerDelegate : AnyObject {
     set
   }
   @_Concurrency.MainActor(unsafe) public init(theme: MapTheme, mapLocalization: MapLocalization)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLayoutSubviews()
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: NSCoder)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Bool)
@@ -550,6 +541,8 @@ extension ContainerViewController {
   @_Concurrency.MainActor(unsafe) public func popContent(animated: Bool) -> ContainerContentEmbedding?
   @discardableResult
   @_Concurrency.MainActor(unsafe) public func popToRootContent(animated: Bool) -> [ContainerContentEmbedding]?
+  @discardableResult
+  @_Concurrency.MainActor(unsafe) public func popThroughDimmedContent(animated: Bool) -> [ContainerContentEmbedding]?
   @_Concurrency.MainActor(unsafe) public func makeRectVisible(_ rect: CGRect, animated: Bool = true)
   @_Concurrency.MainActor(unsafe) public func peekContent() -> ContainerContentEmbedding?
   @_Concurrency.MainActor(unsafe) public func containsContent(where predicate: (ContainerContentEmbedding) throws -> Bool) rethrows -> Bool
@@ -763,6 +756,7 @@ public protocol ShareLocationCoordinatorDelegate : AnyObject {
 }
 extension ShareLocationCoordinator : ContainerViewControllerDelegate {
   public func containerViewControllerDidExit(_ viewController: ContainerViewController)
+  public func containerViewController(_ viewController: ContainerViewController, didMinimizeTopContent topContent: ContainerContentEmbedding)
 }
 extension ShareLocationCoordinator {
   public func viewModel(_ viewModel: MapViewModel, didSelect poi: PointOfInterest)
@@ -1042,6 +1036,7 @@ public protocol RoutingCoordinatorDelegate : AnyObject {
 }
 extension RoutingCoordinator : ContainerViewControllerDelegate {
   public func containerViewControllerDidExit(_ viewController: ContainerViewController)
+  public func containerViewController(_ viewController: ContainerViewController, didMinimizeTopContent topContent: ContainerContentEmbedding)
 }
 extension RoutingCoordinator : RouteBuilderViewModelDelegate {
   public func viewModel(_ viewModel: RouteBuilderViewModel, didSearchRouteOrigin resultHandler: @escaping (RouteBuilderSearchResult) -> Void)
@@ -1355,7 +1350,10 @@ public struct MapTheme {
     public init(textColor: UIColor, font: UIFont)
   }
   public struct ModuleNavigation {
-    public init(exitButtonTint: UIColor)
+    public struct ExitButton {
+      public init(iconTint: UIColor, backgroundTint: UIColor)
+    }
+    public init(exitButton: ExitButton)
   }
   public struct BottomSheet {
     public init(title: TextStyle, detail: TextStyle, handle: UIColor, textFieldBackground: UIColor, background: UIColor)
@@ -1384,12 +1382,11 @@ public struct MapTheme {
     }
     public init(normalState: State, disabledState: State)
   }
-  public typealias BorderedButton = SolidColorButton
   public struct AccessibleRoute {
     public init(label: TextStyle, iconTint: UIColor, toggleTint: UIColor)
   }
   public struct Detail {
-    public init(title: TextStyle, arrivalEstimation: TextStyle, locationDetails: TextStyle, actionLink: TextStyle, actionLinkIcon: UIColor, closeButtonTint: UIColor, contentHeader: TextStyle, contentText: TextStyle)
+    public init(title: TextStyle, arrivalEstimation: TextStyle, locationDetails: TextStyle, actionLink: TextStyle, actionLinkIcon: UIColor, closeButton: ColorConfiguration, contentHeader: TextStyle, contentText: TextStyle)
   }
   public struct DirectionList {
     public init(titlePrefix: TextStyle, title: TextStyle, arrivalEstimation: TextStyle, exit: SolidColorButton, directionsHeader: TextStyle, itemInstruction: TextStyle, itemDescription: TextStyle, itemSelection: UIColor, itemIconBackground: UIColor)
@@ -1437,7 +1434,7 @@ public struct MapTheme {
     public init(title: TextStyle, searchBar: SearchBar, cancelButton: TextStyle, sectionHeader: SectionHeader, buildingCellTitle: TextStyle, topNoResults: TextStyle, bottomNoResults: TextStyle)
   }
   public struct ArrivalCard {
-    public init(arrivalText: TextStyle, title: TextStyle, doneButton: SolidColorButton, linkButton: BorderedButton)
+    public init(arrivalText: TextStyle, title: TextStyle, linkButton: SolidColorButton, closeButton: ColorConfiguration)
   }
   public struct RoundToggleButton {
     public init(backgroundColor: UIColor, tint: UIColor, selectedTint: UIColor, text: TextStyle, selectedText: TextStyle)

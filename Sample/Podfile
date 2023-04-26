@@ -6,7 +6,7 @@ target 'PhunwareMappingSample' do
   platform :ios, '13.0'
   use_frameworks!
 
-  pod 'PhunwareMapping', '~> 1.7.0'
+  pod 'PhunwareMapping', '1.7.1'
 end
 
 post_install do |installer|

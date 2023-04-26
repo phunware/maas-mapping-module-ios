@@ -484,6 +484,7 @@ extension AppCoordinator: ShareLocationCoordinatorDelegate {
         
         let deepLink = MappingDeeplink.routeBuilder(
             destination: .coordinate(
+                mapConfigKey: mapConfigProvider.mapConfigKey,
                 mapName: location.mapName,
                 latitude: location.coordinate.latitude,
                 longitude: location.coordinate.longitude,
