@@ -1,37 +1,147 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
-// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PhunwareMapping
-// swift-module-flags-ignorable: -enable-bare-slash-regex
+// swift-compiler-version: Apple Swift version 6.0.2 effective-5.10 (swiftlang-6.0.2.1.2 clang-1600.0.26.4)
+// swift-module-flags: -target x86_64-apple-ios15.5-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name PhunwareMapping
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
 import AVFoundation
 import Combine
 import CoreLocation
+import DeveloperToolsSupport
 import Foundation
 import LinkPresentation
 import MapKit
+import MediaPlayer
 import PWCore
+import PWLocation
 import PWMapKit
+import PhunwareCorePlugin
 import PhunwareFoundation
 @_exported import PhunwareMapping
 import PhunwareNetworking
 import PhunwarePermissionPriming
 import PhunwareTheming
+import SafariServices
 import Swift
+import SwiftUI
 import UIKit
 import _Concurrency
 import _StringProcessing
-@objc public class CategoryCellViewModel : NSObject, CellViewModel {
-  public var cellIdentifier: String {
+import _SwiftConcurrencyShims
+public enum POIType : String {
+  case atm
+  case amusementRide
+  case aquarium
+  case bank
+  case barOrPub
+  case boating
+  case booth
+  case breakRooms
+  case businessAreas
+  case cafe
+  case cafeteria
+  case casino
+  case chargingStation
+  case church
+  case cleaningAndLaundry
+  case coffeeShop
+  case computerAndSoftware
+  case conferenceRoom
+  case connections
+  case conventionExhibitionCentre
+  case currencyExchange
+  case defibrillatorAED
+  case departmentAreas
+  case drinkingFountain
+  case education
+  case elevator
+  case entranceExit
+  case escalator
+  case fastFood
+  case fireDepartment
+  case firstAidStation
+  case fitness
+  case foodCourt
+  case gamingArea
+  case giftAntiqueArt
+  case grassField
+  case groceryStore
+  case hairAndBeauty
+  case healthCareService
+  case hotelRoom
+  case information
+  case library
+  case mail
+  case marina
+  case medicalService
+  case meditationRoom
+  case meetingArea
+  case museum
+  case museumExhibit
+  case nightlife
+  case nursingRoom
+  case officeSupplyAndServicesStore
+  case offices
+  case other
+  case otherGeneralMerchandise
+  case paint
+  case parkAndRide
+  case parking
+  case parkRecreationArea
+  case pharmacy
+  case photography
+  case physician
+  case playArea
+  case policeService
+  case pool
+  case publicRestroom
+  case reception
+  case recreationCentre
+  case registration
+  case restaurant
+  case restroom
+  case seating
+  case securityCheckpoint
+  case securityOffice
+  case serviceCounter
+  case shoeShine
+  case shopping
+  case spa
+  case stairs
+  case taxiStand
+  case theater
+  case touristInformation
+  case towelStation
+  case track
+  case transportationService
+  case valet
+  case vendingMachine
+  case waitingArea
+  case waterFeature
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
     get
   }
-  public init(mapLocalization: MapLocalization, managerProvider: ManagerProvider, category: MapConfig.Category, theme: MapTheme)
-  @objc deinit
+}
+public enum HostingMode : Equatable {
+  case tab(_: String, mapName: String, mapConfigKey: String)
+  case unhosted(mapName: String)
+  public static func == (a: PhunwareMapping.HostingMode, b: PhunwareMapping.HostingMode) -> Swift.Bool
 }
 public enum MappingDeeplink {
   public enum RouteBuilderDestination {
     case pointOfInterest(mapConfigKey: String?, mapName: String, id: Int)
     case coordinate(mapConfigKey: String?, mapName: String, latitude: Double, longitude: Double, floorId: Int)
   }
+  public enum CategoryDestination {
+    case list(mapConfigKey: String?, mapName: String, categoryId: String)
+  }
+  public enum FeaturedListsDestination {
+    case expanded(mapName: String)
+    case `default`(mapName: String)
+  }
   case routeBuilder(destination: RouteBuilderDestination)
+  case category(destination: CategoryDestination)
+  case featuredLists(destination: FeaturedListsDestination)
   public var mapConfigKey: String? {
     get
   }
@@ -41,6 +151,9 @@ public enum MappingDeeplink {
   public var urlHost: String {
     get
   }
+  public var path: String {
+    get
+  }
   public var urlQueryItems: [URLQueryItem] {
     get
   }
@@ -48,97 +161,28 @@ public enum MappingDeeplink {
   public init?(dynamicLinkURL: URL, matchingURLString: String?)
   public func url(withScheme urlScheme: String) -> URL?
 }
+extension URLComponents {
+  public static func urlComponentsForRouteBuilder(_ url: URL, location: ShareableLocation, mapConfigKey: String? = nil) -> URLComponents?
+  public static func urlComponentsForCategoryList(_ url: URL, categoryId: String, mapName: String, mapConfigKey: String? = nil) -> URLComponents?
+}
 extension UIViewController {
-  @_Concurrency.MainActor(unsafe) public var containerViewVisibleBackgroundAreaLayoutGuide: UILayoutGuide {
+  @_Concurrency.MainActor @preconcurrency public var containerViewVisibleBackgroundAreaLayoutGuide: UILayoutGuide {
     get
   }
-  @_Concurrency.MainActor(unsafe) public var containerViewSafeVisibleBackgroundAreaLayoutGuide: UILayoutGuide {
+  @_Concurrency.MainActor @preconcurrency public var containerViewSafeVisibleBackgroundAreaLayoutGuide: UILayoutGuide {
     get
   }
-  @_Concurrency.MainActor(unsafe) public var containerViewBottomSheetLayoutGuide: UILayoutGuide {
+  @_Concurrency.MainActor @preconcurrency public var containerViewBottomSheetLayoutGuide: UILayoutGuide {
     get
   }
-  @_Concurrency.MainActor(unsafe) public var containerViewSafeBottomSheetLayoutGuide: UILayoutGuide {
+  @_Concurrency.MainActor @preconcurrency public var containerViewSafeBottomSheetLayoutGuide: UILayoutGuide {
     get
   }
 }
 extension UIView {
-  @_Concurrency.MainActor(unsafe) public var frameLayoutGuide: UILayoutGuide {
+  @_Concurrency.MainActor @preconcurrency public var frameLayoutGuide: UILayoutGuide {
     get
   }
-}
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class OtherCategoriesListViewController : UIViewController {
-  @_Concurrency.MainActor(unsafe) public var viewModel: OtherCategoriesListViewModel!
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Bool)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-extension OtherCategoriesListViewController : StoryboardInitializable {
-  @_Concurrency.MainActor(unsafe) public static var storyboardName: String {
-    get
-  }
-}
-extension OtherCategoriesListViewController : UITableViewDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-}
-extension OtherCategoriesListViewController : UITableViewDataSource {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-}
-@objc public class MeetingRoomViewModel : NSObject {
-  public var meetingRoom: MeetingRoom {
-    get
-    set
-  }
-  public var defaultPOIImage: UIImage? {
-    get
-    set
-  }
-  public init(meetingRoom: MeetingRoom)
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class DirectionCardCell : UICollectionViewCell {
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func prepareForReuse()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-extension DirectionCardCell : CellViewModelConfigurable {
-  @_Concurrency.MainActor(unsafe) public func configure(cellViewModel: CellViewModel)
-}
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class DirectionListViewController : UIViewController {
-  @_Concurrency.MainActor(unsafe) public var viewModel: DirectionListViewModel!
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-extension DirectionListViewController : StoryboardInitializable {
-  @_Concurrency.MainActor(unsafe) public static var storyboardName: String {
-    get
-  }
-}
-extension DirectionListViewController : ContainerContentEmbedding {
-  @_Concurrency.MainActor(unsafe) public var contentViewController: UIViewController {
-    get
-  }
-  @_Concurrency.MainActor(unsafe) public var configuration: ContentEmbeddingConfig {
-    get
-  }
-  @_Concurrency.MainActor(unsafe) public func containerViewController(_ containerViewController: ContainerViewController, willShowContentState state: ContainerViewController.ContentContainerState)
-  @_Concurrency.MainActor(unsafe) public func containerViewController(_ containerViewController: ContainerViewController, didShowContentState state: ContainerViewController.ContentContainerState)
-  @_Concurrency.MainActor(unsafe) public func containerViewController(_ containerViewController: ContainerViewController, didUpdateProgress progress: Float, from smallerState: ContainerViewController.ContentContainerState, to largerState: ContainerViewController.ContentContainerState)
-}
-extension DirectionListViewController : UITableViewDataSource {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func numberOfSections(in tableView: UITableView) -> Int
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-}
-extension DirectionListViewController : UITableViewDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
 }
 @_hasMissingDesignatedInitializers public class Floor {
   public var level: Int {
@@ -162,7 +206,7 @@ extension Floor : Hashable {
     get
   }
 }
-public class Building {
+@_hasMissingDesignatedInitializers public class Building : Identifiable {
   public var pointOfInterests: [PointOfInterest] {
     get
   }
@@ -181,8 +225,8 @@ public class Building {
   public var initialFloor: Floor? {
     get
   }
-  public init(_ pwBuilding: PWBuilding)
   public func floor(byId id: Int) -> Floor?
+  public typealias ID = Swift.ObjectIdentifier
   @objc deinit
 }
 extension Building : Hashable {
@@ -197,85 +241,43 @@ extension Building : MapContaining {
     get
   }
 }
-@_hasMissingDesignatedInitializers public class Direction {
-  @objc deinit
-}
-public protocol BackgroundingObserving : UIKit.UIViewController {
-  func applicationDidEnterBackground()
-  func applicationWillEnterForeground()
-}
 @_hasMissingDesignatedInitializers public class PhunwareAnalytics {
   public static func disableAutomaticScreenViewEvents()
-  public static func startScreenViewEvent(_ name: String, appSection: String? = nil, parameters: [AnyHashable : Any]? = nil, for viewController: UIViewController)
+  public static func startScreenViewEvent(_ name: String, appSection: String? = nil, parameters: [String : String]? = nil, for viewController: UIViewController)
   public static func endScreenViewEvent(for viewController: UIViewController)
   public static func setScreenName(_ screenName: String)
   public static func addCustomEvent(_ name: String, parameters: [String : String]? = nil)
   @objc deinit
+}
+public enum PresentationMode {
+  case push
+  case embed
+  public static let `default`: PhunwareMapping.PresentationMode
+  public static func == (a: PhunwareMapping.PresentationMode, b: PhunwareMapping.PresentationMode) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
 }
 public protocol POICoordinatorDelegate : AnyObject {
   func coordinatorDidFinish(_ coordinator: POICoordinator)
   func coordinator(_ coordinator: POICoordinator, didSelectActionLink actionLink: ActionLink)
   func coordinator(_ coordinator: POICoordinator, didStartHomeToVenueRoutingWith geozoneIdentifiers: Set<String>, destination: HomeToVenueDestination)
   func coordinator(_ coordinator: POICoordinator, didStopHomeToVenueRoutingWith geozoneIdentifiers: Set<String>)
-  func coordinator(_ coordinator: POICoordinator, customImageWithName name: String) -> UIImage?
   func coordinator(_ coordinator: POICoordinator, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
 }
 @objc public class POICoordinator : NSObject, Coordinator {
   public var childCoordinators: [Coordinator]
   public var navigationController: UINavigationController
   weak public var delegate: POICoordinatorDelegate?
-  public var meetingRoomPOIIdentifiers: [Swift.String] {
-    get
-    set
-  }
-  public var supportedExternalMappingAppDeeplinks: [PhunwareMapping.ExternalMappingAppDeeplink]
-  public var childMappingDeeplinkHandlers: [PhunwareMapping.MappingDeeplinkNavigable] {
+  public var childMappingDeeplinkHandlers: [any PhunwareMapping.MappingDeeplinkNavigable] {
     get
   }
   public var pendingMappingDeeplink: DeferredMappingDeeplink?
-  public init<T>(navigationController: UINavigationController, mapConfig: MapConfig, mapLocalization: MapLocalization, mapContainerSelector: MapContainerSelector, themeConfiguring: T, allowsBackgroundLocationUpdates: Bool, allowsExitButtonToBeShown: Bool = true, hidesBottomBarWhenPushed: Bool = true, tabBarItem: UITabBarItem? = nil, meetingRoomPOIIdentifiers: [String], initialMeetingRoomPOIImageSize: CGSize?, buildingGroundOverlayRenderers: [BuildingGroundOverlayRenderer]? = nil) where T : PhunwareTheming.ThemeConfiguring, T.Theme == PhunwareMapping.MapTheme
+  public init(navigationController: UINavigationController, mapConfig: MapConfig, mapLocalization: MapLocalization, mapContainerSelector: MapContainerSelector, mapTheme: MapTheme, allowsExitButtonToBeShown: Bool = true, hidesBottomBarWhenPushed: Bool = true, tabBarItem: UITabBarItem? = nil, presentationMode: PresentationMode = .default, meetingRoomPOIIdentifiers: [String], initialMeetingRoomPOIImageSize: CGSize?, buildingGroundOverlayRenderers: [BuildingGroundOverlayRenderer]? = nil)
   @objc deinit
   public func start()
   public func setMeetingRooms(_ meetingRooms: [MeetingRoom])
-}
-extension POICoordinator : RouteBuilderViewModelDelegate {
-  public func viewModel(_ viewModel: RouteBuilderViewModel, didSearchRouteOrigin resultHandler: @escaping (RouteBuilderSearchResult) -> Void)
-  public func viewModel(_ viewModel: RouteBuilderViewModel, didSearchRouteDestination resultHandler: @escaping (RouteBuilderSearchResult) -> Void)
-  public func viewModel(_ viewModel: RouteBuilderViewModel, didSelectStartRouteFrom routeOrigin: MapPoint, to routeDestination: MapPoint)
-  public func viewModelDidFinish(_ viewModel: RouteBuilderViewModel)
-}
-extension POICoordinator : ContainerViewControllerDelegate {
-  public func containerViewControllerDidExit(_ viewController: ContainerViewController)
-  public func containerViewController(_ viewController: ContainerViewController, didMinimizeTopContent topContent: ContainerContentEmbedding)
-}
-extension POICoordinator : BrowseViewModelDelegate {
-  public func viewModelDidSelectSearch(_ viewModel: BrowseViewModel)
-  public func viewModel(_ viewModel: BrowseViewModel, didSelect category: MapConfig.Category)
-  public func viewModel(_ viewModel: BrowseViewModel, didSelect category: MapConfig.Category, otherCategories: [MapConfig.Category])
-}
-extension POICoordinator : SearchViewModelDelegate {
-  public func viewModel(_ viewModel: SearchViewModel, didSelect poi: PointOfInterest)
-  public func viewModel(_ viewModel: SearchViewModel, didSelect currentLocation: UserLocation)
-  public func viewModel(_ viewModel: SearchViewModel, didSelectRouteToPointOfInterest poi: PointOfInterest)
-  public func viewModelDidFinish(_ viewModel: SearchViewModel)
-  public func viewModelDidSelectSearchByBuilding(_ viewModel: SearchViewModel)
-}
-extension POICoordinator : DetailViewModelDelegate {
-  public func viewModelDidExit(_ viewModel: DetailViewModel)
-  public func viewModel(_ viewModel: DetailViewModel, didSelectActionLink actionLink: ActionLink)
-  public func viewModel(_ viewModel: DetailViewModel, didSelectRouteToPointOfInterest pointOfInterest: PointOfInterest)
-  public func viewModel(_ viewModel: DetailViewModel, customImageWithName name: String) -> UIImage?
-}
-extension POICoordinator : CategoryPOIListViewModelDelegate {
-  public func viewModel(_ viewModel: CategoryPOIListViewModel, didSelect poi: PointOfInterest)
-  public func viewModel(_ viewModel: CategoryPOIListViewModel, didSelectRouteToPointOfInterest poi: PointOfInterest)
-}
-extension POICoordinator : OtherCategoriesListViewModelDelegate {
-  public func viewModel(_ viewModel: OtherCategoriesListViewModel, didSelect category: MapConfig.Category)
-}
-extension POICoordinator {
-  public func viewModel(_ viewModel: MapViewModel, didSelect poi: PointOfInterest)
-  public func viewModel(_ viewModel: MapViewModel, didDeselect poi: PointOfInterest)
 }
 extension POICoordinator : CLLocationManagerDelegate {
   @objc dynamic public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
@@ -287,97 +289,46 @@ extension POICoordinator : MappingDeeplinkNavigable {
     get
   }
   public func queryCanOpenDirectly(_ deeplink: MappingDeeplink, completion: @escaping (Bool) -> Void)
+  public func prepareForNavigation(to deeplink: MappingDeeplink)
   public func openDeeplink(_ deeplink: MappingDeeplink) -> Bool
 }
-extension POICoordinator : DirectionListViewModelDelegate {
-  public func viewModelDidSelectExit(_ viewModel: DirectionListViewModel)
-  public func viewModel(_ viewModel: DirectionListViewModel, didSelect direction: Direction)
+public protocol MappingModuleDelegate : AnyObject {
+  func mappingModuleDidRequestConfiguration(_ module: MappingModule) -> MappingConfiguration?
+  func mappingModule(_ module: MappingModule, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
+  func mappingModule(_ module: MappingModule, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void)
 }
-extension POICoordinator : OffRouteViewModelDelegate {
-  public func viewModel(_ viewModel: OffRouteViewModel, didFinishWithResult result: OffRouteViewModel.FinishResult)
+extension MappingModuleDelegate {
+  public func mappingModule(_ module: MappingModule, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
 }
-extension POICoordinator : ArrivalViewModelDelegate {
-  public func viewModelDidFinish(_ viewModel: ArrivalViewModel)
-  public func viewModel(_ viewModel: ArrivalViewModel, didSelectURL url: URL?)
-}
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class CategoryGridCell : UICollectionViewCell {
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func prepareForReuse()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-extension CategoryGridCell : CellViewModelConfigurable {
-  @_Concurrency.MainActor(unsafe) public func configure(cellViewModel: CellViewModel)
-}
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class BrowseViewController : UIViewController {
-  @_Concurrency.MainActor(unsafe) public var viewModel: BrowseViewModel!
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Bool)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-extension BrowseViewController : StoryboardInitializable {
-  @_Concurrency.MainActor(unsafe) public static var storyboardName: String {
+public class MappingModule : ModulePlugin {
+  public var id: String {
     get
   }
-}
-extension BrowseViewController : ContainerContentEmbedding {
-  @_Concurrency.MainActor(unsafe) public var contentViewController: UIViewController {
-    get
-  }
-  @_Concurrency.MainActor(unsafe) public var configuration: ContentEmbeddingConfig {
-    get
-  }
-}
-extension BrowseViewController : UICollectionViewDelegateFlowLayout {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
-}
-extension BrowseViewController : UICollectionViewDataSource {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-}
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class SearchViewController : UIViewController {
-  @_Concurrency.MainActor(unsafe) public var viewModel: SearchViewModel!
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Bool)
-  @objc deinit
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-}
-extension SearchViewController : StoryboardInitializable {
-  @_Concurrency.MainActor(unsafe) public static var storyboardName: String {
-    get
-  }
-}
-extension SearchViewController : UITableViewDataSource {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func numberOfSections(in tableView: UITableView) -> Int
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
-}
-extension SearchViewController : UITableViewDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-}
-extension SearchViewController : UISearchBarDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
-}
-extension SearchViewController : UITextFieldDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func textFieldShouldReturn(_ textField: UITextField) -> Bool
-}
-public protocol OtherCategoriesListViewModelDelegate : AnyObject {
-  func viewModel(_ viewModel: OtherCategoriesListViewModel, didSelect category: MapConfig.Category)
-}
-@objc public class OtherCategoriesListViewModel : NSObject {
-  weak public var delegate: OtherCategoriesListViewModelDelegate?
-  public init(mapLocalization: MapLocalization, managerProvider: ManagerProvider, categories: [MapConfig.Category], theme: MapTheme)
+  weak public var delegate: MappingModuleDelegate?
+  public init<T>(themeConfigurator: T, homeToVenueConfiguration: HomeToVenueConfiguration, delegate: MappingModuleDelegate) where T : PhunwareTheming.ThemeConfiguring, T.Theme == PhunwareMapping.MapTheme
+  public func didEnterGeozone(geozoneIdentifier: String)
+  public func didExitGeozone(geozoneIdentifier: String)
   @objc deinit
 }
-extension OtherCategoriesListViewModel {
-  public func handleCategorySelection(at indexPath: IndexPath)
+extension MappingModule : ModuleTabProviding {
+  public func coordinator(for tabIdentifier: String, using navController: UINavigationController) -> Coordinator?
+}
+extension MappingModule : ModuleUnhostedContentProviding {
+  public func unhostedCoordinator(for deeplink: Deeplink, using navController: UINavigationController) -> UnhostedCustomContentCoordinator?
+}
+extension MappingModule : MappingCoordinatorDelegate {
+  public func coordinatorDidRequestConfiguration(_ coordinator: MappingCoordinator) -> MappingConfiguration?
+  public func coordinator(_ coordinator: MappingCoordinator, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
+  public func coordinator(_ coordinator: MappingCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void)
+}
+public enum RoutingMode {
+  case blueDot
+  case `static`
+  public static func == (a: PhunwareMapping.RoutingMode, b: PhunwareMapping.RoutingMode) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
 }
 public struct Gradient {
   public struct Stop {
@@ -399,15 +350,68 @@ public struct Gradient {
     get
   }
 }
-public class MapPoint : Equatable {
-  public init(pointOfInterest: PointOfInterest)
-  public init(customPointOfInterest: CustomPointOfInterest)
-  public init(userLocation: UserLocation, title: String)
-  public var pointOfInterestIdentifier: Int? {
+public protocol MappingCoordinatorDelegate : AnyObject {
+  func coordinatorDidRequestConfiguration(_ coordinator: MappingCoordinator) -> MappingConfiguration?
+  func coordinator(_ coordinator: MappingCoordinator, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
+  func coordinator(_ coordinator: MappingCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void)
+}
+public class MappingCoordinator : Coordinator, UnhostedCustomContentCoordinator {
+  public var childMappingDeeplinkHandlers: [any PhunwareMapping.MappingDeeplinkNavigable]
+  public var pendingMappingDeeplink: DeferredMappingDeeplink?
+  public var pendingDeeplink: DeferredDeeplink?
+  weak public var unhostedContentCoordinatorDelegate: UnhostedCustomContentCoordinatorDelegate?
+  public var childCoordinators: [any PhunwareFoundation.Coordinator]
+  public var navigationController: UINavigationController
+  weak public var delegate: MappingCoordinatorDelegate?
+  public init(navigationController: UINavigationController, hostingMode: HostingMode, flow: Flow = .default, configuration: MappingConfiguration?, homeToVenueMonitor: HomeToVenueMonitor, theme: MapTheme, delegate: MappingCoordinatorDelegate)
+  public func start()
+  public func didEnterGeozone(geozoneIdentifier: String)
+  public func didExitGeozone(geozoneIdentifier: String)
+  @objc deinit
+}
+extension MappingCoordinator : DeeplinkNavigable, MappingDeeplinkNavigable {
+  public func queryCanOpenDirectly(_ deeplink: Deeplink, completion: @escaping (Bool) -> Void)
+  public func prepareForNavigation(to deeplink: Deeplink)
+  public func openDeeplink(_ deeplink: Deeplink) -> Bool
+  public func queryCanOpenDirectly(_ deeplink: MappingDeeplink, completion: @escaping (Bool) -> Void)
+  public func prepareForNavigation(to deeplink: MappingDeeplink)
+  public func openDeeplink(_ deeplink: MappingDeeplink) -> Bool
+}
+extension MappingCoordinator : PermissionCoordinatorDelegate {
+  public func coordinator(_ coordinator: PermissionCoordinator, customImageWithName name: String) -> UIImage?
+  public func coordinatorDidFinish(_ coordinator: PermissionCoordinator)
+}
+extension MappingCoordinator : POICoordinatorDelegate {
+  public func coordinatorDidFinish(_ coordinator: POICoordinator)
+  public func coordinator(_ coordinator: POICoordinator, didSelectActionLink actionLink: ActionLink)
+  public func coordinator(_ coordinator: POICoordinator, didStartHomeToVenueRoutingWith geozoneIdentifiers: Set<String>, destination: HomeToVenueDestination)
+  public func coordinator(_ coordinator: POICoordinator, didStopHomeToVenueRoutingWith geozoneIdentifiers: Set<String>)
+  public func coordinator(_ coordinator: POICoordinator, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
+}
+extension MappingCoordinator : ShareLocationCoordinatorDelegate {
+  public func coordinatorDidFinish(_ coordinator: ShareLocationCoordinator)
+  public func coordinator(_ coordinator: ShareLocationCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void)
+}
+extension UIButton {
+  @_Concurrency.MainActor @preconcurrency public func setSymbolImage(named name: String, withWeight weight: UIImage.SymbolWeight)
+}
+public class HomeToVenueMonitor {
+  public init(configuration: HomeToVenueConfiguration)
+  public func didEnterGeozone(geozoneIdentifier: String)
+  public func didExitGeozone(geozoneIdentifier: String)
+  public func didStartHomeToVenueRoutingWith(geozoneIdentifiers: Set<String>, destination: HomeToVenueDestination)
+  public func didStopHomeToVenueRoutingWith(geozoneIdentifiers: Set<String>)
+  @objc deinit
+}
+public enum Flow {
+  case map
+  case shareLocation
+  public static let `default`: PhunwareMapping.Flow
+  public static func == (a: PhunwareMapping.Flow, b: PhunwareMapping.Flow) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
     get
   }
-  public static func == (lhs: MapPoint, rhs: MapPoint) -> Bool
-  @objc deinit
 }
 public struct ExternalMappingAppDeeplink {
   public static let appleMapsDrivingDirections: PhunwareMapping.ExternalMappingAppDeeplink
@@ -419,146 +423,14 @@ public struct ExternalMappingAppDeeplink {
   public let queryItemsHandler: (PointOfInterest) -> [(name: String, value: String?)]
   public init(appName: String, urlScheme: String, urlHost: String = "", urlPathHandler: @escaping (_ poiForPath: PointOfInterest) -> String = { _ in "" }, queryItemsHandler: @escaping (_ poiForQueryItems: PointOfInterest) -> [(name: String, value: String?)])
 }
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class SolidColorButton : UIButton {
-  @_Concurrency.MainActor(unsafe) public func backgroundImageColor(for state: UIControl.State) -> UIColor?
-  @_Concurrency.MainActor(unsafe) public func setBackgroundImageColor(_ color: UIColor?, for state: UIControl.State)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
-  @_Concurrency.MainActor(unsafe) public func configureSolidColorButton(_ config: TextConfiguration, for state: UIControl.State)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class SolidColorButton : UIButton {
+  @_Concurrency.MainActor @preconcurrency public func backgroundImageColor(for state: UIControl.State) -> UIColor?
+  @_Concurrency.MainActor @preconcurrency public func setBackgroundImageColor(_ color: UIColor?, for state: UIControl.State)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
+  @_Concurrency.MainActor @preconcurrency public func configureSolidColorButton(_ config: TextConfiguration, for state: UIControl.State)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
-}
-public protocol DirectionListViewModelDelegate : AnyObject {
-  func viewModelDidSelectExit(_ viewModel: DirectionListViewModel)
-  func viewModel(_ viewModel: DirectionListViewModel, didSelect direction: Direction)
-}
-@objc public class DirectionListViewModel : NSObject {
-  weak public var delegate: DirectionListViewModelDelegate?
-  public init(route: MapRoute, arrivalEstimationMode: POIEstimationMode, arrivalEstimationWalkRate: Double, managerProvider: ManagerProvider, isLandmarkBasedRoutingEnabled: Bool, routingWithUserLocation: Bool, localization: MapLocalization, theme: MapTheme)
-  @objc deinit
-}
-extension DirectionListViewModel {
-  public var totalSections: Int {
-    get
-  }
-  public var totalCellViewModels: Int {
-    get
-  }
-  public func cellViewModel(at indexPath: IndexPath) -> DirectionCellViewModel?
-  public func handleSelection(at indexPath: IndexPath)
-  public func handleExitButtonPress()
-  public func selectRouteDirection(_ direction: Direction)
-  public func handleBottomSheetWillMinimize()
-  public func handleBottomSheetWillMaximize()
-  public func handleBottomSheetDidMinimize()
-  public func handleBottomSheetDidMaximize()
-  public func handleBottomSheetProgressDidUpdate(to progress: Float)
-  public func handleUserLocationUpdate(_ userLocation: UserLocation?)
-}
-extension DirectionListViewModel {
-  public var titleAttributedText: NSAttributedString {
-    get
-  }
-  public func applyTheme()
-  public func createCellViewModels()
-  public func updateArrivalEstimationWithStartPoint(_ startPoint: PWMapPoint)
-  public func arrivalEstimationConfigurationWithText(_ text: String?) -> TextConfiguration
-  public func showArrivalPlaceholderEstimationText()
-  public func coordinatesAreEqual(_ first: CLLocationCoordinate2D?, _ second: CLLocationCoordinate2D?) -> Bool
-}
-public enum RouteBuilderSearchResult {
-  case currentLocation(UserLocation)
-  case pointOfInterest(PointOfInterest)
-}
-public protocol RouteBuilderViewModelDelegate : AnyObject {
-  func viewModel(_ viewModel: RouteBuilderViewModel, didSearchRouteOrigin resultHandler: @escaping (RouteBuilderSearchResult) -> Void)
-  func viewModel(_ viewModel: RouteBuilderViewModel, didSearchRouteDestination resultHandler: @escaping (RouteBuilderSearchResult) -> Void)
-  func viewModel(_ viewModel: RouteBuilderViewModel, didSelectStartRouteFrom routeOrigin: MapPoint, to routeDestination: MapPoint)
-  func viewModelDidFinish(_ viewModel: RouteBuilderViewModel)
-}
-@objc public class RouteBuilderViewModel : NSObject {
-  weak public var delegate: RouteBuilderViewModelDelegate?
-  public init(mapLocalization: MapLocalization, theme: MapTheme, accessibleRoutesInitialValue: Bool, destination mapPoint: MapPoint? = nil)
-  @objc deinit
-}
-extension RouteBuilderViewModel {
-  public func handleClose()
-  public func handleRouteOriginSelection()
-  public func handleRouteDestinationSelection()
-  public func handleSwapRouteOriginAndDestination()
-  public func handleAccessibleRouteToggle(toggleValue: Bool)
-  public func handleStartRouteSelection()
-  public func setRouteOrigin(to pointOfInterest: PointOfInterest)
-  public func setRouteOrigin(to userLocation: UserLocation)
-  public func setRouteDestination(to mapPoint: MapPoint)
-  public func setRouteDestination(to userLocation: UserLocation)
-}
-public protocol ContainerViewControllerDelegate : AnyObject {
-  func containerViewControllerDidExit(_ viewController: ContainerViewController)
-  func containerViewController(_ viewController: ContainerViewController, didMinimizeTopContent topContent: ContainerContentEmbedding)
-}
-@objc @_Concurrency.MainActor(unsafe) public class ContainerViewController : UIViewController {
-  public enum ContentContainerState {
-    case minimum
-    case peeking
-    case full
-    public static func == (a: PhunwareMapping.ContainerViewController.ContentContainerState, b: PhunwareMapping.ContainerViewController.ContentContainerState) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  @_Concurrency.MainActor(unsafe) public var visibleBackgroundAreaLayoutGuide: UILayoutGuide {
-    get
-    set
-  }
-  @_Concurrency.MainActor(unsafe) public var safeVisibleBackgroundAreaLayoutGuide: UILayoutGuide {
-    get
-    set
-  }
-  @_Concurrency.MainActor(unsafe) public var bottomSheetLayoutGuide: UILayoutGuide {
-    get
-    set
-  }
-  @_Concurrency.MainActor(unsafe) public var safeBottomSheetLayoutGuide: UILayoutGuide {
-    get
-    set
-  }
-  @_Concurrency.MainActor(unsafe) public init(theme: MapTheme, mapLocalization: MapLocalization)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLayoutSubviews()
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: NSCoder)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Bool)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewSafeAreaInsetsDidChange()
-  @objc deinit
-}
-extension ContainerViewController {
-  @_Concurrency.MainActor(unsafe) public func toggleExitButton(visibility visible: Bool)
-  @_Concurrency.MainActor(unsafe) public func toggleLoadingSpinner(visibility visible: Bool, animated: Bool)
-  @_Concurrency.MainActor(unsafe) public func setBackgroundViewController(_ viewController: UIViewController)
-  @_Concurrency.MainActor(unsafe) public func pushContent(embeddable: ContainerContentEmbedding, animated: Bool)
-  @discardableResult
-  @_Concurrency.MainActor(unsafe) public func popContent(animated: Bool) -> ContainerContentEmbedding?
-  @discardableResult
-  @_Concurrency.MainActor(unsafe) public func popToRootContent(animated: Bool) -> [ContainerContentEmbedding]?
-  @discardableResult
-  @_Concurrency.MainActor(unsafe) public func popThroughDimmedContent(animated: Bool) -> [ContainerContentEmbedding]?
-  @_Concurrency.MainActor(unsafe) public func makeRectVisible(_ rect: CGRect, animated: Bool = true)
-  @_Concurrency.MainActor(unsafe) public func peekContent() -> ContainerContentEmbedding?
-  @_Concurrency.MainActor(unsafe) public func containsContent(where predicate: (ContainerContentEmbedding) throws -> Bool) rethrows -> Bool
-  @_Concurrency.MainActor(unsafe) public func mappedContent<T>(where predicate: (ContainerContentEmbedding) throws -> T?) rethrows -> [T] where T : PhunwareMapping.ContainerContentEmbedding
-}
-extension ContainerViewController : UIGestureRecognizerDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool
-}
-extension ContainerViewController {
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func accessibilityScroll(_ direction: UIAccessibilityScrollDirection) -> Bool
-}
-extension ContainerViewController : BackgroundingObserving {
-  @_Concurrency.MainActor(unsafe) public func applicationDidEnterBackground()
-  @_Concurrency.MainActor(unsafe) public func applicationWillEnterForeground()
 }
 public enum ActionLinkType : Codable, RawRepresentable, Equatable {
   case calendar
@@ -584,8 +456,8 @@ public struct ActionLink : Codable, Equatable {
     get
   }
   public static func == (a: PhunwareMapping.ActionLink, b: PhunwareMapping.ActionLink) -> Swift.Bool
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 @objc final public class NotificationToken : NSObject {
   public init(notificationCenter: NotificationCenter = .default, token: Any)
@@ -594,56 +466,11 @@ public struct ActionLink : Codable, Equatable {
 extension NotificationCenter {
   public func observe(name: NSNotification.Name?, object obj: Any?, queue: OperationQueue?, using block: @escaping (Notification) -> ()) -> NotificationToken
 }
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class DetailViewController : UIViewController {
-  @_Concurrency.MainActor(unsafe) public var viewModel: DetailViewModel!
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func didMove(toParent parent: UIViewController?)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-extension DetailViewController : StoryboardInitializable {
-  @_Concurrency.MainActor(unsafe) public static var storyboardName: String {
-    get
-  }
-}
-extension DetailViewController : ContainerContentEmbedding {
-  @_Concurrency.MainActor(unsafe) public var contentViewController: UIViewController {
-    get
-  }
-  @_Concurrency.MainActor(unsafe) public var configuration: ContentEmbeddingConfig {
-    get
-  }
-}
 public struct POIEstimation {
 }
 extension POIEstimation : Comparable {
   public static func == (lhs: POIEstimation, rhs: POIEstimation) -> Bool
   public static func < (lhs: POIEstimation, rhs: POIEstimation) -> Bool
-}
-public protocol CategoryPOIListViewModelDelegate : AnyObject {
-  func viewModel(_ viewModel: CategoryPOIListViewModel, didSelect poi: PointOfInterest)
-  func viewModel(_ viewModel: CategoryPOIListViewModel, didSelectRouteToPointOfInterest poi: PointOfInterest)
-}
-@objc public class CategoryPOIListViewModel : NSObject {
-  weak public var delegate: CategoryPOIListViewModelDelegate?
-  public init(category: MapConfig.Category, mapContaining: MapContaining, meetingRooms: [Int : MeetingRoom], userLocation: UserLocation?, showsPOIRouteButton: Bool, showsPOIEstimation: Bool, arrivalEstimationStartPoint: PWMapPoint?, poiListEstimationDisplayMode: POIEstimationMode, walkRateInMetersPerSecond: Double, accessibilityEnabled: Bool, isLandmarkBasedRoutingEnabled: Bool, managerProvider: ManagerProvider, localization: MapLocalization, theme: MapTheme)
-  @objc deinit
-}
-extension CategoryPOIListViewModel {
-  public var totalSections: Int {
-    get
-  }
-  public func totalCellViewModels(in section: Int) -> Int
-  public func cellViewModel(at indexPath: IndexPath) -> CellViewModel?
-  public func headerViewModel(forSection section: Int) -> CellViewModel?
-  public func headerHeight(forSection section: Int) -> CGFloat
-  public func handlePOISelection(at indexPath: IndexPath)
-  public func loadCategoryData(completion: (() -> Void)? = nil)
-}
-extension CategoryPOIListViewModel : POICellViewModelDelegate {
-  public func viewModel(_ viewModel: POICellViewModel, didSelectRouteToPointOfInterest pointOfInterest: PointOfInterest)
 }
 public protocol CellViewModel : PhunwareMapping.CellIdentifiable {
 }
@@ -658,125 +485,16 @@ extension CellViewModelConfigurable {
 }
 public struct ContentEmbeddingConfig {
 }
-public protocol ContainerContentEmbedding {
-  var contentViewController: UIViewController { get }
-  var configuration: ContentEmbeddingConfig { get }
-  func containerViewController(_ containerViewController: ContainerViewController, willShowContentState state: ContainerViewController.ContentContainerState)
-  func containerViewController(_ containerViewController: ContainerViewController, didShowContentState state: ContainerViewController.ContentContainerState)
-  func containerViewController(_ containerViewController: ContainerViewController, didUpdateProgress progress: Float, from smallerState: ContainerViewController.ContentContainerState, to largerState: ContainerViewController.ContentContainerState)
-}
-extension ContainerContentEmbedding {
-  public func containerViewController(_ containerViewController: ContainerViewController, willShowContentState state: ContainerViewController.ContentContainerState)
-  public func containerViewController(_ containerViewController: ContainerViewController, didShowContentState state: ContainerViewController.ContentContainerState)
-  public func containerViewController(_ containerViewController: ContainerViewController, didUpdateProgress progress: Float, from smallerState: ContainerViewController.ContentContainerState, to largerState: ContainerViewController.ContentContainerState)
-}
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class OffRouteViewController : UIViewController {
-  @_Concurrency.MainActor(unsafe) public var viewModel: OffRouteViewModel!
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: NSCoder)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
-  @objc deinit
-}
-extension OffRouteViewController : StoryboardInitializable {
-  @_Concurrency.MainActor(unsafe) public static var storyboardName: String {
-    get
-  }
-}
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class MapViewController : UIViewController {
-  @_Concurrency.MainActor(unsafe) public var viewModel: MapViewModel!
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Bool)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Bool)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Bool)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidDisappear(_ animated: Bool)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func didMove(toParent parent: UIViewController?)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-extension MapViewController : StoryboardInitializable {
-  @_Concurrency.MainActor(unsafe) public static var storyboardName: String {
-    get
-  }
-}
-extension MapViewController : PWMapViewDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func mapView(_ mapView: PWMapView!, didChangeIndoorUserTrackingMode mode: PWTrackingMode)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func mapView(_ mapView: PWMapView!, locationManager: PWLocationManager!, didUpdateIndoorUserLocation userLocation: PWUserLocation!)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func mapView(_ mapView: PWMapView!, didChange instruction: PWRouteInstruction!)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func mapView(_ mapView: PWMapView!, didSelect view: PWBuildingAnnotationView!, with poi: PWPointOfInterest!)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func mapViewWillSetCamera(_ mapView: PWMapView!) -> MKMapCamera!
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func mapView(_ mapView: PWMapView!, didDeselect view: PWBuildingAnnotationView!, with poi: PWPointOfInterest!)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func mapView(_ mapView: PWMapView!, didFailToLocateIndoorUserWithError error: Error!)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func mapView(_ mapView: PWMapView!, didChange floor: PWFloor!)
-}
-extension MapViewController : MKMapViewDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
-}
-extension MapViewController : UITableViewDataSource {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-}
-extension MapViewController : UITableViewDelegate {
-}
-extension MapViewController : UICollectionViewDataSource {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-}
-extension MapViewController : UICollectionViewDelegateFlowLayout {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
-}
-extension MapViewController : UIScrollViewDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
-}
-extension MapViewController : BackgroundingObserving {
-  @_Concurrency.MainActor(unsafe) public func applicationDidEnterBackground()
-  @_Concurrency.MainActor(unsafe) public func applicationWillEnterForeground()
-}
 public protocol ShareLocationCoordinatorDelegate : AnyObject {
   func coordinatorDidFinish(_ coordinator: ShareLocationCoordinator)
-  func coordinator(_ coordinator: ShareLocationCoordinator, didSelectActionLink actionLink: ActionLink)
-  func coordinator(_ coordinator: ShareLocationCoordinator, didStartHomeToVenueRoutingWith geozoneIdentifiers: Set<String>, destination: HomeToVenueDestination)
-  func coordinator(_ coordinator: ShareLocationCoordinator, didStopHomeToVenueRoutingWith geozoneIdentifiers: Set<String>)
-  func coordinator(_ coordinator: ShareLocationCoordinator, customImageWithName name: String) -> UIImage?
   func coordinator(_ coordinator: ShareLocationCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void)
 }
 @objc public class ShareLocationCoordinator : NSObject, Coordinator {
   public var childCoordinators: [Coordinator]
   public var navigationController: UINavigationController
   weak public var delegate: ShareLocationCoordinatorDelegate?
-  public init<T>(navigationController: UINavigationController, mapConfig: MapConfig, mapLocalization: MapLocalization, mapContainerSelector: MapContainerSelector, themeConfiguring: T, allowsExitButtonToBeShown: Bool = true, hidesBottomBarWhenPushed: Bool = true, tabBarItem: UITabBarItem? = nil, buildingGroundOverlayRenderers: [BuildingGroundOverlayRenderer]? = nil) where T : PhunwareTheming.ThemeConfiguring, T.Theme == PhunwareMapping.MapTheme
+  public init(navigationController: UINavigationController, mapConfig: MapConfig, mapLocalization: MapLocalization, mapContainerSelector: MapContainerSelector, mapTheme: MapTheme, allowsExitButtonToBeShown: Bool = true, hidesBottomBarWhenPushed: Bool = true, presentationMode: PresentationMode = .default, tabBarItem: UITabBarItem? = nil, buildingGroundOverlayRenderers: [BuildingGroundOverlayRenderer]? = nil)
   public func start()
-  @objc deinit
-}
-extension ShareLocationCoordinator : ContainerViewControllerDelegate {
-  public func containerViewControllerDidExit(_ viewController: ContainerViewController)
-  public func containerViewController(_ viewController: ContainerViewController, didMinimizeTopContent topContent: ContainerContentEmbedding)
-}
-extension ShareLocationCoordinator {
-  public func viewModel(_ viewModel: MapViewModel, didSelect poi: PointOfInterest)
-  public func viewModel(_ viewModel: MapViewModel, didDeselect poi: PointOfInterest)
-}
-public protocol OffRouteViewModelDelegate : AnyObject {
-  func viewModel(_ viewModel: OffRouteViewModel, didFinishWithResult result: OffRouteViewModel.FinishResult)
-}
-@objc public class OffRouteViewModel : NSObject {
-  public enum FinishResult {
-    case dismiss
-    case reroute
-    case dontShowAgain
-    public static func == (a: PhunwareMapping.OffRouteViewModel.FinishResult, b: PhunwareMapping.OffRouteViewModel.FinishResult) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  public init(mapLocalization: MapLocalization, theme: MapTheme)
   @objc deinit
 }
 public class PointOfInterest : Equatable, Comparable {
@@ -787,18 +505,24 @@ public class PointOfInterest : Equatable, Comparable {
   public struct Link : Decodable {
     public let title: String
     public let url: URL
-    public init(from decoder: Swift.Decoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
   public var identifier: Int {
+    get
+  }
+  public var campusID: Int {
     get
   }
   public var title: String {
     get
   }
+  public var buildingID: Int {
+    get
+  }
   public var buildingName: String {
     get
   }
-  public var subtitle: String {
+  public var floorDisplayName: String {
     get
   }
   public var imageURL: URL? {
@@ -814,6 +538,9 @@ public class PointOfInterest : Equatable, Comparable {
     get
   }
   public var websiteURLString: String? {
+    get
+  }
+  public var audioURL: URL? {
     get
   }
   public var links: [Link] {
@@ -852,19 +579,33 @@ public class PointOfInterest : Equatable, Comparable {
   public var effectiveParkingLocation: ParkingLocation {
     get
   }
+  public var parkingPOIIdentifier: Int? {
+    get
+  }
+  public var isRoutable: Bool {
+    get
+  }
   public init(_ pwPointOfInterest: PWPointOfInterest)
   public static func == (lhs: PointOfInterest, rhs: PointOfInterest) -> Bool
   public static func < (lhs: PointOfInterest, rhs: PointOfInterest) -> Bool
   @objc deinit
 }
-extension MapLocalization {
-  public static let defaults: Swift.String
+extension UIPanGestureRecognizer {
+  public enum VerticalDirection {
+    case up
+    case down
+    case none
+    public static func == (a: UIKit.UIPanGestureRecognizer.VerticalDirection, b: UIKit.UIPanGestureRecognizer.VerticalDirection) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
 }
-public class UserLocation {
+@_hasMissingDesignatedInitializers public class UserLocation {
   public var buildingIdentifier: Int {
     get
   }
-  public init(_ pwUserLocation: PWUserLocation)
   public var coordinate: CLLocationCoordinate2D {
     get
   }
@@ -873,87 +614,56 @@ public class UserLocation {
   }
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class DropShadowView : UIView {
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var shadowColor: UIColor {
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class DropShadowView : UIView {
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency public var shadowColor: UIColor {
     @objc get
     @objc set
   }
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var shadowOffset: CGSize {
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency public var shadowOffset: CGSize {
     @objc get
     @objc set
   }
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var shadowRadius: CGFloat {
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency public var shadowRadius: CGFloat {
     @objc get
     @objc set
   }
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var shadowOpacity: Float {
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency public var shadowOpacity: Float {
     @objc get
     @objc set
   }
-  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var cornerRadius: CGFloat {
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency public var cornerRadius: CGFloat {
     @objc get
     @objc set
   }
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public var backgroundColor: UIColor? {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var backgroundColor: UIColor? {
     @objc get
     @objc set
   }
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CGRect)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: NSCoder)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func addSubview(_ view: UIView)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func insertSubview(_ view: UIView, at index: Int)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func insertSubview(_ view: UIView, belowSubview siblingSubview: UIView)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func insertSubview(_ view: UIView, aboveSubview siblingSubview: UIView)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func addSubview(_ view: UIView)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func insertSubview(_ view: UIView, at index: Int)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func insertSubview(_ view: UIView, belowSubview siblingSubview: UIView)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func insertSubview(_ view: UIView, aboveSubview siblingSubview: UIView)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
   @objc deinit
+}
+public enum DeeplinkResolver {
+  case tabNavigation(_: String)
+  case map(_: String)
+  case shareLocation(_: String)
+  case mapping(MappingDeeplink)
+  public init?(_ deeplink: Deeplink)
 }
 public struct ShareableLocation {
   public let mapName: String
   public let floorID: Int?
   public let coordinate: CLLocationCoordinate2D
 }
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class NavigationController : UINavigationController {
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public var childForStatusBarStyle: UIViewController? {
-    @objc get
-  }
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
-  @available(iOS 5.0, *)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(navigationBarClass: Swift.AnyClass?, toolbarClass: Swift.AnyClass?)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(rootViewController: UIKit.UIViewController)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @objc deinit
-}
-extension NavigationController {
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func pushViewController(_ viewController: UIViewController, animated: Bool)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func popViewController(animated: Bool) -> UIViewController?
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func popToRootViewController(animated: Bool) -> [UIViewController]?
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func popToViewController(_ viewController: UIViewController, animated: Bool) -> [UIViewController]?
-}
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class DirectionCell : UITableViewCell {
-  @_Concurrency.MainActor(unsafe) public var viewModel: DirectionCellViewModel!
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func prepareForReuse()
-  @available(iOS 3.0, *)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-extension DirectionCell : CellViewModelConfigurable {
-  @_Concurrency.MainActor(unsafe) public func configure(cellViewModel: CellViewModel)
-}
-@objc public class DirectionCellViewModel : NSObject {
-  public init(direction: Direction, mapLocalization: MapLocalization, isLandmarkBasedRoutingEnabled: Bool, theme: MapTheme, usesLargeIcons: Bool)
-  @objc deinit
-}
-extension DirectionCellViewModel : CellViewModel {
-  public var cellIdentifier: String {
-    get
-  }
-}
 public struct HomeToVenueDestination {
   public let mapName: String
   public let pointOfInterest: PointOfInterest
-  public init(mapName: String, pointOfInterest: PointOfInterest)
 }
 extension Bundle {
   public struct URLType : Codable {
@@ -961,8 +671,8 @@ extension Bundle {
     public var name: String?
     public var iconFile: String?
     public var schemes: [String]
-    public func encode(to encoder: Swift.Encoder) throws
-    public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
   public var urlTypes: [URLType] {
     get
@@ -971,30 +681,13 @@ extension Bundle {
     get
   }
 }
-public protocol POICellViewModelDelegate : AnyObject {
-  func viewModel(_ viewModel: POICellViewModel, didSelectRouteToPointOfInterest pointOfInterest: PointOfInterest)
-}
-@objc public class POICellViewModel : NSObject {
-  weak public var delegate: POICellViewModelDelegate?
-  final public let poiEstimation: POIEstimation?
-  public init(pointOfInterest: PointOfInterest, meetingRoom: MeetingRoom?, managerProvider: ManagerProvider, theme: MapTheme, localization: MapLocalization, showsBuildingName: Bool, isRouteButtonHidden: Bool, isEstimationLabelHidden: Bool, poiEstimation: POIEstimation?, poiEstimationMode: POIEstimationMode)
-  public func loadImage()
-  public func handleRouteButtonPress()
-  @objc deinit
-}
-extension POICellViewModel : CellViewModel {
-  public static let nibName: Swift.String
-  public static let cellIdentifier: Swift.String
-  public var cellIdentifier: String {
-    get
-  }
-}
-extension POICellViewModel : Comparable {
-  public static func < (lhs: POICellViewModel, rhs: POICellViewModel) -> Bool
-}
 public class BuildingGroundOverlayRenderer {
   public init(buildingIdentifiers: [Int], groundRenderer: MKOverlayRenderer)
   @objc deinit
+}
+extension BuildingGroundOverlayRenderer {
+  public static func makeRenderer(using image: UIImage, buildingIdentifiers: [Int]) -> BuildingGroundOverlayRenderer
+  public static func makeRenderer(using url: URL, buildingIdentifiers: [Int]) -> BuildingGroundOverlayRenderer
 }
 public enum MapContainer {
   case campus(Campus)
@@ -1007,78 +700,6 @@ public protocol MapContaining {
   var floors: [Floor] { get }
   var initialFloor: Floor? { get }
   func floor(byId id: Int) -> Floor?
-}
-public protocol RoutingCoordinatorDelegate : AnyObject {
-  func coordinatorDidFinish(_ coordinator: RoutingCoordinator)
-  func coordinator(_ coordinator: RoutingCoordinator, didSelectActionLink actionLink: ActionLink)
-  func coordinator(_ coordinator: RoutingCoordinator, didStartHomeToVenueRoutingWith geozoneIdentifiers: Set<String>, destination: HomeToVenueDestination)
-  func coordinator(_ coordinator: RoutingCoordinator, didStopHomeToVenueRoutingWith geozoneIdentifiers: Set<String>)
-  func coordinator(_ coordinator: RoutingCoordinator, customImageWithName name: String) -> UIImage?
-  func coordinator(_ coordinator: RoutingCoordinator, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
-}
-@objc public class RoutingCoordinator : NSObject, Coordinator {
-  public var childCoordinators: [Coordinator]
-  public var navigationController: UINavigationController
-  weak public var delegate: RoutingCoordinatorDelegate?
-  public var meetingRoomPOIIdentifiers: [Swift.String] {
-    get
-    set
-  }
-  public var supportedExternalMappingAppDeeplinks: [PhunwareMapping.ExternalMappingAppDeeplink]
-  public var childMappingDeeplinkHandlers: [PhunwareMapping.MappingDeeplinkNavigable] {
-    get
-  }
-  public var pendingMappingDeeplink: DeferredMappingDeeplink?
-  public init<T>(navigationController: UINavigationController, mapConfig: MapConfig, mapLocalization: MapLocalization, mapContainerSelector: MapContainerSelector, themeConfiguring: T, allowsBackgroundLocationUpdates: Bool, allowsExitButtonToBeShown: Bool = true, hidesBottomBarWhenPushed: Bool = true, tabBarItem: UITabBarItem? = nil, meetingRoomPOIIdentifiers: [String], initialMeetingRoomPOIImageSize: CGSize?, buildingGroundOverlayRenderers: [BuildingGroundOverlayRenderer]? = nil) where T : PhunwareTheming.ThemeConfiguring, T.Theme == PhunwareMapping.MapTheme
-  @objc deinit
-  public func start()
-  public func setMeetingRooms(_ meetingRooms: [MeetingRoom])
-}
-extension RoutingCoordinator : ContainerViewControllerDelegate {
-  public func containerViewControllerDidExit(_ viewController: ContainerViewController)
-  public func containerViewController(_ viewController: ContainerViewController, didMinimizeTopContent topContent: ContainerContentEmbedding)
-}
-extension RoutingCoordinator : RouteBuilderViewModelDelegate {
-  public func viewModel(_ viewModel: RouteBuilderViewModel, didSearchRouteOrigin resultHandler: @escaping (RouteBuilderSearchResult) -> Void)
-  public func viewModel(_ viewModel: RouteBuilderViewModel, didSearchRouteDestination resultHandler: @escaping (RouteBuilderSearchResult) -> Void)
-  public func viewModel(_ viewModel: RouteBuilderViewModel, didSelectStartRouteFrom routeOrigin: MapPoint, to routeDestination: MapPoint)
-  public func viewModelDidFinish(_ viewModel: RouteBuilderViewModel)
-}
-extension RoutingCoordinator : SearchViewModelDelegate {
-  public func viewModel(_ viewModel: SearchViewModel, didSelect poi: PointOfInterest)
-  public func viewModel(_ viewModel: SearchViewModel, didSelect currentLocation: UserLocation)
-  public func viewModel(_ viewModel: SearchViewModel, didSelectRouteToPointOfInterest poi: PointOfInterest)
-  public func viewModelDidFinish(_ viewModel: SearchViewModel)
-  public func viewModelDidSelectSearchByBuilding(_ viewModel: SearchViewModel)
-}
-extension RoutingCoordinator : DetailViewModelDelegate {
-  public func viewModelDidExit(_ viewModel: DetailViewModel)
-  public func viewModel(_ viewModel: DetailViewModel, didSelectActionLink actionLink: ActionLink)
-  public func viewModel(_ viewModel: DetailViewModel, didSelectRouteToPointOfInterest pointOfInterest: PointOfInterest)
-  public func viewModel(_ viewModel: DetailViewModel, customImageWithName name: String) -> UIImage?
-}
-extension RoutingCoordinator : DirectionListViewModelDelegate {
-  public func viewModelDidSelectExit(_ viewModel: DirectionListViewModel)
-  public func viewModel(_ viewModel: DirectionListViewModel, didSelect direction: Direction)
-}
-extension RoutingCoordinator : CLLocationManagerDelegate {
-  @objc dynamic public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-  @objc dynamic public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
-  @objc dynamic public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
-}
-extension RoutingCoordinator : MappingDeeplinkNavigable {
-  public var isMappingDeeplinkingAvailable: Bool {
-    get
-  }
-  public func queryCanOpenDirectly(_ deeplink: MappingDeeplink, completion: @escaping (Bool) -> Void)
-  public func openDeeplink(_ deeplink: MappingDeeplink) -> Bool
-}
-extension RoutingCoordinator : OffRouteViewModelDelegate {
-  public func viewModel(_ viewModel: OffRouteViewModel, didFinishWithResult result: OffRouteViewModel.FinishResult)
-}
-extension RoutingCoordinator : ArrivalViewModelDelegate {
-  public func viewModelDidFinish(_ viewModel: ArrivalViewModel)
-  public func viewModel(_ viewModel: ArrivalViewModel, didSelectURL url: URL?)
 }
 public struct MeetingRoom {
   public enum Status {
@@ -1101,137 +722,98 @@ public struct MeetingRoom {
 public protocol CellIdentifiable : AnyObject {
   var cellIdentifier: String { get }
 }
-public protocol ManagerProvider {
-  var mapContainerManager: MapContainerManager { get }
-  var resourceManager: ResourceManager { get }
-  var recentLocationManager: RecentLocationManager { get }
-}
-@_hasMissingDesignatedInitializers public class RuntimeManagerProvider : ManagerProvider {
-  public var mapContainerManager: MapContainerManager {
-    get
-    set
+public struct MappingConfiguration {
+  public struct MeetingRoom {
+    public var meetingRoomPOIIdentifiers: [String]
+    public var initialMeetingRoomPOIImageSize: CGSize?
+    public init(meetingRoomPOIIdentifiers: [String] = [], initialMeetingRoomPOIImageSize: CGSize? = nil)
   }
-  public var resourceManager: ResourceManager {
-    get
-    set
-  }
-  public var recentLocationManager: RecentLocationManager {
-    get
-    set
-  }
-  @objc deinit
-}
-@objc public class MapRoute : NSObject {
-  public init(route: PWRoute, uiOptions: PWRouteUIOptions, fallbackDestinationTitle: String)
-  @objc deinit
-}
-public typealias MapContainerLoadResult = (Result<MapContaining, Error>)
-@_hasMissingDesignatedInitializers public class MapContainerManager {
-  public func loadMapContainer(with mapContainerConfig: MapContainerConfiguring, completion: @escaping (MapContainerLoadResult) -> Void)
-  @objc deinit
-}
-@available(*, deprecated, renamed: "MapContainerManager")
-public typealias BuildingManager = MapContainerManager
-@available(*, deprecated, message: "Use MapContainerLoadResult with MapContainerManager.loadMapContainer(with:completion:) instead.")
-public typealias BuildingResult = Result<Building, Error>
-extension MapContainerManager {
-  @available(*, deprecated, renamed: "loadMapContainer(with:completion:)")
-  public func loadBuilding(with identifier: Int, completion: @escaping (BuildingResult) -> Void)
-}
-public protocol SearchViewModelDelegate : AnyObject {
-  func viewModel(_ viewModel: SearchViewModel, didSelect poi: PointOfInterest)
-  func viewModel(_ viewModel: SearchViewModel, didSelect currentLocation: UserLocation)
-  func viewModel(_ viewModel: SearchViewModel, didSelectRouteToPointOfInterest poi: PointOfInterest)
-  func viewModelDidSelectSearchByBuilding(_ viewModel: SearchViewModel)
-  func viewModelDidFinish(_ viewModel: SearchViewModel)
-}
-@objc public class SearchViewModel : NSObject {
-  weak public var delegate: SearchViewModelDelegate?
-  public var userLocation: UserLocation? {
-    get
-    set
-  }
-  public var allowsCurrentLocation: Bool {
-    get
-    set
-  }
-  public init(mapContaining: MapContaining, meetingRooms: [Int : MeetingRoom], categories: [MapConfig.Category], showsNavigationBar: Bool, groupsSingleBuildingPOIsByCategory: Bool, showsPOIRouteButton: Bool, showsPOIEstimation: Bool, estimatedPOIDistancesToOrigin: [Int : CLLocationDistance] = [:], arrivalEstimationStartPoint: PWMapPoint?, poiListEstimationDisplayMode: POIEstimationMode, walkRateInMetersPerSecond: Double, accessibilityEnabled: Bool, isLandmarkBasedRoutingEnabled: Bool, managerProvider: ManagerProvider, localization: MapLocalization, theme: MapTheme, userLocation: UserLocation?)
-  @objc deinit
-}
-extension SearchViewModel {
-  public var totalSections: Int {
-    get
-  }
-  public func numberOfItems(in section: Int) -> Int
-  public func cellViewModel(at indexPath: IndexPath) -> CellViewModel?
-  public func title(for section: Int) -> String?
-  public func headerTextConfiguration(for section: Int) -> TextConfiguration?
-  public var sectionHeaderBackgroundConfiguration: ColorConfiguration {
-    get
-  }
-  public func search(with searchTerm: String, completion: (() -> Void)? = nil)
-  public func loadSearchData(completion: (() -> Void)? = nil)
-  public func makePOICellViewModel(from poi: PointOfInterest) -> POICellViewModel
-  public func handleCancelButtonPress()
-  public func handleCurrentLocationButtonPress()
-  public func handleSearchByBuildingButtonPress()
-  public func handlePOISelection(at indexPath: IndexPath)
-}
-extension SearchViewModel : POICellViewModelDelegate {
-  public func viewModel(_ viewModel: POICellViewModel, didSelectRouteToPointOfInterest pointOfInterest: PointOfInterest)
+  public var mapConfigKey: String
+  public var mapConfig: MapConfig
+  public var mapLocalization: MapLocalization
+  public var meetingRoom: MeetingRoom
+  public var mapOverlayRenderers: [BuildingGroundOverlayRenderer]
+  public init(mapConfigKey: String, mapConfig: MapConfig, mapLocalization: MapLocalization, meetingRoom: MeetingRoom = .init(), mapOverlayRenderers: [BuildingGroundOverlayRenderer] = [])
 }
 extension String {
   public func normalizedPhoneURL() -> URL?
 }
-@objc public class MapViewModel : NSObject {
-  public init(mapLocalization: MapLocalization, mapConfig: MapConfig, mapContainerSelector: MapContainerSelector, theme: MapTheme, meetingRoomPOIIdentifiers: [String] = [], initialMeetingRoomPOIImageSize: CGSize? = nil, buildingGroundOverlayRenderers: [BuildingGroundOverlayRenderer]?)
-  @objc deinit
+public enum Category : String, Equatable, Identifiable {
+  case aquariums
+  case atm
+  case bars
+  case beaches
+  case businessCenters
+  case casino
+  case chapels
+  case chargingStations
+  case coffee
+  case conferenceRooms
+  case conventionCenters
+  case defibrillator
+  case departments
+  case dining
+  case education
+  case elevatorsEscalators
+  case emergency
+  case entrances
+  case events
+  case exhibits
+  case guestServices
+  case hotelAmenities
+  case information
+  case laundry
+  case library
+  case medicalServices
+  case more
+  case nightlife
+  case nursingRooms
+  case parking
+  case pharmacy
+  case photoStations
+  case pools
+  case reception
+  case recreation
+  case registration
+  case restrooms
+  case rides
+  case rooms
+  case scenicPoints
+  case seatingAreas
+  case shopping
+  case stairs
+  case statusBoards
+  case taxiRideshare
+  case towelStations
+  case transportation
+  case valet
+  case vendingMachines
+  case waterFountains
+  case wellness
+  case workplaceAmenities
+  case workspaces
+  case unknown
+  public init(id: String)
+  public var poiTypes: [POIType]? {
+    get
+  }
+  public var iconImage: UIImage? {
+    get
+  }
+  public var id: String {
+    get
+  }
+  public var titleKey: String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias ID = Swift.String
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
 }
-extension MapViewModel {
-  public func acquireBlueDot()
-  public var regionForMap: MKCoordinateRegion? {
-    get
-  }
-  public var numberOfFloors: Int {
-    get
-  }
-  public func zoomedMapRect(centeredOn coordinate: CLLocationCoordinate2D) -> MKMapRect?
-  public func floor(at indexPath: IndexPath) -> PWFloor?
-  public var initialFloor: PWFloor? {
-    get
-  }
-  public func handleVisibleLayerOptionsButtonPressed(floorSelectorComponentRect rect: CGRect)
-  public func handleFloorSelection(at indexPath: IndexPath)
-  public func floorTextConfiguration(itemTitle: String) -> TextConfiguration
-  public func currentFloorTextConfiguration(itemTitle: String) -> TextConfiguration
-  public func start(route: MapRoute, toCustomPOI customPOI: PWCustomPointOfInterest?)
-  public func endRoute()
-  public var numberOfDirectionCellViewModels: Int {
-    get
-  }
-  public func directionCellViewModel(at index: Int) -> DirectionCellViewModel?
-  public func selectRouteDirection(_ direction: Direction)
-  public func selectPOI(poi: PointOfInterest)
-  public func zoom(to poi: PointOfInterest, ignoringNextPOISelectionChange shouldIgnoreNextPOISelectionChange: Bool = false)
-  public func finalizeArrivalFlow()
-  public func deselectExistingPOI()
-  public var isMeetingRoomStatusEnabled: Bool {
-    get
-  }
-  public var currentFloorID: Int? {
-    get
-  }
-  public var meetingRoomPOIIdentifiersForCurrentFloor: [String] {
-    get
-  }
-}
-extension MapViewModel : CLLocationManagerDelegate {
-  @objc dynamic public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
-}
-extension MapViewModel : AVSpeechSynthesizerDelegate {
-  @objc dynamic public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance)
-}
-public class Campus {
+@_hasMissingDesignatedInitializers public class Campus {
   public var pointOfInterests: [PointOfInterest] {
     get
   }
@@ -1253,7 +835,6 @@ public class Campus {
   public var overviewBuilding: Building? {
     get
   }
-  public init(_ pwCampus: PWCampus)
   public func building(byId id: Int) -> Building?
   public func floor(byId id: Int) -> Floor?
   @objc deinit
@@ -1270,71 +851,15 @@ extension Campus : MapContaining {
     get
   }
 }
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class CategoryPOIListViewController : UIViewController {
-  @_Concurrency.MainActor(unsafe) public var viewModel: CategoryPOIListViewModel!
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Bool)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-extension CategoryPOIListViewController : StoryboardInitializable {
-  @_Concurrency.MainActor(unsafe) public static var storyboardName: String {
-    get
-  }
-}
-extension CategoryPOIListViewController : UITableViewDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
-}
-extension CategoryPOIListViewController : UITableViewDataSource {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func numberOfSections(in tableView: UITableView) -> Int
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-}
 public class KeyboardAdjuster {
   public init(adjustingView: UIView)
   public func start()
   @objc deinit
 }
-public protocol DetailViewModelDelegate : AnyObject {
-  func viewModelDidExit(_ viewModel: DetailViewModel)
-  func viewModel(_ viewModel: DetailViewModel, didSelectActionLink actionLink: ActionLink)
-  func viewModel(_ viewModel: DetailViewModel, didSelectRouteToPointOfInterest pointOfInterest: PointOfInterest)
-  func viewModel(_ viewModel: DetailViewModel, customImageWithName name: String) -> UIImage?
-}
-@objc @_hasMissingDesignatedInitializers public class DetailViewModel : NSObject {
-  weak public var delegate: DetailViewModelDelegate?
-  @objc deinit
-}
-extension DetailViewModel {
-  public func handleExitButtonPress()
-  public func handleActionLinkButtonPress(actionLink: ActionLink)
-  public func handleTraitCollectionDidChange(_ current: UITraitCollection, previous: UITraitCollection?)
-  public func handleRouteButtonPress()
-}
-public typealias FetchImageResult = Result<UIImage, Error>
-public class ResourceManager {
-  public enum ResourceManagerError : Error {
-    case invalidImageData(Data)
-  }
-  public init(networkInteractor: NetworkInteracting)
-  public func cachedImage(for url: URL) -> UIImage?
-  public func fetchImage(at url: URL, timeout: TimeInterval? = nil, cachePolicy: URLRequest.CachePolicy? = nil, completion: @escaping (FetchImageResult) -> Void)
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class CategoryRowCell : UITableViewCell {
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func prepareForReuse()
-  @available(iOS 3.0, *)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-extension CategoryRowCell : CellViewModelConfigurable {
-  @_Concurrency.MainActor(unsafe) public func configure(cellViewModel: CellViewModel)
+public struct HomeToVenueConfiguration {
+  public let urlTypeName: String
+  public let notificationText: String
+  public init(urlTypeName: String, notificationText: String)
 }
 public protocol RegisterableFontFamily : Swift.CaseIterable, Swift.RawRepresentable {
   var rawValue: String { get }
@@ -1359,7 +884,7 @@ public struct MapTheme {
     public init(title: TextStyle, detail: TextStyle, handle: UIColor, textFieldBackground: UIColor, background: UIColor)
   }
   public struct Search {
-    public init(title: TextStyle, placeholder: TextStyle, tint: UIColor, topNoResults: TextStyle, bottomNoResults: TextStyle, currentLocation: TextStyle, currentLocationIcon: UIColor, sectionHeader: TextStyle, sectionHeaderBackground: UIColor, cancelButton: TextStyle, searchBarBackground: UIColor, searchByBuildingButton: TextStyle)
+    public init(title: TextStyle, placeholder: TextStyle, tint: UIColor, topNoResults: TextStyle, bottomNoResults: TextStyle, currentLocation: TextStyle, currentLocationIcon: UIColor, sectionHeader: TextStyle, sectionHeaderBackground: UIColor, cancelButton: TextStyle, searchBarBackground: UIColor, searchByBuildingButton: TextStyle, searchChip: Chip, filterSelectorTitle: TextStyle, filterSelectorList: TextStyle)
   }
   public struct NavigationBar {
     public init(title: TextStyle, tint: UIColor)
@@ -1367,11 +892,17 @@ public struct MapTheme {
   public struct Category {
     public init(header: TextStyle, itemTitle: TextStyle, background: UIColor)
   }
+  public struct FeaturedList {
+    public init(header: TextStyle, itemTitle: TextStyle, itemSubtitle: TextStyle, background: UIColor, dropShadow: UIColor)
+  }
+  public struct FeaturedListPOI {
+    public init(topBarTitle: TextStyle, topBarCancelButton: TextStyle, topBarBackground: UIColor, closeButtonBackground: UIColor, closeButtonTint: UIColor, itemTitle: TextStyle, background: UIColor, dropShadow: UIColor)
+  }
   public struct FloorSelector {
     public init(buttonTint: UIColor, buttonBackground: UIColor, itemBackground: UIColor, selectedItemBackground: UIColor, itemTitle: TextStyle, selectedItemTitle: TextStyle)
   }
   public struct POI {
-    public init(title: TextStyle, building: TextStyle, estimation: TextStyle, locationDetails: TextStyle, routeTint: UIColor, background: UIColor)
+    public init(title: TextStyle, building: TextStyle, floor: TextStyle, arrivalDistanceEstimation: TextStyle, arrivalTimeEstimation: TextStyle, waitTimeEstimation: TextStyle)
   }
   public struct TextField {
     public init(label: TextStyle, field: TextStyle, background: UIColor)
@@ -1386,7 +917,10 @@ public struct MapTheme {
     public init(label: TextStyle, iconTint: UIColor, toggleTint: UIColor)
   }
   public struct Detail {
-    public init(title: TextStyle, arrivalEstimation: TextStyle, locationDetails: TextStyle, actionLink: TextStyle, actionLinkIcon: UIColor, closeButton: ColorConfiguration, contentHeader: TextStyle, contentText: TextStyle)
+    public struct AudioPlayer {
+      public init(background: UIColor, bar: UIColor, controls: UIColor, progress: UIColor, time: TextStyle, header: TextStyle)
+    }
+    public init(title: TextStyle, headerTitle: TextStyle, category: TextStyle, arrivalEstimation: TextStyle, location: TextStyle, actionLink: TextStyle, waitTimeEstimation: TextStyle, actionLinkIcon: UIColor, waitTimeEstimationRefreshButtonTint: UIColor, closeButtonBackground: UIColor, closeButtonTint: UIColor, dotSeparatorIcon: UIColor, walkingIcon: UIColor, audioPlayer: AudioPlayer, detailDescription: TextStyle)
   }
   public struct DirectionList {
     public init(titlePrefix: TextStyle, title: TextStyle, arrivalEstimation: TextStyle, exit: SolidColorButton, directionsHeader: TextStyle, itemInstruction: TextStyle, itemDescription: TextStyle, itemSelection: UIColor, itemIconBackground: UIColor)
@@ -1434,32 +968,18 @@ public struct MapTheme {
     public init(title: TextStyle, searchBar: SearchBar, cancelButton: TextStyle, sectionHeader: SectionHeader, buildingCellTitle: TextStyle, topNoResults: TextStyle, bottomNoResults: TextStyle)
   }
   public struct ArrivalCard {
-    public init(arrivalText: TextStyle, title: TextStyle, linkButton: SolidColorButton, closeButton: ColorConfiguration)
+    public init(arrivalText: TextStyle, title: TextStyle, linkButton: SolidColorButton, closeButtonBackground: UIColor, closeButtonTint: UIColor)
   }
   public struct RoundToggleButton {
     public init(backgroundColor: UIColor, tint: UIColor, selectedTint: UIColor, text: TextStyle, selectedText: TextStyle)
   }
-  public init(colorPalette: ColorPalette, textStyles: TextStyles, moduleNavigation: ModuleNavigation? = nil, bottomSheet: BottomSheet? = nil, search: Search? = nil, navigationBar: NavigationBar? = nil, category: Category? = nil, floorSelector: FloorSelector? = nil, poi: POI? = nil, textField: TextField? = nil, accessibleRoute: AccessibleRoute? = nil, startRoute: SolidColorButton? = nil, detail: Detail? = nil, directions: DirectionList? = nil, offRoute: OffRoute? = nil, loadingSpinner: LoadingSpinner? = nil, locationPermission: LocationPermissionPrimer? = nil, shareLocation: ShareLocation? = nil, mapViewSelection: MapViewSelection? = nil, buildingPicker: GenericPicker? = nil, floorPicker: GenericPicker? = nil, poiList: POIList? = nil, buildingSearch: BuildingSearch? = nil, arrivalCard: ArrivalCard? = nil, soundButton: MapTheme.RoundToggleButton? = nil)
-}
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class RouteBuilderViewController : UIViewController {
-  @_Concurrency.MainActor(unsafe) public var viewModel: RouteBuilderViewModel!
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-extension RouteBuilderViewController : StoryboardInitializable {
-  @_Concurrency.MainActor(unsafe) public static var storyboardName: String {
-    get
+  public struct Chip {
+    public struct State {
+      public init(title: TextStyle, iconTint: UIColor, borderColor: UIColor, background: UIColor)
+    }
+    public init(normalState: State, selectedState: State)
   }
-}
-extension RouteBuilderViewController : ContainerContentEmbedding {
-  @_Concurrency.MainActor(unsafe) public var contentViewController: UIViewController {
-    get
-  }
-  @_Concurrency.MainActor(unsafe) public var configuration: ContentEmbeddingConfig {
-    get
-  }
+  public init(colorPalette: ColorPalette, textStyles: TextStyles, moduleNavigation: ModuleNavigation? = nil, bottomSheet: BottomSheet? = nil, search: Search? = nil, navigationBar: NavigationBar? = nil, category: Category? = nil, featuredList: FeaturedList? = nil, featuredListPOI: FeaturedListPOI? = nil, floorSelector: FloorSelector? = nil, poi: POI? = nil, textField: TextField? = nil, accessibleRoute: AccessibleRoute? = nil, startRoute: SolidColorButton? = nil, detail: Detail? = nil, directions: DirectionList? = nil, offRoute: OffRoute? = nil, loadingSpinner: LoadingSpinner? = nil, locationPermission: LocationPermissionPrimer? = nil, shareLocation: ShareLocation? = nil, mapViewSelection: MapViewSelection? = nil, buildingPicker: GenericPicker? = nil, floorPicker: GenericPicker? = nil, poiList: POIList? = nil, buildingSearch: BuildingSearch? = nil, arrivalCard: ArrivalCard? = nil, soundButton: MapTheme.RoundToggleButton? = nil)
 }
 public protocol PermissionCoordinatorDelegate : AnyObject {
   func coordinator(_ coordinator: PermissionCoordinator, customImageWithName name: String) -> UIImage?
@@ -1469,26 +989,19 @@ public class PermissionCoordinator : Coordinator {
   public var childCoordinators: [Coordinator]
   public var navigationController: UINavigationController
   weak public var delegate: PermissionCoordinatorDelegate?
-  public init<T>(navigationController: UINavigationController, mapLocalization: MapLocalization, themeConfiguring: T) where T : PhunwareTheming.ThemeConfiguring, T.Theme == PhunwareMapping.MapTheme
+  public init(navigationController: UINavigationController, mapLocalization: MapLocalization, mapTheme: MapTheme, completionNavigationAction: PermissionPrimingCompletionNavigationAction = .unwind)
   public func start()
   @objc deinit
 }
 extension PermissionCoordinator : PermissionPrimingCoordinatorDelegate {
-  public func coordinator(_ coordinator: PermissionPrimingCoordinator, didCompleteWithPrimedPermissions primedPermissions: Set<Permission>?, fulfilledPermissions: Set<Permission>?, unfulfilledPermissions: Set<Permission>?)
+  public func coordinator(_ coordinator: PermissionPrimingCoordinator, didCompleteWithPrimedPermissions primedPermissions: Set<Permission>?, fulfilledPermissions: Set<Permission>?, unfulfilledPermissions: Set<Permission>?, failedPermissions: Set<Permission>?) -> PermissionPrimingCompletionNavigationAction
   public func displayTemplate(for coordinator: PermissionPrimingCoordinator, permissions: OrderedSet<Permission>) -> DisplayTemplate
-}
-public protocol ArrivalViewModelDelegate : AnyObject {
-  func viewModelDidFinish(_ viewModel: ArrivalViewModel)
-  func viewModel(_ viewModel: ArrivalViewModel, didSelectURL: URL?)
-}
-@_hasMissingDesignatedInitializers public class ArrivalViewModel {
-  weak public var delegate: ArrivalViewModelDelegate?
-  @objc deinit
 }
 public protocol MapContainerConfiguring {
   var identifier: Int { get }
   var onCampusGeozoneIdentifiers: [Int] { get }
   var languageCode: String { get }
+  var featuredListConfig: MapConfig.FeaturedListConfig? { get }
   var mapContainerConfigValue: MapConfig.MapContainerConfig { get }
 }
 public struct MapConfig : Codable {
@@ -1497,8 +1010,8 @@ public struct MapConfig : Codable {
     public let displayText: String?
     public let stringsFile: String?
     public let defaultSpokenLanguageRegion: String?
-    public func encode(to encoder: Swift.Encoder) throws
-    public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
   public enum MapContainerConfig {
     case campus(CampusConfig)
@@ -1508,35 +1021,66 @@ public struct MapConfig : Codable {
     public let campusIdentifier: Int
     public let onCampusGeozoneIdentifiers: [Int]
     public let languageCode: String
+    public let featuredListConfig: FeaturedListConfig?
     public var identifier: Int {
       get
     }
     public var mapContainerConfigValue: MapConfig.MapContainerConfig {
       get
     }
-    public func encode(to encoder: Swift.Encoder) throws
-    public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
   public struct BuildingConfig : Codable, MapContainerConfiguring {
     public let buildingIdentifier: Int
     public let onCampusGeozoneIdentifiers: [Int]
     public let languageCode: String
+    public let featuredListConfig: FeaturedListConfig?
     public var identifier: Int {
       get
     }
     public var mapContainerConfigValue: MapConfig.MapContainerConfig {
       get
     }
-    public func encode(to encoder: Swift.Encoder) throws
-    public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
-  public enum POIEstimationDisplayMode : String, Codable {
-    case distance, time
-    public init?(rawValue: Swift.String)
-    public typealias RawValue = Swift.String
-    public var rawValue: Swift.String {
+  public struct FeaturedListConfig : Codable, Hashable {
+    public let featuredListHeader: String?
+    public let featuredLists: [FeaturedList]
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: PhunwareMapping.MapConfig.FeaturedListConfig, b: PhunwareMapping.MapConfig.FeaturedListConfig) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public var hashValue: Swift.Int {
       get
     }
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public struct FeaturedList : Codable, Hashable {
+    public let identifier: String?
+    public let title: String?
+    public let subTitle: String?
+    public let imageURL: String?
+    public let pois: [POI]
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: PhunwareMapping.MapConfig.FeaturedList, b: PhunwareMapping.MapConfig.FeaturedList) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public struct POI : Codable, Hashable {
+    public let identifier: String?
+    public let title: String?
+    public let imageURL: String?
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: PhunwareMapping.MapConfig.POI, b: PhunwareMapping.MapConfig.POI) -> Swift.Bool
+    public func encode(to encoder: any Swift.Encoder) throws
+    public var hashValue: Swift.Int {
+      get
+    }
+    public init(from decoder: any Swift.Decoder) throws
   }
   public struct Map : Codable {
     public let mapName: String?
@@ -1547,8 +1091,6 @@ public struct MapConfig : Codable {
     public let longitude: Double
     public let initialZoomLatDelta: Double
     public let initialZoomLongDelta: Double
-    public let poiZoomLatDelta: Double
-    public let poiZoomLongDelta: Double
     public let routeSnappingTolerance: String
     public let isManagedCompassEnabled: Bool
     public let isHomeToVenueEnabled: Bool
@@ -1557,42 +1099,32 @@ public struct MapConfig : Codable {
     public let meetingRoomStatusRefreshIntervalMilliSeconds: Double
     public let areAccessibleRoutesEnabledByDefault: Bool
     public let isLandmarkBasedRoutingEnabled: Bool
-    public let poiListEstimationDisplayMode: POIEstimationDisplayMode
-    public let poiDetailEstimationDisplayMode: POIEstimationDisplayMode
-    public let directionsListEstimationDisplayMode: POIEstimationDisplayMode
     public let travelTimeMetersPerSecond: Double
+    public let enableWaitTimes: Bool
+    public let waitTimeURLString: String?
     public init(from decoder: Decoder) throws
-    public func encode(to encoder: Swift.Encoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
   }
   public struct MapSetting : Codable {
     public let maps: [Map]?
-    public func encode(to encoder: Swift.Encoder) throws
-    public init(from decoder: Swift.Decoder) throws
-  }
-  public struct Category : Codable, Hashable {
-    public func hash(into hasher: inout Swift.Hasher)
-    public static func == (a: PhunwareMapping.MapConfig.Category, b: PhunwareMapping.MapConfig.Category) -> Swift.Bool
-    public func encode(to encoder: Swift.Encoder) throws
-    public var hashValue: Swift.Int {
-      get
-    }
-    public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
   public struct RouteUIConfig : Codable {
-    public func encode(to encoder: Swift.Encoder) throws
-    public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
   public struct OffRouteConfig : Codable {
-    public func encode(to encoder: Swift.Encoder) throws
-    public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
   public struct RouteArrivalConfig : Codable {
-    public func encode(to encoder: Swift.Encoder) throws
-    public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: any Swift.Encoder) throws
+    public init(from decoder: any Swift.Decoder) throws
   }
   public let languages: [Language]?
-  public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public struct DeferredMappingDeeplink {
 }
@@ -1612,104 +1144,19 @@ extension MappingDeeplinkNavigable {
   public func followDeeplink(_ deeplink: MappingDeeplink, completion: @escaping (Bool) -> Void = { _ in })
   public func followPendingMappingDeeplinkIfAvailable()
 }
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class POICell : UITableViewCell {
-  @_Concurrency.MainActor(unsafe) public var viewModel: POICellViewModel!
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func awakeFromNib()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func prepareForReuse()
-  @available(iOS 3.0, *)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
-}
-extension POICell : CellViewModelConfigurable {
-  @_Concurrency.MainActor(unsafe) public func configure(cellViewModel: CellViewModel)
-  @_Concurrency.MainActor(unsafe) public func configureWillDisplayCell(cellViewModel: CellViewModel)
-}
 public enum CommonError : Error {
   case internalInconsistency
   case failedHTTPStatus(code: Int)
   case unsupportedDecodableType
   case invalidURL
 }
-@_hasMissingDesignatedInitializers public class CustomPointOfInterest : Equatable, Comparable {
-  public var identifier: Int {
-    get
-  }
-  public var title: String {
-    get
-  }
-  public var subtitle: String {
-    get
-  }
-  public var image: UIImage? {
-    get
-  }
-  public var headerImageURL: URL? {
-    get
-  }
-  public var defaultHeaderImageName: String {
-    get
-  }
-  public var summary: String? {
-    get
-  }
-  public var websiteURLString: String? {
-    get
-  }
-  public var phoneNumberString: String? {
-    get
-  }
-  public var keywords: [String]? {
-    get
-  }
-  public var arrivalURL: URL? {
-    get
-  }
-  public var arrivalURLTitle: String? {
-    get
-  }
-  public var poiType: String {
-    get
-  }
-  public var floor: Floor? {
-    get
-  }
-  public var coordinate: CLLocationCoordinate2D {
-    get
-  }
-  public static func == (lhs: CustomPointOfInterest, rhs: CustomPointOfInterest) -> Bool
-  public static func < (lhs: CustomPointOfInterest, rhs: CustomPointOfInterest) -> Bool
-  @objc deinit
-}
-public enum POIEstimationMode : String {
-  case distance, time
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
-}
-public protocol BrowseViewModelDelegate : AnyObject {
-  func viewModelDidSelectSearch(_ viewModel: BrowseViewModel)
-  func viewModel(_ viewModel: BrowseViewModel, didSelect category: MapConfig.Category)
-  func viewModel(_ viewModel: BrowseViewModel, didSelect category: MapConfig.Category, otherCategories: [MapConfig.Category])
-}
-@objc public class BrowseViewModel : NSObject {
-  weak public var delegate: BrowseViewModelDelegate?
-  public init(mapLocalization: MapLocalization, managerProvider: ManagerProvider, categories: [MapConfig.Category], otherCategory: MapConfig.Category?, theme: MapTheme, maxCategoriesToShow: Int)
-  @objc deinit
-}
-extension BrowseViewModel {
-  public func handleSearchSelection()
-  public func handleCategorySelection(at indexPath: IndexPath)
-}
-@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class GradientBackgroundButton : UIButton {
-  @_Concurrency.MainActor(unsafe) public func backgroundImageGradient(for state: UIControl.State) -> Gradient?
-  @_Concurrency.MainActor(unsafe) public func setBackgroundImageGradient(_ gradient: Gradient?, withSize size: CGSize? = nil, for state: UIControl.State)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
-  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class GradientBackgroundButton : UIButton {
+  @_Concurrency.MainActor @preconcurrency public func backgroundImageGradient(for state: UIControl.State) -> Gradient?
+  @_Concurrency.MainActor @preconcurrency public func setBackgroundImageGradient(_ gradient: Gradient?, withSize size: CGSize? = nil, for state: UIControl.State)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
 public struct MapThemeConfigurator : ThemeConfiguring {
@@ -1719,39 +1166,9 @@ public struct MapThemeConfigurator : ThemeConfiguring {
   public func configureTheme() -> MapTheme
   public typealias Theme = PhunwareMapping.MapTheme
 }
-public protocol NavigationControllerMember : UIKit.UIViewController {
-  func willBecomeTopMost()
-  func didBecomeTopMost()
-  func didCancelBecomingTopMost()
-  func willBecomeTopMost(byPopping stackMember: NavigationControllerMember?)
-  func didBecomeTopMost(byPopping stackMember: NavigationControllerMember?)
-  func didCancelBecomingTopMost(byPopping stackMember: NavigationControllerMember?)
-  func willResignTopMost()
-  func didResignTopMost()
-  func didCancelResigningTopMost()
-  func willResignTopMost(byPushing stackMember: NavigationControllerMember?)
-  func didResignTopMost(byPushing stackMember: NavigationControllerMember?)
-  func didCancelResigningTopMost(byPushing stackMember: NavigationControllerMember?)
-}
-extension NavigationControllerMember {
-  public func willBecomeTopMost()
-  public func didBecomeTopMost()
-  public func didCancelBecomingTopMost()
-  public func willBecomeTopMost(byPopping stackMember: NavigationControllerMember?)
-  public func didBecomeTopMost(byPopping stackMember: NavigationControllerMember?)
-  public func didCancelBecomingTopMost(byPopping stackMember: NavigationControllerMember?)
-  public func willResignTopMost()
-  public func didResignTopMost()
-  public func didCancelResigningTopMost()
-  public func willResignTopMost(byPushing stackMember: NavigationControllerMember?)
-  public func didResignTopMost(byPushing stackMember: NavigationControllerMember?)
-  public func didCancelResigningTopMost(byPushing stackMember: NavigationControllerMember?)
-}
 public struct MapContainerSelector {
   public init(languageCode: String, mapName: String)
 }
-@available(*, deprecated, renamed: "MapContainerSelector")
-public typealias BuildingSelector = MapContainerSelector
 public typealias MapLocalizationDictionary = Dictionary<String, Dictionary<String, String>>
 public class MapLocalization {
   public init(with defaultLanguageCode: String)
@@ -1763,23 +1180,18 @@ extension MapLocalization {
     get
   }
 }
-@_hasMissingDesignatedInitializers public class RecentLocationManager {
-  public var recentLocationIdentifiers: [Int] {
-    get
-  }
-  public func storeRecentLocation(with mapPoint: MapPoint)
-  public func storeRecentLocation(with poi: PointOfInterest)
-  @objc deinit
-}
-extension PhunwareMapping.ContainerViewController.ContentContainerState : Swift.Equatable {}
-extension PhunwareMapping.ContainerViewController.ContentContainerState : Swift.Hashable {}
-extension PhunwareMapping.OffRouteViewModel.FinishResult : Swift.Equatable {}
-extension PhunwareMapping.OffRouteViewModel.FinishResult : Swift.Hashable {}
+extension PhunwareMapping.POIType : Swift.Equatable {}
+extension PhunwareMapping.POIType : Swift.Hashable {}
+extension PhunwareMapping.POIType : Swift.RawRepresentable {}
+extension PhunwareMapping.PresentationMode : Swift.Equatable {}
+extension PhunwareMapping.PresentationMode : Swift.Hashable {}
+extension PhunwareMapping.RoutingMode : Swift.Equatable {}
+extension PhunwareMapping.RoutingMode : Swift.Hashable {}
+extension PhunwareMapping.Flow : Swift.Equatable {}
+extension PhunwareMapping.Flow : Swift.Hashable {}
+extension UIKit.UIPanGestureRecognizer.VerticalDirection : Swift.Equatable {}
+extension UIKit.UIPanGestureRecognizer.VerticalDirection : Swift.Hashable {}
 extension PhunwareMapping.MeetingRoom.Status : Swift.Equatable {}
 extension PhunwareMapping.MeetingRoom.Status : Swift.Hashable {}
-extension PhunwareMapping.MapConfig.POIEstimationDisplayMode : Swift.Equatable {}
-extension PhunwareMapping.MapConfig.POIEstimationDisplayMode : Swift.Hashable {}
-extension PhunwareMapping.MapConfig.POIEstimationDisplayMode : Swift.RawRepresentable {}
-extension PhunwareMapping.POIEstimationMode : Swift.Equatable {}
-extension PhunwareMapping.POIEstimationMode : Swift.Hashable {}
-extension PhunwareMapping.POIEstimationMode : Swift.RawRepresentable {}
+extension PhunwareMapping.Category : Swift.Hashable {}
+extension PhunwareMapping.Category : Swift.RawRepresentable {}
