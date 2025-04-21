@@ -12,9 +12,10 @@ Pod::Spec.new do |spec|
   spec.framework           = 'UIKit'
   spec.cocoapods_version   = '>= 1.15.2'
 
+  spec.dependency 'PhunwareCorePlugin', '~> 1.1.0'
   spec.dependency 'PhunwareFoundation', '~> 1.1.0'
   spec.dependency 'PhunwareNetworking', '~> 1.3.0'
   spec.dependency 'PhunwareTheming', '~> 1.1.0'
-  spec.dependency 'PhunwarePermissionPriming', '~> 1.4.0'
+  spec.dependency 'PhunwarePermissionPriming/Location', '~> 1.5.0'
   spec.dependency 'PWMapKit', '~> 3.16.1'
 end
