@@ -4,95 +4,63 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Arrival.storyboardc/ArrivalViewController.nib/objects-14.0+.nib</key>
+		<key>Arrival.storyboardc/ArrivalViewController.nib</key>
 		<data>
-		fwz0O9+0WWEgMZzPFyfTmlgHkUA=
-		</data>
-		<key>Arrival.storyboardc/ArrivalViewController.nib/runtime.nib</key>
-		<data>
-		fwz0O9+0WWEgMZzPFyfTmlgHkUA=
+		TThHsms1kJEwLZfFdBYsiJd1B4s=
 		</data>
 		<key>Arrival.storyboardc/Info.plist</key>
 		<data>
 		UsGARc8on7EtgTjd/QCaOOvwols=
 		</data>
-		<key>Arrival.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib/objects-14.0+.nib</key>
+		<key>Arrival.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
 		<data>
-		FDguMG+WzWX5drRyzA+HmO7sT80=
-		</data>
-		<key>Arrival.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib/runtime.nib</key>
-		<data>
-		/wry2C9MtNyOGMUlllztQcBPTV0=
+		ZHqKu6aKge1+4OyFy5Xb9SfTKII=
 		</data>
 		<key>Assets.car</key>
 		<data>
-		xqCAMgWJtIspDZzY+9yZpUZjze8=
+		m1YU3/GRtb5M0aR98rT+rp5g8/M=
 		</data>
-		<key>Browse.storyboardc/BrowseViewController.nib/objects-14.0+.nib</key>
+		<key>Browse.storyboardc/BrowseViewController.nib</key>
 		<data>
-		nmoQzJMQGtb8crsGIG71fBsOzaY=
-		</data>
-		<key>Browse.storyboardc/BrowseViewController.nib/runtime.nib</key>
-		<data>
-		nmoQzJMQGtb8crsGIG71fBsOzaY=
+		tTEKCySd/uFlZQmDtgN6siKW848=
 		</data>
 		<key>Browse.storyboardc/Info.plist</key>
 		<data>
 		1keFmCU1tkgzZxi/lTzTKxqoOXU=
 		</data>
-		<key>Browse.storyboardc/UUG-6F-0uv-view-g5r-eE-Pat.nib/objects-14.0+.nib</key>
+		<key>Browse.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
 		<data>
-		XQpyTyeDQOGPqUfrWaZar5KzRX8=
-		</data>
-		<key>Browse.storyboardc/UUG-6F-0uv-view-g5r-eE-Pat.nib/runtime.nib</key>
-		<data>
-		t1fqBgu5L+e+QZkFYpXOOwp+vsc=
+		tXeZJQVuqQmoJuR2MsIyuaaMg+k=
 		</data>
 		<key>BuildingCell.nib</key>
 		<data>
-		gQ2hNJ70O7wZ/F8EaRi98Ccqt4s=
+		RsJai2Sacoj6FFJamUB3tQWVhLI=
 		</data>
 		<key>BuildingHeader.nib</key>
 		<data>
-		Bfq8mcxLSbmzezhDI648TBjEM38=
+		mQh6YOUex3zjkXvF0PMep7hRl1Q=
 		</data>
 		<key>BuildingSearch.storyboardc/6vk-dU-4TU-view-IWN-bf-nU7.nib</key>
 		<data>
-		4A/PJkxwUHv1YWquVYmgN3G824g=
+		jmNyxFNKa5LSpXmji5JQSyqYPyY=
 		</data>
 		<key>BuildingSearch.storyboardc/BuildingSearchViewController.nib</key>
 		<data>
-		PMvA0DN139H+nCEzqLF7FqQc/0A=
+		aGhzvyDIMVml2/AeYhLhdNx8aYo=
 		</data>
 		<key>BuildingSearch.storyboardc/Info.plist</key>
 		<data>
 		6npaLhKiTXD/84FJDmklc2/qsmE=
 		</data>
-		<key>Category.storyboardc/CategoryPOIListViewController.nib</key>
+		<key>ChipCollectionViewCell.nib</key>
 		<data>
-		0w+4RwPk5CF8fXgrPbMFk7huwNw=
+		tD730JDUe7u53ROXCKGete9/Isg=
 		</data>
-		<key>Category.storyboardc/Info.plist</key>
+		<key>Detail.storyboardc/7jA-En-BNz-view-QVr-Tk-j1e.nib</key>
 		<data>
-		HvxDJWvx78eTeE2fYN3mtpABoRs=
+		//NtggfuXvMg49FfGayjUuz15pE=
 		</data>
-		<key>Category.storyboardc/v9V-FS-h98-view-Awr-9Y-6Wh.nib</key>
-		<data>
-		pASwEkuRTg/cpq0jyZiJBCsaacg=
-		</data>
-		<key>Detail.storyboardc/7jA-En-BNz-view-QVr-Tk-j1e.nib/objects-14.0+.nib</key>
-		<data>
-		WRx1xH9BySgvWL0b3khVGzJBz9w=
-		</data>
-		<key>Detail.storyboardc/7jA-En-BNz-view-QVr-Tk-j1e.nib/runtime.nib</key>
-		<data>
-		MuKNaQPnShyEDSduq6n5ZaASSOY=
-		</data>
-		<key>Detail.storyboardc/DetailViewController.nib/objects-14.0+.nib</key>
-		<data>
-		DUYj6ESzgiwi0s43uuex/TL1WYw=
-		</data>
-		<key>Detail.storyboardc/DetailViewController.nib/runtime.nib</key>
+		<key>Detail.storyboardc/DetailViewController.nib</key>
 		<data>
 		DUYj6ESzgiwi0s43uuex/TL1WYw=
 		</data>
@@ -102,7 +70,7 @@
 		</data>
 		<key>Directions.storyboardc/DirectionListViewController.nib</key>
 		<data>
-		4ShB5+nlbydLLA0nSv1MKcerWAo=
+		0l+SbC6ocJ/8HPuQ65QmxP1GzyQ=
 		</data>
 		<key>Directions.storyboardc/Info.plist</key>
 		<data>
@@ -110,31 +78,35 @@
 		</data>
 		<key>Directions.storyboardc/lvq-ER-bOr-view-4PF-DU-62l.nib</key>
 		<data>
-		TiPw/5O/8w9k0uMIkb2tR5NeyPU=
+		zhfv0KtX4pVjU2zwpCebsB7ujMg=
 		</data>
-		<key>GenericPicker.storyboardc/GenericPickerViewController.nib/objects-14.0+.nib</key>
+		<key>FeaturedList.storyboardc/FeaturedListViewController.nib</key>
 		<data>
-		Lvktb0DRIDcW5Uelyb76QkBK1yo=
+		zgkhh6EJ+kgTywaQu2EziXzbRds=
 		</data>
-		<key>GenericPicker.storyboardc/GenericPickerViewController.nib/runtime.nib</key>
+		<key>FeaturedList.storyboardc/Info.plist</key>
 		<data>
-		Lvktb0DRIDcW5Uelyb76QkBK1yo=
+		gjaGpsq2Btoizeawbbz1/J6Ce1U=
+		</data>
+		<key>FeaturedList.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
+		<data>
+		1zOvVrfS5hv4X+alNVFimPVNNQM=
+		</data>
+		<key>GenericPicker.storyboardc/GenericPickerViewController.nib</key>
+		<data>
+		FQYPAOfgDlWKT6H8pdIH0SWXQ8E=
 		</data>
 		<key>GenericPicker.storyboardc/Info.plist</key>
 		<data>
 		H0OXStT1fRRlukb2USPHWq+clmk=
 		</data>
-		<key>GenericPicker.storyboardc/gZY-JC-T4w-view-bmi-1a-G6n.nib/objects-14.0+.nib</key>
+		<key>GenericPicker.storyboardc/gZY-JC-T4w-view-bmi-1a-G6n.nib</key>
 		<data>
-		Ct/nZe2rnhMg/tjvk68kck8E8l0=
-		</data>
-		<key>GenericPicker.storyboardc/gZY-JC-T4w-view-bmi-1a-G6n.nib/runtime.nib</key>
-		<data>
-		1z8S5ibjY+6s0PZCJx92tiYhMCs=
+		Xxn4boA7ozJr56riC2AliZ1/KuM=
 		</data>
 		<key>Headers/PhunwareMapping-Swift.h</key>
 		<data>
-		yAc2nRdRgBJRGGOzmjMPNY9434w=
+		MwCIqsrJVyoYrUQanvUeaqy9fVI=
 		</data>
 		<key>Headers/PhunwareMapping.h</key>
 		<data>
@@ -142,7 +114,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		qdKKeJ+FU1JZ/fW35tBvxE+Id6w=
+		416T2rHJsu/uKLj0ZO+5Fu5eLFg=
 		</data>
 		<key>LICENSE.txt</key>
 		<data>
@@ -150,7 +122,7 @@
 		</data>
 		<key>Map.storyboardc/6St-ZC-2PS-view-Zku-mp-qRA.nib</key>
 		<data>
-		emOHWqClCxDrsaUOzOLpd+2Fe68=
+		0gX3l9Wq798bmH27H/y2+NSQlGs=
 		</data>
 		<key>Map.storyboardc/Info.plist</key>
 		<data>
@@ -160,69 +132,65 @@
 		<data>
 		i52rIEEIWp72VpmNZze38XEM3jI=
 		</data>
+		<key>MapConfig.json</key>
+		<data>
+		rGsCbgEQVsRcxqgaOhHki5gW9Pg=
+		</data>
 		<key>MapViewSelection.storyboardc/Info.plist</key>
 		<data>
 		bRQZgsaTVAm43MkOuv1JnIBDUm8=
 		</data>
-		<key>MapViewSelection.storyboardc/MapViewSelectionViewController.nib/objects-14.0+.nib</key>
+		<key>MapViewSelection.storyboardc/MapViewSelectionViewController.nib</key>
 		<data>
-		NZBAjgGhmfHTgUGRkUAElHZRit0=
+		FTLBCUtR3AnY0Hvbuytz+PVlt9Y=
 		</data>
-		<key>MapViewSelection.storyboardc/MapViewSelectionViewController.nib/runtime.nib</key>
+		<key>MapViewSelection.storyboardc/OV5-IR-eLo-view-Mxy-6R-oaU.nib</key>
 		<data>
-		NZBAjgGhmfHTgUGRkUAElHZRit0=
-		</data>
-		<key>MapViewSelection.storyboardc/OV5-IR-eLo-view-Mxy-6R-oaU.nib/objects-14.0+.nib</key>
-		<data>
-		DiUGZo1siA5P9EVtW3++VM/BlU4=
-		</data>
-		<key>MapViewSelection.storyboardc/OV5-IR-eLo-view-Mxy-6R-oaU.nib/runtime.nib</key>
-		<data>
-		5ADTAgvifSeBgSPdJ2YtyWJqb1A=
+		4+eW2GDZk1qnWt4XzV+GC8syamU=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		VcZOOLSBW3fm4kmHzmL4pVGlfFY=
+		75Y610s0D2lXhEw9mxUEXUmG6cY=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		Hg0mN/tt/q7wP/c05/Oe1qNCT7g=
+		CStWma0eqiYJ/xR4q4ls+5i0/Ac=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		+jXIeUKqSFZqWMS0JkvRi8qaQFk=
+		oi7CP165aGeCK4HqlPxbho+ooeA=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		Hg0mN/tt/q7wP/c05/Oe1qNCT7g=
+		CStWma0eqiYJ/xR4q4ls+5i0/Ac=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		7pjBXM5P3VI+QtaZx1bwcwrLUEI=
+		xAlD8T/VtBTu8rBKZ0g22jX8nwc=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		VcZOOLSBW3fm4kmHzmL4pVGlfFY=
+		75Y610s0D2lXhEw9mxUEXUmG6cY=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		+sGGiiVY42FxFGiFxHjXoBqFrKM=
+		eV2oC5MbF3/To7leSLMBH+KO3AU=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		Rba8C77HvtYz18qKvVeBkYDbsYo=
+		JoW58rraR2bEiMiy8ERgogK8b/w=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		+sGGiiVY42FxFGiFxHjXoBqFrKM=
+		eV2oC5MbF3/To7leSLMBH+KO3AU=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		633JbGvpmUnpKu0M29y5NWjvYJY=
+		nmSSQOxR/ht2QdCOiXYHeYa4opk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		JbL1Wm/8Dit4TUqwv6HGGX6EVz4=
+		k/sYF2lJyiOGjem+a6mbviMzoJI=
 		</data>
 		<key>OffRoute.storyboardc/Info.plist</key>
 		<data>
@@ -230,11 +198,11 @@
 		</data>
 		<key>OffRoute.storyboardc/OffRouteViewController.nib</key>
 		<data>
-		CFpgbsdGMrR4sZupwO8NqDQrBOI=
+		IgpG50cHCJckv26ve3i/VsfLg9M=
 		</data>
 		<key>OffRoute.storyboardc/uoZ-Qx-mV6-view-vZj-TJ-Xnb.nib</key>
 		<data>
-		NNH8vQ1WLdA6zSgusI8zQ9WVlgY=
+		1+rQD0t528AlF4bsLX5BU3aPTUk=
 		</data>
 		<key>OpenSans-Bold.ttf</key>
 		<data>
@@ -276,21 +244,13 @@
 		<data>
 		tZ6Ryxm8Zg/7470SUBtHgRlqgxI=
 		</data>
-		<key>OtherCategories.storyboardc/Info.plist</key>
-		<data>
-		40BbI5zuoZGkgpiEp5D4VNsPh9Q=
-		</data>
-		<key>OtherCategories.storyboardc/OtherCategoriesListViewController.nib</key>
-		<data>
-		Os2iYUar9iIp7/Wgiil3AyxStaw=
-		</data>
-		<key>OtherCategories.storyboardc/XJs-CL-wld-view-yKM-pc-2Hf.nib</key>
-		<data>
-		HffF/Za4JxzgcdyeU/tPxsrnCPA=
-		</data>
 		<key>POICell.nib</key>
 		<data>
-		S4WT35xkNECdunXU6nnRN5yDO8Y=
+		nsb4bX/9wcQUmBXFrx0Ie1eyZJM=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		xk+ysX8BevOdG5tmaAzdPZBIjys=
 		</data>
 		<key>RouteBuilder.storyboardc/Info.plist</key>
 		<data>
@@ -298,79 +258,95 @@
 		</data>
 		<key>RouteBuilder.storyboardc/RouteBuilderViewController.nib</key>
 		<data>
-		t/Rw+qPGUAQYKdyH4MS+h2TqYj0=
+		01P7f8ttwzsmo3WbyS7CYZv5MsM=
 		</data>
 		<key>RouteBuilder.storyboardc/lJR-ns-sxN-view-p9d-Mo-lH3.nib</key>
 		<data>
-		RxTrinCvbJ8UWGyNZI51kIp1wZo=
+		e1coZ4awR44/xoMAE7Mgy30+Vvc=
 		</data>
 		<key>Search.storyboardc/Info.plist</key>
 		<data>
 		G+sJPWVxIbtWYQNjLqAbsKaPzSg=
 		</data>
-		<key>Search.storyboardc/QVZ-OP-EvU-view-kRz-4E-Spu.nib</key>
-		<data>
-		DwJgLQnujUoOL2EjiNBLafHnVgA=
-		</data>
 		<key>Search.storyboardc/SearchViewController.nib</key>
 		<data>
-		MgjLdj+kDhChvcepxjKdxLmhMas=
+		CQMAfsTYMzGwyqBB5+tzFz9DRBg=
 		</data>
-		<key>ShareLocation.storyboardc/B0c-q9-XiT-view-Xg3-nK-tJ7.nib/objects-14.0+.nib</key>
+		<key>Search.storyboardc/tIU-wn-TJt-view-LEf-TW-R74.nib</key>
 		<data>
-		fTDEDPQFu3r8XATbl2WUHr5OwOs=
+		sdHwZK/NEcL5VUUBM6zwuQcXtuM=
 		</data>
-		<key>ShareLocation.storyboardc/B0c-q9-XiT-view-Xg3-nK-tJ7.nib/runtime.nib</key>
+		<key>SearchFilter.storyboardc/6h0-aI-XNJ-view-3it-sc-8iq.nib</key>
 		<data>
-		fTDEDPQFu3r8XATbl2WUHr5OwOs=
+		2F2V+HLu0f/HbBD68wVQP4mBlVc=
+		</data>
+		<key>SearchFilter.storyboardc/Info.plist</key>
+		<data>
+		Estyw7dhYKNJmtNTa0WFpNhSsLo=
+		</data>
+		<key>SearchFilter.storyboardc/SearchFilterViewController.nib</key>
+		<data>
+		hk1nyi7g4py7kP6plX2YWiMktNU=
+		</data>
+		<key>ShareLocation.storyboardc/B0c-q9-XiT-view-Xg3-nK-tJ7.nib</key>
+		<data>
+		eTJwgHAaPNfOhBOlRNWVZCYOQzg=
 		</data>
 		<key>ShareLocation.storyboardc/Info.plist</key>
 		<data>
 		eWRU2/GRZHEhZhYKjptYkxLkmck=
 		</data>
-		<key>ShareLocation.storyboardc/Kg7-dN-8UQ-view-opt-Oo-zCy.nib/objects-14.0+.nib</key>
+		<key>ShareLocation.storyboardc/Kg7-dN-8UQ-view-opt-Oo-zCy.nib</key>
 		<data>
-		ONT/O747to4JtV3GkgdaG7BnGCs=
+		Qe9DaqrtlIonew9Wjoi8eOgDboQ=
 		</data>
-		<key>ShareLocation.storyboardc/Kg7-dN-8UQ-view-opt-Oo-zCy.nib/runtime.nib</key>
-		<data>
-		t5dnv103T3GSofV8r0bGd/sH/EA=
-		</data>
-		<key>ShareLocation.storyboardc/ShareLocationInfoSheetViewController.nib/objects-14.0+.nib</key>
+		<key>ShareLocation.storyboardc/ShareLocationInfoSheetViewController.nib</key>
 		<data>
 		S7YDO/b8kVxFVgKkNdtaFh/Ta4E=
 		</data>
-		<key>ShareLocation.storyboardc/ShareLocationInfoSheetViewController.nib/runtime.nib</key>
+		<key>ShareLocation.storyboardc/ShareLocationViewController.nib</key>
 		<data>
-		S7YDO/b8kVxFVgKkNdtaFh/Ta4E=
-		</data>
-		<key>ShareLocation.storyboardc/ShareLocationViewController.nib/objects-14.0+.nib</key>
-		<data>
-		t86iqLuSCR31T4QIivc9c4E1Dyg=
-		</data>
-		<key>ShareLocation.storyboardc/ShareLocationViewController.nib/runtime.nib</key>
-		<data>
-		t86iqLuSCR31T4QIivc9c4E1Dyg=
+		BaWHsYOBwz3Dw+EoePB+kwVqwhE=
 		</data>
 		<key>SimpleHeader.nib</key>
 		<data>
-		ZToFqzIfjZlrJnJDvZ0aZVhV9Jk=
+		RLqsB0H5II2rTF2dM0BPa1fv+2c=
 		</data>
+		<key>en.lproj/LocalizableDefaults.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			NDYgfW/fz3868kL08/vgC4XCQ3w=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>es.lproj/LocalizableDefaults.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			lHOQtW9ab8NveyaQMosd/HiIQYQ=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>fr.lproj/LocalizableDefaults.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			h8+hun/rzUTjapL8uutwOZExLzU=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Arrival.storyboardc/ArrivalViewController.nib/objects-14.0+.nib</key>
+		<key>Arrival.storyboardc/ArrivalViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vc4Saiv2DRKERyOs2sxkhDuoDGsNcYr+Kv68azTKw3I=
-			</data>
-		</dict>
-		<key>Arrival.storyboardc/ArrivalViewController.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			vc4Saiv2DRKERyOs2sxkhDuoDGsNcYr+Kv68azTKw3I=
+			nWGpdEO8lkmcHh11odamo1qROVbpldr3KRHsvTgvUyw=
 			</data>
 		</dict>
 		<key>Arrival.storyboardc/Info.plist</key>
@@ -380,39 +356,25 @@
 			ubMks+zmyybeq7JAhwlxs8Fc0pTWg/o00uJ4aeHhvpE=
 			</data>
 		</dict>
-		<key>Arrival.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib/objects-14.0+.nib</key>
+		<key>Arrival.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XFB31Xva6coG49b3MkXebJOorNV7mD+Zso9zeLyZGQc=
-			</data>
-		</dict>
-		<key>Arrival.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			dFynpx6WtH0BChfDFM2n6ocbCJt7v+f10LXzxZ1o2Eg=
+			MO4qWSasvXbBOuNmRXDtqC8obXf5phkQCGjYOZFKG3Y=
 			</data>
 		</dict>
 		<key>Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			efdfEQMYYqiJLwe6UJ/immOXSPTvkSUWVdMWex5BI4k=
+			qZkTL0DGkR3Q1HwRcCdyv1opG4VjY9NJ4tWQCPOpajo=
 			</data>
 		</dict>
-		<key>Browse.storyboardc/BrowseViewController.nib/objects-14.0+.nib</key>
+		<key>Browse.storyboardc/BrowseViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			qeE71sYA2tRj2FdheDtPr2/CMq6Z257wraYazgW2rJ8=
-			</data>
-		</dict>
-		<key>Browse.storyboardc/BrowseViewController.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			qeE71sYA2tRj2FdheDtPr2/CMq6Z257wraYazgW2rJ8=
+			Ub3iYq8IQeHE/CI0kZ9eS89oah4QV96MGhMdqhR5o8g=
 			</data>
 		</dict>
 		<key>Browse.storyboardc/Info.plist</key>
@@ -422,46 +384,39 @@
 			hkkEJfxAGaw8Cuct2GZXQnhjqkqlDvl63+qrM4n6RW4=
 			</data>
 		</dict>
-		<key>Browse.storyboardc/UUG-6F-0uv-view-g5r-eE-Pat.nib/objects-14.0+.nib</key>
+		<key>Browse.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7hgUkj0rHU5IfAHNVjrCfbwonXFHvQLuYlEdlV9ANvs=
-			</data>
-		</dict>
-		<key>Browse.storyboardc/UUG-6F-0uv-view-g5r-eE-Pat.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			cT3+zflAXRSR8xiAL1GJsflJvW/tL+tHzP5q4Tah2+A=
+			6p2ArRj/Lf3poNVEPzxlNWeUNrN/G1tcNRyHN66BgDI=
 			</data>
 		</dict>
 		<key>BuildingCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZzEniwjKjKSjk8nMIzrT8MopzMV9Pe/L4+Vy313iBnc=
+			AHc5A1CjbT3TM6DROXDFrea0JkhhTKK5Z6/paDWZO1Q=
 			</data>
 		</dict>
 		<key>BuildingHeader.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pXZLeTlyKuQ4bFdsz89sOhuuNwvofq/j6aCfu3jxkf4=
+			2Uk8MTpdFwIQMYKoXhWAq7S6vFHZY8J6YX0mRa2I3Ow=
 			</data>
 		</dict>
 		<key>BuildingSearch.storyboardc/6vk-dU-4TU-view-IWN-bf-nU7.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lGHZKOl2TCsoSoNnTj5qbStRCEYD/Bz0nN6H1dUifzY=
+			JHUvLLNDHa/yWo5nkD3sEhF/tOlp3FGRDJpm0vVnVUg=
 			</data>
 		</dict>
 		<key>BuildingSearch.storyboardc/BuildingSearchViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			8hNYR9bC454yLxtwMJWbp8nkqubOimBsWVouZGGBaYE=
+			hw3Uuov6h1gSkgajr8+MQSsf/H4WjzaR5rYiOSo9RoU=
 			</data>
 		</dict>
 		<key>BuildingSearch.storyboardc/Info.plist</key>
@@ -471,49 +426,21 @@
 			Egn1qBGe8Qst6pewusn2nzuvpTcfjp58Hpd5BP7h6eQ=
 			</data>
 		</dict>
-		<key>Category.storyboardc/CategoryPOIListViewController.nib</key>
+		<key>ChipCollectionViewCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9OkC4MslDkJ+WWoDwZSUrTQ9wXSpdOjSEKF/O7Bccu0=
+			8D2X7qHi465YMuA5vWqzIJSrbmYABSIo0ah2xJRaAjM=
 			</data>
 		</dict>
-		<key>Category.storyboardc/Info.plist</key>
+		<key>Detail.storyboardc/7jA-En-BNz-view-QVr-Tk-j1e.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			S1egPLPusjmmlbHN3a2XOCGijyzD/ASlyQXciIFzpzU=
+			V9ltqvUc7YxX4jiRTIYQqcV90ctn4L9dwBPXpRF7E8k=
 			</data>
 		</dict>
-		<key>Category.storyboardc/v9V-FS-h98-view-Awr-9Y-6Wh.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			TbW1Hm8s3XbbsmBWbXoTX/J4A3Xy+A1uMc2UrKgatWg=
-			</data>
-		</dict>
-		<key>Detail.storyboardc/7jA-En-BNz-view-QVr-Tk-j1e.nib/objects-14.0+.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			XTS7uC30ufARmjNTQxuEne7is//hrpzVjVS/Ngiz5o8=
-			</data>
-		</dict>
-		<key>Detail.storyboardc/7jA-En-BNz-view-QVr-Tk-j1e.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			pb6HQlbF2rwoTfvi0fDPhw2LHzrJrW2jrdiMf6/HKg0=
-			</data>
-		</dict>
-		<key>Detail.storyboardc/DetailViewController.nib/objects-14.0+.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			TlUhVfb8qVYE8fIUaa3YjHYPTQGKPsmmi23zD5rMmX4=
-			</data>
-		</dict>
-		<key>Detail.storyboardc/DetailViewController.nib/runtime.nib</key>
+		<key>Detail.storyboardc/DetailViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
@@ -531,7 +458,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			OpOaLuvDn6kVxpDokdhaAWjB8QyS+tLbmaC4nDI4Mn8=
+			UqlXiPsYizBElV9N0ZYTV3DctVRhm+Wh6J9askaF/A0=
 			</data>
 		</dict>
 		<key>Directions.storyboardc/Info.plist</key>
@@ -545,21 +472,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			b4CVVDmZxaA+eguBafJF49tyEzvF+OMdBuF7cJnnZoI=
+			iwtOlOx2JbO6Kc2I6xcaweryjER0bNyU+PvaAHkJMKg=
 			</data>
 		</dict>
-		<key>GenericPicker.storyboardc/GenericPickerViewController.nib/objects-14.0+.nib</key>
+		<key>FeaturedList.storyboardc/FeaturedListViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			t+4eYXu36klyy/0oe9i3nu/lKvz//pT0Q63GQeOwp10=
+			1Cm77OPUKf+WrzYrRZca0jhfD9dfcfJObggHQhna1TU=
 			</data>
 		</dict>
-		<key>GenericPicker.storyboardc/GenericPickerViewController.nib/runtime.nib</key>
+		<key>FeaturedList.storyboardc/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			t+4eYXu36klyy/0oe9i3nu/lKvz//pT0Q63GQeOwp10=
+			rYEhxEl3ZtoB1YFTvPdVg51eGrufPj9UGTw2NTJzBCM=
+			</data>
+		</dict>
+		<key>FeaturedList.storyboardc/Y6W-OH-hqX-view-5EZ-qb-Rvc.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9rZ3SdWgkiNBllC2BeJQ8ZKLlFo66dINhxmLbD8DDo0=
+			</data>
+		</dict>
+		<key>GenericPicker.storyboardc/GenericPickerViewController.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			mtAhpPX+D/c2qZQwo0+M4ILA/MmRe6TXv2it60J418U=
 			</data>
 		</dict>
 		<key>GenericPicker.storyboardc/Info.plist</key>
@@ -569,25 +510,18 @@
 			xApiAlvfAHRgGlWEkHrlktFUAHLnn6GC3PfLnaOc640=
 			</data>
 		</dict>
-		<key>GenericPicker.storyboardc/gZY-JC-T4w-view-bmi-1a-G6n.nib/objects-14.0+.nib</key>
+		<key>GenericPicker.storyboardc/gZY-JC-T4w-view-bmi-1a-G6n.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			p6O+SUDY3FwNZvLj1xYYTtLP4gk6nQZPIdMEckjNjyw=
-			</data>
-		</dict>
-		<key>GenericPicker.storyboardc/gZY-JC-T4w-view-bmi-1a-G6n.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			8F1WqRKPbfKcl0jQEgbtIFWRM54fHZeTdfhQt3CjRVA=
+			kyyYhys6JGPju/tj8cmOHyUQVVWb3eDX2Xf9yCqyMlU=
 			</data>
 		</dict>
 		<key>Headers/PhunwareMapping-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			TmW4UQGgovofw3jA9J1Hy6EFRxGWXrRlB48x3HXLbT4=
+			zj7VJkMjpAL8ksDOPoTxVuQZf7ZnEBuPnGEGxMt6XhE=
 			</data>
 		</dict>
 		<key>Headers/PhunwareMapping.h</key>
@@ -608,7 +542,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PbQFNhqt2bN9AD5dKB5z1mE0dRViH4OXhAmIFXOQTGQ=
+			E3ETOQy/f9Bu8nBV5999Z/niCqKPJgoVPT/lceG/y4I=
 			</data>
 		</dict>
 		<key>Map.storyboardc/Info.plist</key>
@@ -625,6 +559,13 @@
 			fATapw7ac8InCTQblJWoCkfEsFf5oKkakWayL3vNsRQ=
 			</data>
 		</dict>
+		<key>MapConfig.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			46ZpQyVDMTF6wR/2r8bfUYieSCuJ+Du+p8tMdVZisps=
+			</data>
+		</dict>
 		<key>MapViewSelection.storyboardc/Info.plist</key>
 		<dict>
 			<key>hash2</key>
@@ -632,109 +573,95 @@
 			HdK1xFcSINi23hg9vK9rZANDXWGBQ1Yk3onj39o25s0=
 			</data>
 		</dict>
-		<key>MapViewSelection.storyboardc/MapViewSelectionViewController.nib/objects-14.0+.nib</key>
+		<key>MapViewSelection.storyboardc/MapViewSelectionViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			s9/IMJCNjL1HNhInn1q8Su2EG2Rhjj8cvtEK/Zsr1UU=
+			ljjQf13gic3VsMD3PBEB8fogSmfv3yAr6oPibKO4ZA8=
 			</data>
 		</dict>
-		<key>MapViewSelection.storyboardc/MapViewSelectionViewController.nib/runtime.nib</key>
+		<key>MapViewSelection.storyboardc/OV5-IR-eLo-view-Mxy-6R-oaU.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			s9/IMJCNjL1HNhInn1q8Su2EG2Rhjj8cvtEK/Zsr1UU=
-			</data>
-		</dict>
-		<key>MapViewSelection.storyboardc/OV5-IR-eLo-view-Mxy-6R-oaU.nib/objects-14.0+.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			EzI7ei4IkPZIiozIW32aOmjq2EoZ4r6xiKgY0VUfxYg=
-			</data>
-		</dict>
-		<key>MapViewSelection.storyboardc/OV5-IR-eLo-view-Mxy-6R-oaU.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			NA/0WCdgc3+uAQfpVmzy0/RLW4SZC/XRnfLr8AQJkOU=
+			sSOUa9ufRncesdDnRgVtSEC0pF6jTX0zoiSTYbuh0uo=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EU6SdMID09KsXiQpp526c9dL85frb2xdpDUtlbYflCY=
+			QyI4EwQ4p4yJ9ApCnFliF+kwxvNgrYM5wb6YyL8wgdo=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Hja2qg7PPgbXMgHVE7E3CguxMPjka9lw0NF1O4ON9ng=
+			3nLYeQwePpavWuLgszOZ1VApivHuagh2VuTqZlPOPJM=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			C+1Dzj2JHjytZIVA4Mv53hrhv3KKv7lbWAG3EBIXDWY=
+			rYNWyKm0Ww4gHwTIm3nLB3CUfYUAcRbZAxbxLYOgMsI=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Hja2qg7PPgbXMgHVE7E3CguxMPjka9lw0NF1O4ON9ng=
+			3nLYeQwePpavWuLgszOZ1VApivHuagh2VuTqZlPOPJM=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Yy9yccF0d8LHKlQQXQv6hjVJ1hcrOFbTNDNslNkKD/E=
+			f6TXTBpHefNNf4VboguK+J7eQGKE+spViWn7a1zpYaA=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EU6SdMID09KsXiQpp526c9dL85frb2xdpDUtlbYflCY=
+			QyI4EwQ4p4yJ9ApCnFliF+kwxvNgrYM5wb6YyL8wgdo=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sVpnv1QuRhok9xx9h4P8UveoCMMq4KvoKUyIrLcxVNo=
+			DXxIJL8/AgEjE2+LtaS3lLibOu2Fp4a3Ew3bQlqtHtg=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			j86QY+TqN7YJbvxNLR+mqtP3zYqRzOYX6WfoXbIqdCU=
+			vozuKa8IBgSFyO4B0PkLsFjgI7TE2fJFYgKCh7s/xT8=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sVpnv1QuRhok9xx9h4P8UveoCMMq4KvoKUyIrLcxVNo=
+			DXxIJL8/AgEjE2+LtaS3lLibOu2Fp4a3Ew3bQlqtHtg=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hdA4iPS8BXYijLcw4SW6niPb7MRqfd32EkPleMVJkd4=
+			jKWUJMosSbLQ0aRq2XNq59B6sDVK0FMNAdewJS+kcP4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			s+d8ZF6sUQsNf9Uv4LEQnUMvejqZl5rD2aVHWPYP1f4=
+			zYU2lrvR1F5H6TkAkdvnA0v47DH4cXx5X75uhQcVUrg=
 			</data>
 		</dict>
 		<key>OffRoute.storyboardc/Info.plist</key>
@@ -748,14 +675,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yvOmeKnsKLxy7rzmUXTFOc4G11ACt7ee7anGQJOqSOE=
+			1Jf7gfD1/kz/8zcAE3kH9vZvhwfLxkDUNg/KgdkHyJ0=
 			</data>
 		</dict>
 		<key>OffRoute.storyboardc/uoZ-Qx-mV6-view-vZj-TJ-Xnb.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			e+PQSz25Kh3p4OaEPeIArYRfxhS2PI+rLj+1HQPX6Pg=
+			RRNIPd7QJ4AptwsEhcY6qyi4FTzBZXszJjjApmaMHbs=
 			</data>
 		</dict>
 		<key>OpenSans-Bold.ttf</key>
@@ -828,32 +755,18 @@
 			x0BBOhxZKG5CpJRnhEqZCBm6N/eO9ofSFYHpQXCAVdU=
 			</data>
 		</dict>
-		<key>OtherCategories.storyboardc/Info.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			22pJ3mHyFYPEmAJHIHxoIwQ9t3M4HMifYzHkwtbRcdU=
-			</data>
-		</dict>
-		<key>OtherCategories.storyboardc/OtherCategoriesListViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			CXnbC8NOC4ZBYKRbkLSDRLrSX0mtDucU2/eM3wbwaO8=
-			</data>
-		</dict>
-		<key>OtherCategories.storyboardc/XJs-CL-wld-view-yKM-pc-2Hf.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Xz/QihsUlx6G5z19oJtsy4oDLBqsU6d1sLYIZKltBEw=
-			</data>
-		</dict>
 		<key>POICell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			a0wTKVzENZG1RL7q0xaDBKdDh1HF0A9uDtn3tlxYjcM=
+			0yZJWJmZ03Owk6cz6TgbqCXm0HHWWI6O3ZM93hiIzA4=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LcI268ejdYbqRfPC5rNr2NoGQyYSEMyL3mWSpWk3Yi0=
 			</data>
 		</dict>
 		<key>RouteBuilder.storyboardc/Info.plist</key>
@@ -867,14 +780,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UKRPZygRn11uhvmNV3tNUd3xNatXAqXFBtGbdlTK0nI=
+			YQ2op9j6jP3UWwb7uwnTNT+y8kkoaMPOoeiKT5W2JBk=
 			</data>
 		</dict>
 		<key>RouteBuilder.storyboardc/lJR-ns-sxN-view-p9d-Mo-lH3.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			f7zDChepGHUsSHuaYLdHTkjURr7Evo4NKzv3eRve2nI=
+			EUkYLFJwhEc/vzL5dqGjsSzcS063G6lQojB4+koRbTs=
 			</data>
 		</dict>
 		<key>Search.storyboardc/Info.plist</key>
@@ -884,32 +797,46 @@
 			5FlYgpV3sxSMnQn0dutGsd+YJb+S/ZO+2c1Kg/Z+e8g=
 			</data>
 		</dict>
-		<key>Search.storyboardc/QVZ-OP-EvU-view-kRz-4E-Spu.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			o/dQzQlBeomVG6fIw5qIIm1QuXsFTWaYK6TFgJxBDE4=
-			</data>
-		</dict>
 		<key>Search.storyboardc/SearchViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WFRLjxs9OOQE7bAtp1Rrp7svgLo2IBaRrHGEjQNZnPw=
+			BDytTITvxkU3/aNZBMg23aWvo0QmZ3KqU9acQN6dTwM=
 			</data>
 		</dict>
-		<key>ShareLocation.storyboardc/B0c-q9-XiT-view-Xg3-nK-tJ7.nib/objects-14.0+.nib</key>
+		<key>Search.storyboardc/tIU-wn-TJt-view-LEf-TW-R74.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FPDfqTbBz23qwJFPlJKuGLnZUvm2FAg0s8rYaf8OBmQ=
+			LeB3r8o7y44WYgK0AOUbZBK8/hVP/7StFDjLOLKLRC4=
 			</data>
 		</dict>
-		<key>ShareLocation.storyboardc/B0c-q9-XiT-view-Xg3-nK-tJ7.nib/runtime.nib</key>
+		<key>SearchFilter.storyboardc/6h0-aI-XNJ-view-3it-sc-8iq.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FPDfqTbBz23qwJFPlJKuGLnZUvm2FAg0s8rYaf8OBmQ=
+			d+3A5vQkeCX0IlZBA8KtVOxiUCHbn3APGp/DDaOwJBg=
+			</data>
+		</dict>
+		<key>SearchFilter.storyboardc/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			13Sw+TnX4d3P69HISTtJl5gFVKQ8H6oRLiVjD/BrNG8=
+			</data>
+		</dict>
+		<key>SearchFilter.storyboardc/SearchFilterViewController.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6Wt9gMCNTPkK8opN1MuECevi+NMnr/dsz8Qi41R4AQk=
+			</data>
+		</dict>
+		<key>ShareLocation.storyboardc/B0c-q9-XiT-view-Xg3-nK-tJ7.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Krl9vmKRzu1J0aY9Mb4EyFAlGTB7b86gETv3JDD6gaQ=
 			</data>
 		</dict>
 		<key>ShareLocation.storyboardc/Info.plist</key>
@@ -919,54 +846,60 @@
 			VLDsDjMQ99rF//heuZYJalVva0tblJOYz3zWtFU79+M=
 			</data>
 		</dict>
-		<key>ShareLocation.storyboardc/Kg7-dN-8UQ-view-opt-Oo-zCy.nib/objects-14.0+.nib</key>
+		<key>ShareLocation.storyboardc/Kg7-dN-8UQ-view-opt-Oo-zCy.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			IXl2KHC1ZJ9eBfz6OUbMqwWffgON81x0W+RS0XpW5Uo=
+			4m4sfPrwYjy6Gd07vYbNRgh7PxFRBYNsz7VWXjm7VUo=
 			</data>
 		</dict>
-		<key>ShareLocation.storyboardc/Kg7-dN-8UQ-view-opt-Oo-zCy.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			MIeE2QfEZozBI7OIBm7YWQi2zFd/gPDp+psHrX0kM8s=
-			</data>
-		</dict>
-		<key>ShareLocation.storyboardc/ShareLocationInfoSheetViewController.nib/objects-14.0+.nib</key>
+		<key>ShareLocation.storyboardc/ShareLocationInfoSheetViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			a20jATFN4ACmpDST0Omzrk7+li+iL3lCbHh2stpjmHk=
 			</data>
 		</dict>
-		<key>ShareLocation.storyboardc/ShareLocationInfoSheetViewController.nib/runtime.nib</key>
+		<key>ShareLocation.storyboardc/ShareLocationViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			a20jATFN4ACmpDST0Omzrk7+li+iL3lCbHh2stpjmHk=
-			</data>
-		</dict>
-		<key>ShareLocation.storyboardc/ShareLocationViewController.nib/objects-14.0+.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			DbdVen1izcZULF9c33izM+f8V/D6i9l5d6FGw9mXJ8M=
-			</data>
-		</dict>
-		<key>ShareLocation.storyboardc/ShareLocationViewController.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			DbdVen1izcZULF9c33izM+f8V/D6i9l5d6FGw9mXJ8M=
+			BeDkJI4xOyfAFUY7LlsrUX4FiEMs6PO8VTtpzM29X90=
 			</data>
 		</dict>
 		<key>SimpleHeader.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			x4TXeqGHIQintAtGgaAfOL3q/gpGKxR9hlpDYCX05rw=
+			QPfRpkCsmT/T10C3R+4pUQxBoz+IvuxzyRrbJYzIv8k=
 			</data>
+		</dict>
+		<key>en.lproj/LocalizableDefaults.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			EF2WfpxdCAC2+mradIDJWZWR2DTcUOunuh0qwMPoRZI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>es.lproj/LocalizableDefaults.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			fnbtD57e23yIeTIzGZtUQ+ikX6EGNHz+itI+3gYRJDY=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>fr.lproj/LocalizableDefaults.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DD6SyMjW9zdDsbu7hV7bmhGG5XXFMDzDhFeeErsBaYE=
+			</data>
+			<key>optional</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>rules</key>

@@ -1,0 +1,329 @@
+{
+  "languages": [
+    {
+      "code": "en",
+      "displayText": "English",
+      "stringsFile": "strings_en"
+    },
+    {
+      "code": "es",
+      "displayText": "Español",
+      "stringsFile": "strings_es"
+    }
+  ],
+  "mapSettings": {
+    "maps": [
+      {
+        "mapName": "thomas",
+        "buildingConfigs": [
+          {
+            "buildingID": 117579,
+            "languageCode": "en",
+            "onCampusGeozoneIds": [
+              4838,
+              4840,
+              4841,
+              4846,
+              4842
+            ],
+            "featured": {
+              "title": "Discover Phoenix Children's Hospital",
+              "items": [
+                {
+                  "id": "welcome-tour",
+                  "title": "Welcome Tour",
+                  "subtitle": "Key stops for your visit",
+                  "imageURL": "https://cme3-api.phunware.com/v3.0/assets/Cbe5cf894-a494-4ec9-884b-d7af5ddf7464/img_welcome-tour.png",
+                  "pois": [
+                    {
+                      "id": "60703651",
+                      "title": "Main Lobby",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/Cbe5cf894-a494-4ec9-884b-d7af5ddf7464/img_main-lobby.png"
+                    },
+                    {
+                      "id": "60702484",
+                      "title": "Family Lounge",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/Cbe5cf894-a494-4ec9-884b-d7af5ddf7464/img_family-lounge.png"
+                    },
+                    {
+                      "id": "60703708",
+                      "title": "Cafeteria Entrance",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/Cbe5cf894-a494-4ec9-884b-d7af5ddf7464/img_cafeteria.png"
+                    },
+                    {
+                      "id": "60703777",
+                      "title": "Vending Machines",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/Cbe5cf894-a494-4ec9-884b-d7af5ddf7464/img_vending-machines.png"
+                    },
+                    {
+                      "id": "60703665",
+                      "title": "Gift Shop",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/Cbe5cf894-a494-4ec9-884b-d7af5ddf7464/img_gift-shop.png"
+                    },
+                    {
+                      "id": "60703686",
+                      "title": "Retail Pharmacy",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/Cbe5cf894-a494-4ec9-884b-d7af5ddf7464/img_retail-pharmacy.png"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "buildingID": 118134,
+            "languageCode": "es",
+            "onCampusGeozoneIds": [
+              4838,
+              4841
+            ],
+            "featured": {
+              "title": "Descubra Phoenix Children's Hospital",
+              "items": [
+                {
+                  "id": "welcome-tour",
+                  "title": "Tour de Bienvenida",
+                  "subtitle": "Paradas claves para tu visita",
+                  "imageURL": "https://cme3-api.phunware.com/v3.0/assets/Cbe5cf894-a494-4ec9-884b-d7af5ddf7464/img_welcome-tour.png",
+                  "pois": [
+                    {
+                      "id": "60795608",
+                      "title": "Vestíbulo Principal",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/Cbe5cf894-a494-4ec9-884b-d7af5ddf7464/img_main-lobby.png"
+                    },
+                    {
+                      "id": "60796075",
+                      "title": "Sala Familiar",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/Cbe5cf894-a494-4ec9-884b-d7af5ddf7464/img_family-lounge.png"
+                    },
+                    {
+                      "id": "60795665",
+                      "title": "Entrada a la Cafetería",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/Cbe5cf894-a494-4ec9-884b-d7af5ddf7464/img_cafeteria.png"
+                    },
+                    {
+                      "id": "60795734",
+                      "title": "Máquinas Expendedoras",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/Cbe5cf894-a494-4ec9-884b-d7af5ddf7464/img_vending-machines.png"
+                    },
+                    {
+                      "id": "60795622",
+                      "title": "Tienda de Regalos",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/Cbe5cf894-a494-4ec9-884b-d7af5ddf7464/img_gift-shop.png"
+                    },
+                    {
+                      "id": "60795643",
+                      "title": "Farmacia",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/Cbe5cf894-a494-4ec9-884b-d7af5ddf7464/img_retail-pharmacy.png"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "offCampusGeofenceMeters": 300,
+        "lat": 33.478743,
+        "long": -112.040838,
+        "iOSInitialZoomLatDelta": 0.0015,
+        "iOSInitialZoomLongDelta": 0.0015,
+        "iOSPOIZoomLatDelta": 0.00025,
+        "iOSPOIZoomLongDelta": 0.00025,
+        "androidInitialZoomLevel": 19,
+        "androidPOIZoomLevel": 21,
+        "routeSnappingTolerance": "toleranceHigh",
+        "enableManagedCompass": true,
+        "enableHomeToVenue": true,
+        "enableBlueDotLocation": true,
+        "enableMeetingRoomStatus": false,
+        "meetingRoomStatusRefreshIntervalMilliSeconds": 60000,
+        "enableLandmarkBasedRouting": true,
+        "enableDisplayPOIsByDistance": true,
+        "poiListDistanceDisplayMode": "distance",
+        "poiDetailDistanceDisplayMode": "distance",
+        "routeSummaryDistanceDisplayMode": "distance",
+        "travelTimeMetersPerSecond": 1.4,
+        "enableAccessibleRoutesByDefault": false
+      },
+      {
+        "mapName": "arrowhead",
+        "buildingConfigs": [
+          {
+            "buildingID": 139177,
+            "languageCode": "en",
+            "onCampusGeozoneIds": [],
+            "featured": {
+              "title": "Discover Phoenix Children's Hospital",
+              "items": [
+                {
+                  "id": "welcome-tour",
+                  "title": "Welcome Tour",
+                  "subtitle": "Key stops for your visit",
+                  "imageURL": "https://cme3-api.phunware.com/v3.0/assets/C31c9cfa5-6df7-4f34-acdb-a30746ae791c/img_welcome-tour.png",
+                  "pois": [
+                    {
+                      "id": "75008905",
+                      "title": "Main Lobby",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/C31c9cfa5-6df7-4f34-acdb-a30746ae791c/img_main-lobby.png"
+                    },
+                    {
+                      "id": "75019542",
+                      "title": "Family Lounge",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/C31c9cfa5-6df7-4f34-acdb-a30746ae791c/img_family-lounge.png"
+                    },
+                    {
+                      "id": "75026791",
+                      "title": "Cafeteria",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/C31c9cfa5-6df7-4f34-acdb-a30746ae791c/img_cafeteria.png"
+                    },
+                    {
+                      "id": "75026790",
+                      "title": "Waiting Area",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/C31c9cfa5-6df7-4f34-acdb-a30746ae791c/img_waiting-area.png"
+                    },
+                    {
+                      "id": "75042453",
+                      "title": "Gift Shop",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/C31c9cfa5-6df7-4f34-acdb-a30746ae791c/img_gift-shop.png"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "buildingID": 139387,
+            "languageCode": "es",
+            "onCampusGeozoneIds": [],
+            "featured": {
+              "title": "Descubra Phoenix Children's Hospital",
+              "items": [
+                {
+                  "id": "welcome-tour",
+                  "title": "Tour de Bienvenida",
+                  "subtitle": "Paradas claves para tu visita",
+                  "imageURL": "https://cme3-api.phunware.com/v3.0/assets/C31c9cfa5-6df7-4f34-acdb-a30746ae791c/img_welcome-tour.png",
+                  "pois": [
+                    {
+                      "id": "75377711",
+                      "title": "Vestíbulo Principal",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/C31c9cfa5-6df7-4f34-acdb-a30746ae791c/img_main-lobby.png"
+                    },
+                    {
+                      "id": "75377767",
+                      "title": "Sala Familiar",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/C31c9cfa5-6df7-4f34-acdb-a30746ae791c/img_family-lounge.png"
+                    },
+                    {
+                      "id": "75377714",
+                      "title": "Cafetería",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/C31c9cfa5-6df7-4f34-acdb-a30746ae791c/img_cafeteria.png"
+                    },
+                    {
+                      "id": "75377752",
+                      "title": "Área de Espera",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/C31c9cfa5-6df7-4f34-acdb-a30746ae791c/img_waiting-area.png"
+                    },
+                    {
+                      "id": "75377728",
+                      "title": "Tienda de Regalos",
+                      "imageURL": "https://cme3-api.phunware.com/v3.0/assets/C31c9cfa5-6df7-4f34-acdb-a30746ae791c/img_gift-shop.png"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "offCampusGeofenceMeters": 300,
+        "lat": 33.657097,
+        "long": -112.201296,
+        "iOSInitialZoomLatDelta": 0.0015,
+        "iOSInitialZoomLongDelta": 0.0015,
+        "iOSPOIZoomLatDelta": 0.00025,
+        "iOSPOIZoomLongDelta": 0.00025,
+        "androidInitialZoomLevel": 19,
+        "androidPOIZoomLevel": 21,
+        "routeSnappingTolerance": "toleranceHigh",
+        "enableManagedCompass": true,
+        "enableHomeToVenue": true,
+        "enableBlueDotLocation": true,
+        "enableMeetingRoomStatus": false,
+        "meetingRoomStatusRefreshIntervalMilliSeconds": 60000,
+        "enableLandmarkBasedRouting": true,
+        "enableDisplayPOIsByDistance": true,
+        "poiListDistanceDisplayMode": "distance",
+        "poiDetailDistanceDisplayMode": "distance",
+        "routeSummaryDistanceDisplayMode": "distance",
+        "travelTimeMetersPerSecond": 1.4,
+        "enableAccessibleRoutesByDefault": false
+      }
+    ]
+  },
+  "categories": [
+    "medical-services",
+    "restrooms",
+    "dining",
+    "elevators-escalators",
+    "parking",
+    "reception",
+    "information",
+    "shopping",
+    "entrances",
+    "conference-rooms",
+    "atm",
+    "business-centers",
+    "pharmacy",
+    "seating-areas",
+    "chapels",
+    "registration",
+    "library",
+    "stairs",
+    "charging-stations",
+    "nursing-rooms",
+    "exhibits",
+    "laundry",
+    "status-boards",
+    "coffee",
+    "emergency",
+    "education",
+    "departments",
+    "vending_machine"
+  ],
+  "iOSOffRouteConfig": {
+    "arrivalThreshold": 4,
+    "minOffRouteDistanceThreshold": 9,
+    "maxOffRouteDistanceThreshold": 11,
+    "maxTimeThresholdSeconds": 5,
+    "alertGracePeriodSeconds": 10
+  },
+  "androidOffRouteConfig": {
+    "minOffRouteDistanceThreshold": 5,
+    "maxOffRouteDistanceThreshold": 9,
+    "offRouteTimeThresholdMilliseconds": 5000,
+    "offRouteIdleTimeThresholdMilliseconds": 20000,
+    "alertGracePeriodMilliSeconds": 10000
+  },
+  "iosRouteUIConfig": {
+    "routeStrokeColor": "#254297FF",
+    "directionFillColor": "#254297FF",
+    "directionStrokeColor": "#254297FF",
+    "instructionFillColor": "#254297FF",
+    "routeStrokeWidth": 4,
+    "directionStrokeWidth": 4,
+    "instructionStrokeWidth": 4,
+    "joinPointColor": "#254297FF",
+    "showJoinPoint": false
+  },
+  "routeUiConfig": {
+    "maneuverColor": "00693f",
+    "maneuverDirectionColor": "00693f",
+    "routeColor": "00693f",
+    "maneuverStrokeWidth": 10,
+    "maneuverDirectionStrokeWidth": 10,
+    "routeStrokeWidth": 10
+  },
+  "routeArrivalConfig": {
+    "arrivalThreshold": 5
+  }
+}
