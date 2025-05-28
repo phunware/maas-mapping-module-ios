@@ -4653,7 +4653,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(dynamicLinkURL:matchingURLString:)",
+            "printedName": "init(universalLinkURL:matchingURLString:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -4691,8 +4691,8 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:15PhunwareMapping0B8DeeplinkO14dynamicLinkURL17matchingURLStringACSg10Foundation0F0V_SSSgtcfc",
-            "mangledName": "$s15PhunwareMapping0B8DeeplinkO14dynamicLinkURL17matchingURLStringACSg10Foundation0F0V_SSSgtcfc",
+            "usr": "s:15PhunwareMapping0B8DeeplinkO16universalLinkURL17matchingURLStringACSg10Foundation0F0V_SSSgtcfc",
+            "mangledName": "$s15PhunwareMapping0B8DeeplinkO16universalLinkURL17matchingURLStringACSg10Foundation0F0V_SSSgtcfc",
             "moduleName": "PhunwareMapping",
             "declAttributes": [
               "AccessControl",
@@ -4733,6 +4733,41 @@
             "declAttributes": [
               "AccessControl",
               "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "url",
+            "printedName": "url(withUniversalLinkDomain:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.URL?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:15PhunwareMapping0B8DeeplinkO3url23withUniversalLinkDomain10Foundation3URLVSgSS_tF",
+            "mangledName": "$s15PhunwareMapping0B8DeeplinkO3url23withUniversalLinkDomain10Foundation3URLVSgSS_tF",
+            "moduleName": "PhunwareMapping",
+            "declAttributes": [
+              "AccessControl"
             ],
             "funcSelfKind": "NonMutating"
           }
@@ -8008,7 +8043,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(Swift.Result<Foundation.URL, any Swift.Error>) -> ()",
+                "printedName": "(Swift.Result<PhunwareMapping.ShareLocationURLs, any Swift.Error>) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -8018,13 +8053,13 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Result",
-                    "printedName": "Swift.Result<Foundation.URL, any Swift.Error>",
+                    "printedName": "Swift.Result<PhunwareMapping.ShareLocationURLs, any Swift.Error>",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "URL",
-                        "printedName": "Foundation.URL",
-                        "usr": "s:10Foundation3URLV"
+                        "name": "ShareLocationURLs",
+                        "printedName": "PhunwareMapping.ShareLocationURLs",
+                        "usr": "s:15PhunwareMapping17ShareLocationURLsV"
                       },
                       {
                         "kind": "TypeNominal",
@@ -8039,8 +8074,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:15PhunwareMapping0B14ModuleDelegateP07mappingC0_21didRequestShareURLFor21withCompletionHandleryAA0bC0C_AA17ShareableLocationVys6ResultOy10Foundation3URLVs5Error_pGctF",
-            "mangledName": "$s15PhunwareMapping0B14ModuleDelegateP07mappingC0_21didRequestShareURLFor21withCompletionHandleryAA0bC0C_AA17ShareableLocationVys6ResultOy10Foundation3URLVs5Error_pGctF",
+            "usr": "s:15PhunwareMapping0B14ModuleDelegateP07mappingC0_21didRequestShareURLFor21withCompletionHandleryAA0bC0C_AA17ShareableLocationVys6ResultOyAA0hN4URLsVs5Error_pGctF",
+            "mangledName": "$s15PhunwareMapping0B14ModuleDelegateP07mappingC0_21didRequestShareURLFor21withCompletionHandleryAA0bC0C_AA17ShareableLocationVys6ResultOyAA0hN4URLsVs5Error_pGctF",
             "moduleName": "PhunwareMapping",
             "genericSig": "<τ_0_0 where τ_0_0 : PhunwareMapping.MappingModuleDelegate>",
             "sugared_genericSig": "<Self where Self : PhunwareMapping.MappingModuleDelegate>",
@@ -8628,7 +8663,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(Swift.Result<Foundation.URL, any Swift.Error>) -> ()",
+                "printedName": "(Swift.Result<PhunwareMapping.ShareLocationURLs, any Swift.Error>) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -8638,13 +8673,13 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Result",
-                    "printedName": "Swift.Result<Foundation.URL, any Swift.Error>",
+                    "printedName": "Swift.Result<PhunwareMapping.ShareLocationURLs, any Swift.Error>",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "URL",
-                        "printedName": "Foundation.URL",
-                        "usr": "s:10Foundation3URLV"
+                        "name": "ShareLocationURLs",
+                        "printedName": "PhunwareMapping.ShareLocationURLs",
+                        "usr": "s:15PhunwareMapping17ShareLocationURLsV"
                       },
                       {
                         "kind": "TypeNominal",
@@ -8659,8 +8694,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:15PhunwareMapping0B6ModuleC11coordinator_21didRequestShareURLFor21withCompletionHandleryAA0B11CoordinatorC_AA17ShareableLocationVys6ResultOy10Foundation3URLVs5Error_pGctF",
-            "mangledName": "$s15PhunwareMapping0B6ModuleC11coordinator_21didRequestShareURLFor21withCompletionHandleryAA0B11CoordinatorC_AA17ShareableLocationVys6ResultOy10Foundation3URLVs5Error_pGctF",
+            "usr": "s:15PhunwareMapping0B6ModuleC11coordinator_21didRequestShareURLFor21withCompletionHandleryAA0B11CoordinatorC_AA17ShareableLocationVys6ResultOyAA0gN4URLsVs5Error_pGctF",
+            "mangledName": "$s15PhunwareMapping0B6ModuleC11coordinator_21didRequestShareURLFor21withCompletionHandleryAA0B11CoordinatorC_AA17ShareableLocationVys6ResultOyAA0gN4URLsVs5Error_pGctF",
             "moduleName": "PhunwareMapping",
             "declAttributes": [
               "AccessControl"
@@ -10179,7 +10214,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(Swift.Result<Foundation.URL, any Swift.Error>) -> ()",
+                "printedName": "(Swift.Result<PhunwareMapping.ShareLocationURLs, any Swift.Error>) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -10189,13 +10224,13 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Result",
-                    "printedName": "Swift.Result<Foundation.URL, any Swift.Error>",
+                    "printedName": "Swift.Result<PhunwareMapping.ShareLocationURLs, any Swift.Error>",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "URL",
-                        "printedName": "Foundation.URL",
-                        "usr": "s:10Foundation3URLV"
+                        "name": "ShareLocationURLs",
+                        "printedName": "PhunwareMapping.ShareLocationURLs",
+                        "usr": "s:15PhunwareMapping17ShareLocationURLsV"
                       },
                       {
                         "kind": "TypeNominal",
@@ -10210,8 +10245,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:15PhunwareMapping0B19CoordinatorDelegateP11coordinator_21didRequestShareURLFor21withCompletionHandleryAA0bC0C_AA17ShareableLocationVys6ResultOy10Foundation3URLVs5Error_pGctF",
-            "mangledName": "$s15PhunwareMapping0B19CoordinatorDelegateP11coordinator_21didRequestShareURLFor21withCompletionHandleryAA0bC0C_AA17ShareableLocationVys6ResultOy10Foundation3URLVs5Error_pGctF",
+            "usr": "s:15PhunwareMapping0B19CoordinatorDelegateP11coordinator_21didRequestShareURLFor21withCompletionHandleryAA0bC0C_AA17ShareableLocationVys6ResultOyAA0hN4URLsVs5Error_pGctF",
+            "mangledName": "$s15PhunwareMapping0B19CoordinatorDelegateP11coordinator_21didRequestShareURLFor21withCompletionHandleryAA0bC0C_AA17ShareableLocationVys6ResultOyAA0hN4URLsVs5Error_pGctF",
             "moduleName": "PhunwareMapping",
             "genericSig": "<τ_0_0 where τ_0_0 : PhunwareMapping.MappingCoordinatorDelegate>",
             "sugared_genericSig": "<Self where Self : PhunwareMapping.MappingCoordinatorDelegate>",
@@ -11676,7 +11711,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(Swift.Result<Foundation.URL, any Swift.Error>) -> ()",
+                "printedName": "(Swift.Result<PhunwareMapping.ShareLocationURLs, any Swift.Error>) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -11686,13 +11721,13 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Result",
-                    "printedName": "Swift.Result<Foundation.URL, any Swift.Error>",
+                    "printedName": "Swift.Result<PhunwareMapping.ShareLocationURLs, any Swift.Error>",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "URL",
-                        "printedName": "Foundation.URL",
-                        "usr": "s:10Foundation3URLV"
+                        "name": "ShareLocationURLs",
+                        "printedName": "PhunwareMapping.ShareLocationURLs",
+                        "usr": "s:15PhunwareMapping17ShareLocationURLsV"
                       },
                       {
                         "kind": "TypeNominal",
@@ -11707,8 +11742,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:15PhunwareMapping0B11CoordinatorC11coordinator_21didRequestShareURLFor21withCompletionHandleryAA0g8LocationC0C_AA09ShareableL0Vys6ResultOy10Foundation3URLVs5Error_pGctF",
-            "mangledName": "$s15PhunwareMapping0B11CoordinatorC11coordinator_21didRequestShareURLFor21withCompletionHandleryAA0g8LocationC0C_AA09ShareableL0Vys6ResultOy10Foundation3URLVs5Error_pGctF",
+            "usr": "s:15PhunwareMapping0B11CoordinatorC11coordinator_21didRequestShareURLFor21withCompletionHandleryAA0g8LocationC0C_AA09ShareableL0Vys6ResultOyAA0gL4URLsVs5Error_pGctF",
+            "mangledName": "$s15PhunwareMapping0B11CoordinatorC11coordinator_21didRequestShareURLFor21withCompletionHandleryAA0g8LocationC0C_AA09ShareableL0Vys6ResultOyAA0gL4URLsVs5Error_pGctF",
             "moduleName": "PhunwareMapping",
             "declAttributes": [
               "AccessControl"
@@ -15258,7 +15293,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(Swift.Result<Foundation.URL, any Swift.Error>) -> ()",
+                "printedName": "(Swift.Result<PhunwareMapping.ShareLocationURLs, any Swift.Error>) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -15268,13 +15303,13 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Result",
-                    "printedName": "Swift.Result<Foundation.URL, any Swift.Error>",
+                    "printedName": "Swift.Result<PhunwareMapping.ShareLocationURLs, any Swift.Error>",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "URL",
-                        "printedName": "Foundation.URL",
-                        "usr": "s:10Foundation3URLV"
+                        "name": "ShareLocationURLs",
+                        "printedName": "PhunwareMapping.ShareLocationURLs",
+                        "usr": "s:15PhunwareMapping17ShareLocationURLsV"
                       },
                       {
                         "kind": "TypeNominal",
@@ -15289,8 +15324,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:15PhunwareMapping32ShareLocationCoordinatorDelegateP11coordinator_010didRequestC6URLFor21withCompletionHandleryAA0cdE0C_AA09ShareableD0Vys6ResultOy10Foundation3URLVs5Error_pGctF",
-            "mangledName": "$s15PhunwareMapping32ShareLocationCoordinatorDelegateP11coordinator_010didRequestC6URLFor21withCompletionHandleryAA0cdE0C_AA09ShareableD0Vys6ResultOy10Foundation3URLVs5Error_pGctF",
+            "usr": "s:15PhunwareMapping32ShareLocationCoordinatorDelegateP11coordinator_010didRequestC6URLFor21withCompletionHandleryAA0cdE0C_AA09ShareableD0Vys6ResultOyAA0cD4URLsVs5Error_pGctF",
+            "mangledName": "$s15PhunwareMapping32ShareLocationCoordinatorDelegateP11coordinator_010didRequestC6URLFor21withCompletionHandleryAA0cdE0C_AA09ShareableD0Vys6ResultOyAA0cD4URLsVs5Error_pGctF",
             "moduleName": "PhunwareMapping",
             "genericSig": "<τ_0_0 where τ_0_0 : PhunwareMapping.ShareLocationCoordinatorDelegate>",
             "sugared_genericSig": "<Self where Self : PhunwareMapping.ShareLocationCoordinatorDelegate>",
@@ -36307,6 +36342,208 @@
         ]
       },
       {
+        "kind": "TypeDecl",
+        "name": "ShareLocationURLs",
+        "printedName": "ShareLocationURLs",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "universalLink",
+            "printedName": "universalLink",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:15PhunwareMapping17ShareLocationURLsV13universalLink10Foundation3URLVvp",
+            "mangledName": "$s15PhunwareMapping17ShareLocationURLsV13universalLink10Foundation3URLVvp",
+            "moduleName": "PhunwareMapping",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:15PhunwareMapping17ShareLocationURLsV13universalLink10Foundation3URLVvg",
+                "mangledName": "$s15PhunwareMapping17ShareLocationURLsV13universalLink10Foundation3URLVvg",
+                "moduleName": "PhunwareMapping",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "iOSAppStoreLink",
+            "printedName": "iOSAppStoreLink",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:15PhunwareMapping17ShareLocationURLsV15iOSAppStoreLink10Foundation3URLVvp",
+            "mangledName": "$s15PhunwareMapping17ShareLocationURLsV15iOSAppStoreLink10Foundation3URLVvp",
+            "moduleName": "PhunwareMapping",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:15PhunwareMapping17ShareLocationURLsV15iOSAppStoreLink10Foundation3URLVvg",
+                "mangledName": "$s15PhunwareMapping17ShareLocationURLsV15iOSAppStoreLink10Foundation3URLVvg",
+                "moduleName": "PhunwareMapping",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "androidPlayStoreLink",
+            "printedName": "androidPlayStoreLink",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:15PhunwareMapping17ShareLocationURLsV20androidPlayStoreLink10Foundation3URLVvp",
+            "mangledName": "$s15PhunwareMapping17ShareLocationURLsV20androidPlayStoreLink10Foundation3URLVvp",
+            "moduleName": "PhunwareMapping",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:15PhunwareMapping17ShareLocationURLsV20androidPlayStoreLink10Foundation3URLVvg",
+                "mangledName": "$s15PhunwareMapping17ShareLocationURLsV20androidPlayStoreLink10Foundation3URLVvg",
+                "moduleName": "PhunwareMapping",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(universalLink:iOSAppStoreLink:androidPlayStoreLink:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ShareLocationURLs",
+                "printedName": "PhunwareMapping.ShareLocationURLs",
+                "usr": "s:15PhunwareMapping17ShareLocationURLsV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:15PhunwareMapping17ShareLocationURLsV13universalLink011iOSAppStoreG0011androidPlayiG0AC10Foundation3URLV_A2Itcfc",
+            "mangledName": "$s15PhunwareMapping17ShareLocationURLsV13universalLink011iOSAppStoreG0011androidPlayiG0AC10Foundation3URLV_A2Itcfc",
+            "moduleName": "PhunwareMapping",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:15PhunwareMapping17ShareLocationURLsV",
+        "mangledName": "$s15PhunwareMapping17ShareLocationURLsV",
+        "moduleName": "PhunwareMapping",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -39995,28 +40232,28 @@
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/module-mapping-external-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
       "kind": "StringLiteral",
-      "offset": 12530,
+      "offset": 12888,
       "length": 7,
       "value": "\"route\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/module-mapping-external-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
       "kind": "StringLiteral",
-      "offset": 12768,
+      "offset": 13126,
       "length": 5,
       "value": "\"lat\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/module-mapping-external-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
       "kind": "StringLiteral",
-      "offset": 12799,
+      "offset": 13157,
       "length": 6,
       "value": "\"long\""
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/module-mapping-external-ios\/PhunwareMapping\/Common\/DeepLinks\/MappingDeepLink.swift",
       "kind": "BooleanLiteral",
-      "offset": 14009,
+      "offset": 14367,
       "length": 4,
       "value": "true"
     },
@@ -40527,7 +40764,7 @@
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/module-mapping-external-ios\/PhunwareMapping\/MappingModule.swift",
       "kind": "StringLiteral",
-      "offset": 2392,
+      "offset": 2496,
       "length": 9,
       "value": "\"mapping\""
     },
@@ -41409,14 +41646,14 @@
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/module-mapping-external-ios\/PhunwareMapping\/ShareLocation\/ShareLocationCoordinator.swift",
       "kind": "BooleanLiteral",
-      "offset": 4690,
+      "offset": 4704,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jenkins\/slave_data\/workspace\/module-mapping-external-ios\/PhunwareMapping\/ShareLocation\/ShareLocationCoordinator.swift",
       "kind": "BooleanLiteral",
-      "offset": 4745,
+      "offset": 4759,
       "length": 4,
       "value": "true"
     },

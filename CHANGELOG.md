@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [1.9.2] - TBD
+## [1.9.2] - 2025-05-22
 
 ### Fixed
 
@@ -122,6 +122,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
+[1.9.2]: https://bitbucket.org/phunware/module-phunware-mapping-ios/branches/compare/1.9.2%0D1.9.1
 [1.9.1]: https://bitbucket.org/phunware/module-phunware-mapping-ios/branches/compare/1.9.1%0D1.9.0
 [1.9.0]: https://bitbucket.org/phunware/module-phunware-mapping-ios/branches/compare/1.9.0%0D1.8.6
 [1.8.6]: https://bitbucket.org/phunware/module-phunware-mapping-ios/branches/compare/1.8.6%0D1.8.5

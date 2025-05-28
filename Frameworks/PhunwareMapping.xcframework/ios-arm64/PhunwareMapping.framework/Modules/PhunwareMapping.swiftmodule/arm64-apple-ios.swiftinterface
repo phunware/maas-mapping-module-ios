@@ -158,8 +158,9 @@ public enum MappingDeeplink {
     get
   }
   public init?(url: URL, allowedURLSchemes: Set<String> = Bundle.main.urlSchemes)
-  public init?(dynamicLinkURL: URL, matchingURLString: String?)
+  public init?(universalLinkURL: URL, matchingURLString: String?)
   public func url(withScheme urlScheme: String) -> URL?
+  public func url(withUniversalLinkDomain domain: String) -> URL?
 }
 extension URLComponents {
   public static func urlComponentsForRouteBuilder(_ url: URL, location: ShareableLocation, mapConfigKey: String? = nil) -> URLComponents?
@@ -295,7 +296,7 @@ extension POICoordinator : MappingDeeplinkNavigable {
 public protocol MappingModuleDelegate : AnyObject {
   func mappingModuleDidRequestConfiguration(_ module: MappingModule) -> MappingConfiguration?
   func mappingModule(_ module: MappingModule, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
-  func mappingModule(_ module: MappingModule, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void)
+  func mappingModule(_ module: MappingModule, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<ShareLocationURLs, Error>) -> Void)
 }
 extension MappingModuleDelegate {
   public func mappingModule(_ module: MappingModule, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
@@ -319,7 +320,7 @@ extension MappingModule : ModuleUnhostedContentProviding {
 extension MappingModule : MappingCoordinatorDelegate {
   public func coordinatorDidRequestConfiguration(_ coordinator: MappingCoordinator) -> MappingConfiguration?
   public func coordinator(_ coordinator: MappingCoordinator, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
-  public func coordinator(_ coordinator: MappingCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void)
+  public func coordinator(_ coordinator: MappingCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<ShareLocationURLs, Error>) -> Void)
 }
 public enum RoutingMode {
   case blueDot
@@ -353,7 +354,7 @@ public struct Gradient {
 public protocol MappingCoordinatorDelegate : AnyObject {
   func coordinatorDidRequestConfiguration(_ coordinator: MappingCoordinator) -> MappingConfiguration?
   func coordinator(_ coordinator: MappingCoordinator, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
-  func coordinator(_ coordinator: MappingCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void)
+  func coordinator(_ coordinator: MappingCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<ShareLocationURLs, Error>) -> Void)
 }
 public class MappingCoordinator : Coordinator, UnhostedCustomContentCoordinator {
   public var childMappingDeeplinkHandlers: [any PhunwareMapping.MappingDeeplinkNavigable]
@@ -390,7 +391,7 @@ extension MappingCoordinator : POICoordinatorDelegate {
 }
 extension MappingCoordinator : ShareLocationCoordinatorDelegate {
   public func coordinatorDidFinish(_ coordinator: ShareLocationCoordinator)
-  public func coordinator(_ coordinator: ShareLocationCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void)
+  public func coordinator(_ coordinator: ShareLocationCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<ShareLocationURLs, Error>) -> Void)
 }
 extension UIButton {
   @_Concurrency.MainActor @preconcurrency public func setSymbolImage(named name: String, withWeight weight: UIImage.SymbolWeight)
@@ -487,7 +488,7 @@ public struct ContentEmbeddingConfig {
 }
 public protocol ShareLocationCoordinatorDelegate : AnyObject {
   func coordinatorDidFinish(_ coordinator: ShareLocationCoordinator)
-  func coordinator(_ coordinator: ShareLocationCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void)
+  func coordinator(_ coordinator: ShareLocationCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<ShareLocationURLs, Error>) -> Void)
 }
 @objc public class ShareLocationCoordinator : NSObject, Coordinator {
   public var childCoordinators: [Coordinator]
@@ -1168,6 +1169,12 @@ public struct MapThemeConfigurator : ThemeConfiguring {
 }
 public struct MapContainerSelector {
   public init(languageCode: String, mapName: String)
+}
+public struct ShareLocationURLs {
+  public let universalLink: URL
+  public let iOSAppStoreLink: URL
+  public let androidPlayStoreLink: URL
+  public init(universalLink: URL, iOSAppStoreLink: URL, androidPlayStoreLink: URL)
 }
 public typealias MapLocalizationDictionary = Dictionary<String, Dictionary<String, String>>
 public class MapLocalization {
