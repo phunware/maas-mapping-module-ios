@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name                = 'PhunwareMapping'
-  spec.version             = '1.9.2'
+  spec.version             = '1.9.2.1'
   spec.summary             = 'A Phunware module that provides mapping and routing functionalities.'
   spec.homepage            = 'https://www.phunware.com'
   spec.license             = { :type => 'Copyright', :text => 'Copyright 2009-present Phunware, Inc. All rights reserved.' }
