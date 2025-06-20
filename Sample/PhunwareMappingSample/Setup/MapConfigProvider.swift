@@ -44,7 +44,10 @@ class StubMapConfigProvider: MapConfigProvider {
         }
 
         guard let mapConfig = parse() else {
-            completion(.failure(CommonError.internalInconsistency))
+            let error = NSError(domain: "com.phunware.mappingsample",
+                                code: 1001,
+                                userInfo: [NSLocalizedDescriptionKey: "Map configuration failed to load. Please contact Phunware support."])
+            completion(.failure(error))
             return
         }
         
