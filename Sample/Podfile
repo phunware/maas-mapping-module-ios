@@ -3,10 +3,12 @@ source 'https://cdn.cocoapods.org/'
 inhibit_all_warnings!
 
 target 'PhunwareMappingSample' do
-  platform :ios, '13.0'
+  platform :ios, '15.5'
   use_frameworks!
 
-  pod 'PhunwareMapping', '1.7.1'
+  pod 'PhunwareFoundation'
+  pod 'PhunwareCorePlugin'
+  pod 'PhunwareMapping', :git => 'https://github.com/phunware/maas-mapping-module-ios.git', :tag => '1.9.2'
 end
 
 post_install do |installer|

@@ -2,6 +2,7 @@
 //  AppLaunchViewController.swift
 //  PhunwareMappingSample
 //
+//  Created by Henry Peng on 5/24/22.
 //  Copyright © 2022 Phunware, Inc. All rights reserved.
 //
 

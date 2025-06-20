@@ -1,0 +1,97 @@
+PODS:
+  - PhunwareCorePlugin (1.1.0):
+    - PhunwareFoundation (~> 1.1.0)
+  - PhunwareFoundation (1.1.0):
+    - PWCore (~> 3.13.0)
+  - PhunwareMapping (1.9.2):
+    - PhunwareFoundation (~> 1.1.0)
+    - PhunwareNetworking (~> 1.3.0)
+    - PhunwarePermissionPriming/Location (~> 1.5.0)
+    - PhunwareTheming (~> 1.1.0)
+    - PWMapKit (~> 3.16.1)
+  - PhunwareNetworking (1.3.1)
+  - PhunwarePermissionPriming/Core (1.5.0):
+    - PhunwareFoundation (~> 1.1.0)
+    - PhunwareTheming (~> 1.1.0)
+  - PhunwarePermissionPriming/Location (1.5.0):
+    - PhunwarePermissionPriming/Core
+  - PhunwareTheming (1.1.0)
+  - PINCache (3.0.4):
+    - PINCache/Arc-exception-safe (= 3.0.4)
+    - PINCache/Core (= 3.0.4)
+  - PINCache/Arc-exception-safe (3.0.4):
+    - PINCache/Core
+  - PINCache/Core (3.0.4):
+    - PINOperation (~> 1.2.3)
+  - PINOperation (1.2.3)
+  - PWCore (3.13.0):
+    - PWCore/Core (= 3.13.0)
+  - PWCore/Core (3.13.0):
+    - PINCache (~> 3.0.4)
+    - SSZipArchive (~> 2.5.5)
+  - PWCore/DeviceIdentity (3.13.0):
+    - PWCore/Core
+  - PWLocation/Core (3.14.0):
+    - PINCache (~> 3.0.4)
+    - PWCore (~> 3.13.0)
+    - SSZipArchive (~> 2.5.5)
+  - PWLocation/DeviceIdentity (3.14.0):
+    - PWCore/DeviceIdentity (~> 3.13.0)
+    - PWLocation/Core
+  - PWMapKit (3.16.1):
+    - PWMapKit/Core (= 3.16.1)
+    - PWMapKit/DeviceIdentity (= 3.16.1)
+  - PWMapKit/Core (3.16.1):
+    - PINCache (~> 3.0.4)
+    - PWLocation/Core (~> 3.14.0)
+  - PWMapKit/DeviceIdentity (3.16.1):
+    - PWLocation/DeviceIdentity (~> 3.14.0)
+    - PWMapKit/Core
+  - SSZipArchive (2.5.5)
+
+DEPENDENCIES:
+  - PhunwareCorePlugin
+  - PhunwareFoundation
+  - PhunwareMapping (from `https://github.com/phunware/maas-mapping-module-ios.git`, tag `1.9.2`)
+
+SPEC REPOS:
+  trunk:
+    - PhunwareCorePlugin
+    - PhunwareFoundation
+    - PhunwareNetworking
+    - PhunwarePermissionPriming
+    - PhunwareTheming
+    - PINCache
+    - PINOperation
+    - PWCore
+    - PWLocation
+    - PWMapKit
+    - SSZipArchive
+
+EXTERNAL SOURCES:
+  PhunwareMapping:
+    :git: https://github.com/phunware/maas-mapping-module-ios.git
+    :tag: 1.9.2
+
+CHECKOUT OPTIONS:
+  PhunwareMapping:
+    :git: https://github.com/phunware/maas-mapping-module-ios.git
+    :tag: 1.9.2
+
+SPEC CHECKSUMS:
+  PhunwareCorePlugin: a16bf889466ed6c42e21d487a9a80826e7580e92
+  PhunwareFoundation: 7728915b9160df982b84818e263c9d11bf286156
+  PhunwareMapping: 15e5f3316eb08ee330fa2b3e2cd941a975a44adf
+  PhunwareNetworking: 5149745b7d1fe30256c98e8de400fdc5e3e46f09
+  PhunwarePermissionPriming: 5483c2d7559acf43d7874db7239751655427df3f
+  PhunwareTheming: 1dbba08979fcf7d0712f876281360a72a8c53245
+  PINCache: d9a87a0ff397acffe9e2f0db972ac14680441158
+  PINOperation: fb563bcc9c32c26d6c78aaff967d405aa2ee74a7
+  PWCore: bd114bfcfe877f0bb9e640a3bfe5a0ef1f77280c
+  PWLocation: 4335e28cb24dd72e8091a5aca92930ee7e0e64eb
+  PWMapKit: 3a5267f8528ffbe91f4b2cc316fc8a24e0a67763
+  SSZipArchive: c69881e8ac5521f0e622291387add5f60f30f3c4
+
+PODFILE CHECKSUM: ca7daf27c537194b3818f4cf83a028cfd270769a
+
+COCOAPODS: 1.16.2

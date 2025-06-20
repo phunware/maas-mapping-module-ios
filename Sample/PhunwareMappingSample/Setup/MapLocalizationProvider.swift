@@ -2,7 +2,8 @@
 //  MapLocalizationProvider.swift
 //  PhunwareMappingSample
 //
-//  Copyright © 2022 Phunware, Inc. All rights reserved.
+//  Created by Jeff White on 2/5/21.
+//  Copyright © 2021 Phunware, Inc. All rights reserved.
 //
 
 import Foundation
@@ -53,19 +54,21 @@ class StubMapLocalizationProvider: MapLocalizationProvider {
 // MARK: - Stub Data
 private extension StubMapLocalizationProvider {
     
-    /// Overwrite any localization strings defined in `MapLocalization.defaults`
+    /// Overwrite any localization strings defined in `LocalizableDefaults.xcstrings`
     /// by adding new entries to the JSON payload below.
-    /// For example: To use a different string value for the header title
-    ///              in the Browse bottom sheet, we can add a new entry with the
-    ///              key `browse_header_title` to each supported language.
+    /// For example: To use a different string value for the search bar placeholder text,
+    ///           we can add a new entry with the key `poi_search_placeholder` to each supported language.
     static let localizationData =
     """
     {
-        "strings_localization_en": {
+        "strings_en": {
             
         },
-        "strings_localization_es": {
+        "strings_es": {
             
+        },
+        "strings_fr": {
+
         }
     }
     """

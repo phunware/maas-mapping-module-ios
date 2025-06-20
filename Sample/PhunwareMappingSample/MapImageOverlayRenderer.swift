@@ -2,13 +2,13 @@
 //  MapImageOverlayRenderer.swift
 //  PhunwareMappingSample
 //
-//  Copyright © 2022 Phunware, Inc. All rights reserved.
+//  Created by Tyler Prevost on 11/12/21.
+//  Copyright © 2021 Phunware, Inc. All rights reserved.
 //
 
 import MapKit
 
 class MapImageOverlayRenderer: MKOverlayRenderer {
-    
     let image: UIImage
     
     init(overlay: MKOverlay, image: UIImage) {

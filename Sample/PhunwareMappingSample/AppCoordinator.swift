@@ -2,38 +2,48 @@
 //  AppCoordinator.swift
 //  PhunwareMappingSample
 //
-//  Copyright © 2022 Phunware, Inc. All rights reserved.
+//  Created by Henry Peng on 1/26/21.
+//  Copyright © 2021 Phunware, Inc. All rights reserved.
 //
 
-import CoreLocation
-import MapKit
 import UIKit
 import PhunwareFoundation
+import PhunwareCorePlugin
 import PhunwareMapping
 import PWCore
+import CoreLocation
+import MapKit
+import SafariServices
 
-class AppCoordinator: Coordinator {
+class AppCoordinator: NSObject, Coordinator {
+
+    private let urlTypeName = "UniversalLinkDomain"
+    private var universalLinkDomain: String {
+        guard let scheme = Bundle.main.urlTypes.first(where: { $0.name == urlTypeName })?.schemes.first else {
+            assertionFailure("A URL type with the identifier \"\(urlTypeName)\" is missing from the Info.plist key 'CFBundleURLTypes' or it has no URL schemes for the key 'CFBundleURLSchemes'. A URL scheme for this URL type is necessary in order to deeplink to the Phunware Mapping Module.")
+            return "module-sample-apps.firebaseapp.com"
+        }
+        
+        return scheme
+    }
+    var shareMyLocationMatchingURLString: String {
+      "https://\(universalLinkDomain)/mapping"
+    }
     
     var childCoordinators: [Coordinator] = [Coordinator]()
     var navigationController: UINavigationController
     
     var childMappingDeeplinkHandlers = [MappingDeeplinkNavigable]()
     var pendingMappingDeeplink: DeferredMappingDeeplink?
+    var isMappingDeeplinkingAvailable = false
     
-    private lazy var maasConfig: MaasConfig = {
-        let applicationID = ""
-        let accessKey = ""
-        
-        guard !applicationID.isEmpty,
-              !accessKey.isEmpty else {
-            fatalError("An application ID and access key are required but missing.")
+    lazy var maasConfig: MaasConfig = {
+        switch MapConfigKey.default {
+        case .austinOffice:
+            return .phunwareVerticalSolutionsOrganization
         }
-        
-        return MaasConfig(environment: .prod,
-                          applicationID: applicationID,
-                          accessKey: accessKey)
     }()
-    
+        
     private lazy var mapConfigProvider: MapConfigProvider = {
         return StubMapConfigProvider()
     }()
@@ -46,26 +56,46 @@ class AppCoordinator: Coordinator {
     
     private var mapLocalization: MapLocalization?
     
-    private func mapContainerSelector(for mapContainerKind: DemoViewModel.MapContainerKind) -> MapContainerSelector {
+    private var currentMapConfigKey: String = MapConfigKey.default.rawValue
+
+    private var currentMapName: String?
+    
+    private var currentMapConfigInfo: MapConfigInfo? {
+        guard let currentMapName else { return nil }
+        return mapConfigInfo(for: currentMapName, mapConfigKey: currentMapConfigKey)
+    }
+    
+    private var mappingModule: MappingModule?
+    
+    private var currentMappingConfiguration: MappingConfiguration?
+    
+    private var homeToVenueMonitor: HomeToVenueMonitor?
+    
+    private lazy var locationManager: CLLocationManager = {
+        let lm = CLLocationManager()
+        lm.delegate = self
+        return lm
+    }()
+        
+    private func mapContainerSelector(for mapConfigInfo: MapConfigInfo) -> MapContainerSelector {
         guard let mapLocalization = mapLocalization else {
             fatalError("mapLocalization is nil")
         }
-        
-        let mapName: String
-        switch mapContainerKind {
-        case .campus:
-            mapName = "Multi-Building"
-            
-        case .building:
-            mapName = "Single Building"
-        }
-        
-        return MapContainerSelector(languageCode: mapLocalization.currentLanguageCode, mapName: mapName)
+        return MapContainerSelector(languageCode: mapLocalization.currentLanguageCode, mapName: mapConfigInfo.mapName)
     }
     
     private lazy var mapThemeConfigurator = MapThemeConfigurator.current
     
     private var cachedMeetingRooms: [MeetingRoom]?
+    
+    private lazy var standardPOIImageSize: CGSize = {
+        // Constants taken from the Phunware Map SDK
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return CGSize(width: 28.5, height: 24.0)
+        } else {
+            return CGSize(width: 28.5 * 5/4, height: 24.0 * 5/4)
+        }
+    }()
     
     private let buildingGroundOverlayRenderers: [BuildingGroundOverlayRenderer] = {
         let coordinate = CLLocationCoordinate2D(latitude: 33.02191, longitude: -117.0826)
@@ -83,6 +113,8 @@ class AppCoordinator: Coordinator {
         
         return [overviewGroundOverlayRenderer, building1GroundOverlayRenderer]
     }()
+    
+    private lazy var shareLocationURLGenerator = ShareLocationURLGenerator(universalLinkDomain: self.universalLinkDomain)
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -105,77 +137,143 @@ private extension AppCoordinator {
     
     func runAppLaunch() {
         let viewController = AppLaunchViewController.makeFromStoryboard()
-        let viewModel = AppLaunchViewModel(mapConfigProvider: mapConfigProvider, mapLocalizationProvider: mapLocalizationProvider)
+        let viewModel = AppLaunchViewModel(mapConfigProvider: mapConfigProvider,
+                                           mapLocalizationProvider: mapLocalizationProvider,
+                                           mapConfigKey: MapConfigKey.default.rawValue)
         viewController.viewModel = viewModel
         viewModel.delegate = self
         navigationController.setViewControllers([viewController], animated: false)
     }
     
     func runLocationPermission() {
-        guard CLLocationManager.authorizationStatus() == .notDetermined else {
-            runDemo()
-            return
-        }
-        
-        guard let mapLocalization = mapLocalization else {
-            assertionFailure("mapLocalization is nil")
-            return
-        }
-        
-        let permissionNavigationController = UINavigationController()
-        permissionNavigationController.modalPresentationStyle = .fullScreen
-        navigationController.present(permissionNavigationController, animated: true)
-        let childCoordinator = PermissionCoordinator(navigationController: permissionNavigationController,
-                                                     mapLocalization: mapLocalization,
-                                                     themeConfiguring: mapThemeConfigurator)
+        let childCoordinator = PermissionCoordinator(navigationController: navigationController,
+                                                     mapLocalization: mapLocalization!,
+                                                     mapTheme: mapThemeConfigurator.configureTheme(),
+                                                     completionNavigationAction: .none)
         childCoordinator.delegate = self
         childCoordinators.append(childCoordinator)
         childCoordinator.start()
     }
     
     func runDemo() {
+        let buildingMapConfigInfo: MapConfigInfo = {
+            switch MapConfigKey.default {
+            case .austinOffice: MapConfigInfo.austinOfficeBuilding
+            }
+        }()
+        
+        let campusMapConfigInfo: MapConfigInfo? = {
+            switch MapConfigKey.default {
+            case .austinOffice: MapConfigInfo.austinOfficeCampus
+            }
+        }()
+        
         let viewController = DemoViewController.makeFromStoryboard()
-        let viewModel = DemoViewModel()
+        let viewModel = DemoViewModel(applicationIdentifier: maasConfig.applicationID,
+                                      organization: maasConfig.organization,
+                                      mapConfigKey: currentMapConfigKey,
+                                      buildingMapConfigInfo: buildingMapConfigInfo,
+                                      campusMapConfigInfo: campusMapConfigInfo)
         viewController.viewModel = viewModel
         viewModel.delegate = self
-        navigationController.setViewControllers([viewController], animated: false)
+        navigationController.setViewControllers([viewController], animated: true)
     }
     
-    func runPOI(mapContainerKind: DemoViewModel.MapContainerKind) {
-        guard let mapConfig = mapConfig,
-              let mapLocalization = mapLocalization else {
+    func runAppLink() {
+        let viewController = AppLinkViewController.makeFromStoryboard()
+        let viewModel = AppLinkViewModel()
+        viewController.viewModel = viewModel
+        viewModel.delegate = self
+        let navController = UINavigationController(rootViewController: viewController)
+        navigationController.present(navController, animated: true)
+    }
+    
+    func runMappingModule(_ config: MapConfigInfo) {
+        guard let mapConfig,
+              let mapLocalization else {
             assertionFailure("mapConfig/mapLocalization should not be nil")
             return
         }
         
-        // Constants taken from the Phunware Map SDK:
-        let standardPOIImageSize: CGSize
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            standardPOIImageSize = CGSize(width: 28.5, height: 24.0)
-        } else {
-            standardPOIImageSize = CGSize(width: 28.5 * 5/4, height: 24.0 * 5/4)
+        // Map Tab
+        let mapTabNavController = UINavigationController()
+        mapTabNavController.view.backgroundColor = .systemBackground
+        mapTabNavController.tabBarItem = .init(title: "Map Tab", image: UIImage(systemName: "map"), tag: 0)
+        
+        let mappingModule = MappingModule(themeConfigurator: MapThemeConfigurator.current,
+                                          homeToVenueConfiguration: .init(urlTypeName: urlTypeName,
+                                                                          notificationText: "H2V Notification Text"),
+                                          delegate: self)
+        
+        self.mappingModule = mappingModule
+        let meetingRoom = MappingConfiguration.MeetingRoom(meetingRoomPOIIdentifiers: meetingRoomPOIIdentifiers(for: config),
+                                                           initialMeetingRoomPOIImageSize: standardPOIImageSize)
+        currentMapName = config.mapName
+        currentMappingConfiguration = .init(mapConfigKey: config.mapName,
+                                            mapConfig: mapConfig,
+                                            mapLocalization: mapLocalization,
+                                            meetingRoom: meetingRoom)
+        homeToVenueMonitor = nil
+        
+        guard let coordinator = mappingModule.coordinator(for: "mapping/mapId=\(config.mapName)", using: mapTabNavController) else {
+            return
         }
         
-        // The app tells the mapping module which POIs are meant to be "meeting rooms":
-        let meetingRoomPOIIdentifiers: [String]
-        switch mapContainerKind {
-        case .campus:
-            meetingRoomPOIIdentifiers = ["60603734", "60796992", "60603322"]
+        // Share My Location Tab
+        let shareLocationNavController = UINavigationController()
+        shareLocationNavController.view.backgroundColor = .systemBackground
+        shareLocationNavController.tabBarItem = .init(title: "Share Location", image: UIImage(systemName: "mappin.and.ellipse"), tag: 1)
+        let shareLocationLauncherCoordinator = ShareLocationLauncherCoordinator(
+            navigationController: shareLocationNavController,
+            mapConfig: mapConfig,
+            mapLocalization: mapLocalization,
+            mapContainerSelector: mapContainerSelector(for: config),
+            configInfo: config,
+            shareLocationURLGenerator: shareLocationURLGenerator
+        )
+        
+        let tabCoordinators = [coordinator, shareLocationLauncherCoordinator]
+        let tabBarController = UITabBarController()
+        tabBarController.loadViewIfNeeded()
+        tabBarController.viewControllers = tabCoordinators.map { $0.navigationController }
+        
+        tabCoordinators.forEach { coordinator in
+            childCoordinators.append(coordinator)
             
-        case .building:
-            meetingRoomPOIIdentifiers = ["45361237", "42539820", "42539817", "42539835"]
+            if let mappingDeeplinkHandler = coordinator as? MappingDeeplinkNavigable {
+                childMappingDeeplinkHandlers.append(mappingDeeplinkHandler)
+            }
+            
+            coordinator.start()
         }
         
+        navigationController.setNavigationBarHidden(true, animated: true)
+        navigationController.pushViewController(tabBarController, animated: true)
+        
+        startMonitoringRegion()
+    }
+    
+    func runPOI(_ config: MapConfigInfo) {
+        guard let mapConfig,
+              let mapLocalization else {
+            assertionFailure("mapConfig/mapLocalization should not be nil")
+            return
+        }
+        
+        currentMapName = config.mapName
+        homeToVenueMonitor = HomeToVenueMonitor(configuration: .init(urlTypeName: urlTypeName,
+                                                                     notificationText: "H2V Notification Text"))
+        
+        let mapContainerSelector = mapContainerSelector(for: config)
         let childCoordinator = POICoordinator(navigationController: navigationController,
                                               mapConfig: mapConfig,
                                               mapLocalization: mapLocalization,
-                                              mapContainerSelector: mapContainerSelector(for: mapContainerKind),
-                                              themeConfiguring: mapThemeConfigurator,
-                                              allowsBackgroundLocationUpdates: false,
+                                              mapContainerSelector: mapContainerSelector,
+                                              mapTheme: mapThemeConfigurator.configureTheme(),
                                               hidesBottomBarWhenPushed: true,
-                                              meetingRoomPOIIdentifiers: meetingRoomPOIIdentifiers,
+                                              meetingRoomPOIIdentifiers: meetingRoomPOIIdentifiers(for: config),
                                               initialMeetingRoomPOIImageSize: standardPOIImageSize,
-                                              buildingGroundOverlayRenderers: nil)
+                                              buildingGroundOverlayRenderers: buildingGroundOverlayRenderers)
         childCoordinator.delegate = self
         childCoordinators.append(childCoordinator)
         childMappingDeeplinkHandlers.append(childCoordinator)
@@ -184,92 +282,81 @@ private extension AppCoordinator {
         if let cachedMeetingRooms = cachedMeetingRooms {
             childCoordinator.setMeetingRooms(cachedMeetingRooms)
         }
+        
+        startMonitoringRegion()
     }
     
-    func runRouting(mapContainerKind: DemoViewModel.MapContainerKind) {
-        guard let mapConfig = mapConfig,
-              let mapLocalization = mapLocalization else {
+    func runShareLocation(_ config: MapConfigInfo) {
+        guard let mapConfig,
+              let mapLocalization else {
             assertionFailure("mapConfig/mapLocalization should not be nil")
             return
         }
-        
-        // Constants taken from the Phunware Map SDK:
-        let standardPOIImageSize: CGSize
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            standardPOIImageSize = CGSize(width: 28.5, height: 24.0)
-        } else {
-            standardPOIImageSize = CGSize(width: 28.5 * 5/4, height: 24.0 * 5/4)
-        }
-        
-        // The app tells the mapping module which POIs are meant to be "meeting rooms":
-        let meetingRoomPOIIdentifiers: [String]
-        switch mapContainerKind {
-        case .campus:
-            meetingRoomPOIIdentifiers = ["12345678", "87654321"]
-            
-        case .building:
-            meetingRoomPOIIdentifiers = ["12345678", "87654321"]
-        }
-        
-        let childCoordinator = RoutingCoordinator(navigationController: navigationController,
-                                                  mapConfig: mapConfig,
-                                                  mapLocalization: mapLocalization,
-                                                  mapContainerSelector: mapContainerSelector(for: mapContainerKind),
-                                                  themeConfiguring: mapThemeConfigurator,
-                                                  allowsBackgroundLocationUpdates: false,
-                                                  hidesBottomBarWhenPushed: true,
-                                                  meetingRoomPOIIdentifiers: meetingRoomPOIIdentifiers,
-                                                  initialMeetingRoomPOIImageSize: standardPOIImageSize,
-                                                  buildingGroundOverlayRenderers: buildingGroundOverlayRenderers)
-        childCoordinator.delegate = self
-        childCoordinators.append(childCoordinator)
-        childMappingDeeplinkHandlers.append(childCoordinator)
-        childCoordinator.start()
-    }
-    
-    func runShareLocation(mapContainerSelector: MapContainerSelector) {
-        guard let mapConfig = mapConfig,
-              let mapLocalization = mapLocalization else {
-            assertionFailure("mapConfig/mapLocalization should not be nil")
-            return
-        }
-        
         let childCoordinator = ShareLocationCoordinator(navigationController: navigationController,
                                                         mapConfig: mapConfig,
                                                         mapLocalization: mapLocalization,
-                                                        mapContainerSelector: mapContainerSelector,
-                                                        themeConfiguring: mapThemeConfigurator,
+                                                        mapContainerSelector: mapContainerSelector(for: config),
+                                                        mapTheme: mapThemeConfigurator.configureTheme(),
                                                         hidesBottomBarWhenPushed: true,
                                                         buildingGroundOverlayRenderers: buildingGroundOverlayRenderers)
         childCoordinator.delegate = self
         childCoordinators.append(childCoordinator)
         childCoordinator.start()
+        currentMapName = config.mapName
+        homeToVenueMonitor = nil
     }
 
-    func runExternalBrowser(_ url: URL) {
-        UIApplication.shared.open(url)
-    }
+    func runOpenURL(_ url: URL) {
+        if url.canOpenInSFSafariViewController {
+            let viewController = SFSafariViewController(url: url)
+            navigationController.topmostPresentedViewController.present(viewController, animated: true, completion: nil)
+        } else {
+                UIApplication.shared.open(url) { [weak self] opened in
+                    guard let self = self else { return }
+                    
+                    if !opened {
+                        self.runAlert(title: "", message: "This URL (\(url.absoluteString)) is not supported by iOS.")
+                    }
+                }
+            }
+        }
 
     func runPhoneService(phoneNumberURL: URL) {
         UIApplication.shared.open(phoneNumberURL)
     }
     
-    func runAlert(_ title: String? = nil, message: String) {
+    func runAlert(title: String? = nil, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         navigationController.present(alertController, animated: true)
+    }
+    
+    func startMonitoringRegion() {
+        guard CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self),
+              let homeToVenue = currentMapConfigInfo?.homeToVenue else {
+            return
+        }
+        
+        guard !locationManager.monitoredRegions.contains(where: { $0.identifier == homeToVenue.geozones.first?.identifier }) else { return }
+        
+        let maxDistance: CLLocationDistance = homeToVenue.geofenceMeter
+        homeToVenue.geozones.forEach { geozone in
+            let center = CLLocationCoordinate2D(latitude: geozone.location.latitude,
+                                                longitude: geozone.location.longitude)
+            let region = CLCircularRegion(center: center, radius: maxDistance, identifier: geozone.identifier)
+            locationManager.startMonitoring(for: region)
+        }
     }
 }
 
 // MARK: - PermissionCoordinatorDelegate
 extension AppCoordinator: PermissionCoordinatorDelegate {
     
-    func coordinator(_ coordinator: PermissionCoordinator, customImageWithName name: String) -> UIImage? {
+    public func coordinator(_ coordinator: PermissionCoordinator, customImageWithName name: String) -> UIImage? {
         return UIImage(named: name)
     }
     
-    func coordinatorDidFinish(_ coordinator: PermissionCoordinator) {
+    public func coordinatorDidFinish(_ coordinator: PermissionCoordinator) {
         removeChildCoordinator(coordinator)
-        navigationController.dismiss(animated: true)
         
         runDemo()
     }
@@ -277,7 +364,6 @@ extension AppCoordinator: PermissionCoordinatorDelegate {
 
 // MARK: - AppLaunchViewModelDelegate
 extension AppCoordinator: AppLaunchViewModelDelegate {
-    
     func viewModel(_ viewModel: AppLaunchViewModel, didFinishLoading mapConfig: MapConfig, mapLocalizationDict: MapLocalizationDictionary) {
         self.mapConfig = mapConfig
         
@@ -290,39 +376,85 @@ extension AppCoordinator: AppLaunchViewModelDelegate {
     }
     
     func viewModel(_ viewModel: AppLaunchViewModel, didFailWith error: Error) {
-        runAlert("Error", message: error.localizedDescription)
+        runAlert(title: "Error", message: error.localizedDescription)
     }
 }
 
 // MARK: - DemoViewModelDelegate
 extension AppCoordinator: DemoViewModelDelegate {
-    
     func viewModelViewDidAppear(_ viewModel: DemoViewModel) {
-        // Empty
+        guard !isMappingDeeplinkingAvailable else { return }
+        
+        isMappingDeeplinkingAvailable = true
+        
+        DispatchQueue.main.async {
+            self.followPendingMappingDeeplinkIfAvailable()
+        }
+    }
+        
+    func viewModel(_ viewModel: DemoViewModel,
+                   didSelectMapFor mapConfigInfo: MapConfigInfo,
+                   embeddedInTab: Bool) {
+        if embeddedInTab {
+            runMappingModule(mapConfigInfo)
+        } else {
+            runPOI(mapConfigInfo)
+        }
     }
     
-    func viewModel(_ viewModel: DemoViewModel, didSelectPOIFor mapContainerKind: DemoViewModel.MapContainerKind) {
-        runPOI(mapContainerKind: mapContainerKind)
+    func viewModel(_ viewModel: DemoViewModel, didSelectShareLocationFor mapConfigInfo: MapConfigInfo) {
+        if mapConfigInfo.mapConfigKey == currentMapConfigKey {
+            runShareLocation(mapConfigInfo)
+        } else {
+            updateMapConfigKey(mapConfigInfo.mapConfigKey)
+            reloadMapConfig() {
+                self.runShareLocation(mapConfigInfo)
+            }
+        }
     }
     
-    func viewModel(_ viewModel: DemoViewModel, didSelectRoutingFor mapContainerKind: DemoViewModel.MapContainerKind) {
-        runRouting(mapContainerKind: mapContainerKind)
+    func viewModelDidSelectAppLink(_ viewModel: DemoViewModel) {
+        runAppLink()
+    }
+}
+
+// MARK: - MappingModuleDelegate
+extension AppCoordinator: MappingModuleDelegate {
+    func mappingModule(_ module: MappingModule, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<ShareLocationURLs, Error>) -> Void) {
+        shareLocationURLGenerator.generateShareLocationURL(for: location,
+                                                           mapConfigKey: currentMapConfigKey,
+                                                           withCompletionHandler: completionHandler)
     }
     
-    func viewModel(_ viewModel: DemoViewModel, didSelectShareLocationFor mapContainerKind: DemoViewModel.MapContainerKind) {
-        runShareLocation(mapContainerSelector: mapContainerSelector(for: mapContainerKind))
+    func mappingModule(_ module: MappingModule, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void) {
+        requestMeetingRoomStatuses(for: poiIdentifiers, completion: completion)
+    }
+    
+    func mappingModuleDidRequestConfiguration(_ module: MappingModule) -> MappingConfiguration? {
+        currentMappingConfiguration
     }
 }
 
 // MARK: - Private Helpers
 private extension AppCoordinator {
+    
+    func meetingRoomPOIIdentifiers(for config: MapConfigInfo) -> [String] {
+        guard let mapName = MapName(rawValue: config.mapName) else { return [] }
+        
+        switch mapName {
+        case .campus:
+            return ["60603734", "60796992", "60603322"]
+        case .building:
+            return ["45361237", "42539820", "42539817", "42539835"]
+        }
+    }
 
     func didSelectActionLink(_ actionLink: ActionLink) {
         switch actionLink.type {
             case .weblink:
                 if let urlString = actionLink.actionContent,
                    let url = URL(string: urlString) {
-                    runExternalBrowser(url)
+                    runOpenURL(url)
                 }
 
             case .phone:
@@ -351,16 +483,12 @@ private extension AppCoordinator {
                 switch Int.random(in: 0...4) {
                 case 0:
                     randomStatus = .available
-                    
                 case 1:
                     randomStatus = .occupied
-                
                 case 2:
                     randomStatus = .unavailable
-                
                 case 3:
                     randomStatus = .default
-                
                 default:
                     randomStatus = .unknown
                 }
@@ -378,12 +506,72 @@ private extension AppCoordinator {
             completion(.success(meetingRooms))
         }
     }
+    
+    func updateMapConfigKey(_ key: String) {
+        currentMapConfigKey = key
+    }
+    
+    func reloadMapConfig(completion: (() -> Void)? = nil) {
+        weak var weakSelf = self
+                
+        let loadMapLocalization: ((MapConfig?) -> Void) = { (mapConfig) in
+            guard let self = weakSelf else { return }
+
+            let supportedLanguages = mapConfig?.languages ?? []
+            self.mapLocalizationProvider.fetchMapLocalization(for: supportedLanguages) { localizationResult in
+                guard let self = weakSelf else { return }
+                
+                switch localizationResult {
+                    case .success(let dict):
+                        let defaultLanguageCode = mapConfig?.languages?.compactMap { $0.code }.first ?? "en"
+
+                        let mapLocalization = MapLocalization(with: defaultLanguageCode)
+                        mapLocalization.setLocalization(localizationDictionary: dict)
+
+                        self.mapConfig = mapConfig
+                        self.mapLocalization = mapLocalization
+                    
+                    case .failure(let error):
+                        print("Failed to fetch map localization with error: \"\(error.localizedDescription)\".")
+                        self.mapConfig = nil
+                        self.mapLocalization = nil
+                }
+                
+                completion?()
+            }
+        }
+
+        mapConfigProvider.fetchMapConfig(using: currentMapConfigKey) { configResult in
+            switch configResult {
+            case .success(let mapConfig):
+                loadMapLocalization(mapConfig)
+            case .failure(let error):
+                print("Failed to load map config with error: \"\(error.localizedDescription)\".")
+                completion?()
+            }
+        }
+    }
+    
+    func reloadMapConfigIfNeeded(completion: (() -> Void)? = nil) {
+        if currentMapConfigKey != MapConfigKey.default.rawValue {
+            updateMapConfigKey(MapConfigKey.default.rawValue)
+            reloadMapConfig(completion: completion)
+        }
+    }
+    
+    func mapConfigInfo(for mapName: String, mapConfigKey: String) -> MapConfigInfo? {
+        let info: [MapConfigInfo] = [.austinOfficeBuilding, .austinOfficeCampus]
+        return info.first { $0.mapName == mapName && $0.mapConfigKey == mapConfigKey }
+    }
 }
 
 // MARK: - POICoordinatorDelegate
 extension AppCoordinator: POICoordinatorDelegate {
 
     func coordinatorDidFinish(_ coordinator: POICoordinator) {
+        reloadMapConfigIfNeeded()
+        currentMapName = nil
+        
         removeChildCoordinator(coordinator)
         removeChildMappingDeeplinkHandler(coordinator)
     }
@@ -395,53 +583,15 @@ extension AppCoordinator: POICoordinatorDelegate {
     func coordinator(_ coordinator: POICoordinator,
                      didStartHomeToVenueRoutingWith geozoneIdentifiers: Set<String>,
                      destination: HomeToVenueDestination) {
-        // Nothing to be done here in the mapping module
+        homeToVenueMonitor?.didStartHomeToVenueRoutingWith(geozoneIdentifiers: geozoneIdentifiers, destination: destination)
     }
     
     func coordinator(_ coordinator: POICoordinator,
                      didStopHomeToVenueRoutingWith geozoneIdentifiers: Set<String>) {
-        // Nothing to be done here in the mapping module
-    }
-    
-    func coordinator(_ coordinator: POICoordinator, customImageWithName name: String) -> UIImage? {
-        return UIImage(named: name)
+        homeToVenueMonitor?.didStopHomeToVenueRoutingWith(geozoneIdentifiers: geozoneIdentifiers)
     }
     
     func coordinator(_ coordinator: POICoordinator,
-                     didRequestMeetingRoomsFor poiIdentifiers: [String],
-                     completion: @escaping (Result<[MeetingRoom], Error>) -> Void) {
-        requestMeetingRoomStatuses(for: poiIdentifiers, completion: completion)
-    }
-}
-
-// MARK: - RoutingCoordinatorDelegate
-extension AppCoordinator: RoutingCoordinatorDelegate {
-
-    func coordinatorDidFinish(_ coordinator: RoutingCoordinator) {
-        removeChildCoordinator(coordinator)
-        removeChildMappingDeeplinkHandler(coordinator)
-    }
-
-    func coordinator(_ coordinator: RoutingCoordinator, didSelectActionLink actionLink: ActionLink) {
-        didSelectActionLink(actionLink)
-    }
-    
-    func coordinator(_ coordinator: RoutingCoordinator,
-                     didStartHomeToVenueRoutingWith geozoneIdentifiers: Set<String>,
-                     destination: HomeToVenueDestination) {
-        // Nothing to be done here in the mapping module
-    }
-    
-    func coordinator(_ coordinator: RoutingCoordinator,
-                     didStopHomeToVenueRoutingWith geozoneIdentifiers: Set<String>) {
-        // Nothing to be done here in the mapping module
-    }
-    
-    func coordinator(_ coordinator: RoutingCoordinator, customImageWithName name: String) -> UIImage? {
-        return UIImage(named: name)
-    }
-    
-    func coordinator(_ coordinator: RoutingCoordinator,
                      didRequestMeetingRoomsFor poiIdentifiers: [String],
                      completion: @escaping (Result<[MeetingRoom], Error>) -> Void) {
         requestMeetingRoomStatuses(for: poiIdentifiers, completion: completion)
@@ -452,60 +602,34 @@ extension AppCoordinator: RoutingCoordinatorDelegate {
 extension AppCoordinator: ShareLocationCoordinatorDelegate {
     
     func coordinatorDidFinish(_ coordinator: ShareLocationCoordinator) {
+        reloadMapConfigIfNeeded()
+        currentMapName = nil
+        
         removeChildCoordinator(coordinator)
-    }
-
-    func coordinator(_ coordinator: ShareLocationCoordinator, didSelectActionLink actionLink: ActionLink) {
-        didSelectActionLink(actionLink)
-    }
-    
-    func coordinator(_ coordinator: ShareLocationCoordinator,
-                     didStartHomeToVenueRoutingWith geozoneIdentifiers: Set<String>,
-                     destination: HomeToVenueDestination) {
-        // Nothing to be done here in the mapping module
-    }
-    
-    func coordinator(_ coordinator: ShareLocationCoordinator,
-                     didStopHomeToVenueRoutingWith geozoneIdentifiers: Set<String>) {
-        // Nothing to be done here in the mapping module
-    }
-    
-    func coordinator(_ coordinator: ShareLocationCoordinator, customImageWithName name: String) -> UIImage? {
-        return UIImage(named: name)
     }
     
     func coordinator(_ coordinator: ShareLocationCoordinator,
                      didRequestShareURLFor location: ShareableLocation,
-                     withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void) {
-        guard let floorID = location.floorID else {
-            completionHandler(.failure(NSError(domain: "Nil floor ID", code: 0, userInfo: nil)))
-            return
-        }
-        
-        let deepLink = MappingDeeplink.routeBuilder(
-            destination: .coordinate(
-                mapConfigKey: mapConfigProvider.mapConfigKey,
-                mapName: location.mapName,
-                latitude: location.coordinate.latitude,
-                longitude: location.coordinate.longitude,
-                floorId: floorID
-            )
-        )
-        
-        guard let url = deepLink.url(withScheme: "phunwaremapping") else {
-            completionHandler(.failure(NSError(domain: "Invalid share URL", code: 0, userInfo: nil)))
-            return
-        }
-        
-        completionHandler(.success(url))
+                     withCompletionHandler completionHandler: @escaping (Result<ShareLocationURLs, Error>) -> Void) {
+        shareLocationURLGenerator.generateShareLocationURL(for: location,
+                                                           mapConfigKey: currentMapConfigKey,
+                                                           withCompletionHandler: completionHandler)
     }
 }
 
 // MARK: - MappingDeeplinkNavigable
 extension AppCoordinator: MappingDeeplinkNavigable {
     
-    func queryCanOpenDirectly(_ deeplink: MappingDeeplink, completion: @escaping (Bool) -> Void) {
-        if !childCoordinators.contains(where: { $0 is MappingDeeplinkNavigable }) {
+    private var mappingDeeplinkHandler: MappingDeeplinkNavigable? {
+        childMappingDeeplinkHandlers.first
+    }
+    
+    private func canChildCoordinatorHandleDeeplink(_ deeplink: MappingDeeplink) -> Bool {
+        mappingDeeplinkHandler != nil && currentMapName == deeplink.mapName
+    }
+    
+    public func queryCanOpenDirectly(_ deeplink: MappingDeeplink, completion: @escaping (Bool) -> Void) {
+        if !canChildCoordinatorHandleDeeplink(deeplink) {
             // We don't have a child coordinator that can handle the deeplink, so we have to
             // handle it ourselves.
             completion(true)
@@ -516,19 +640,96 @@ extension AppCoordinator: MappingDeeplinkNavigable {
         }
     }
     
-    func openDeeplink(_ deeplink: MappingDeeplink) -> Bool {
-        // If we don't have a child coordinator that can handle the deeplink, we'll need to create one first.
-        // Let's just pick the POICoordinator for now.
-        if !childCoordinators.contains(where: { $0 is MappingDeeplinkNavigable }) {
-            runPOI(mapContainerKind: .building)
+    public func prepareForNavigation(to deeplink: MappingDeeplink) {
+        navigationController.dismiss(animated: false)
+        
+        if !canChildCoordinatorHandleDeeplink(deeplink),
+        let coordinator = childCoordinators.first {
+            if let handler = coordinator as? MappingDeeplinkNavigable {
+                removeChildMappingDeeplinkHandler(handler)
+            }
+            removeChildCoordinator(coordinator)
+            navigationController.popToRootViewController(animated: false)
+        }
+    }
+    
+    public func openDeeplink(_ deeplink: MappingDeeplink) -> Bool {
+        let runPOIAndDeeplink: (String, String, HomeToVenueInfo) -> Void = { [weak self] mapConfigKey, mapName, homeToVenue in
+            guard let self else { return }
+            
+            self.runPOI(.init(mapConfigKey: mapConfigKey, mapName: mapName, homeToVenue: homeToVenue))
+            self.mappingDeeplinkHandler?.followDeeplink(deeplink)
         }
         
-        guard let mappingDeepLinkHandler = childCoordinators.compactMap({ $0 as? MappingDeeplinkNavigable }).first else {
-            assertionFailure("A MappingDeeplinkNavigable must exist in order to follow deeplink: \(deeplink)")
-            return false
+        if let mappingDeeplinkHandler {
+            mappingDeeplinkHandler.followDeeplink(deeplink)
+        } else {
+            let mapConfigKey = deeplink.mapConfigKey ?? MapConfigKey.default.rawValue
+            let mapName = deeplink.mapName ?? MapName.building.rawValue
+            let homeToVenue = currentMapConfigInfo?.homeToVenue ?? HomeToVenueInfo()
+            
+            if let deeplinkMapConfigKey = deeplink.mapConfigKey,
+               deeplinkMapConfigKey != currentMapConfigKey {
+                updateMapConfigKey(deeplinkMapConfigKey)
+                reloadMapConfig() {
+                    runPOIAndDeeplink(mapConfigKey, mapName, homeToVenue)
+                }
+            } else {
+                runPOIAndDeeplink(mapConfigKey, mapName, homeToVenue)
+            }
         }
         
-        mappingDeepLinkHandler.followDeeplink(deeplink)
         return true
+    }
+}
+
+// MARK: - AppLinkViewModelDelegate
+extension AppCoordinator: AppLinkViewModelDelegate {
+    
+    func viewModel(_ viewModel: AppLinkViewModel, didSelectAppLink appLink: AppLink) {
+        navigationController.dismiss(animated: true) { [weak self] in
+            guard let self else { return }
+            
+            if let deeplink = appLink.deeplink,
+               let resolver = DeeplinkResolver(deeplink) {
+                
+                switch resolver {
+                case .mapping(let mappingDeeplink):
+                    self.followDeeplink(mappingDeeplink)
+                    
+                case .map(let mapName):
+                    if let mapConfigInfo = mapConfigInfo(for: mapName, mapConfigKey: currentMapConfigKey) {
+                        self.runPOI(mapConfigInfo)
+                    }
+                    
+                case .tabNavigation(let mapName):
+                    if let mapConfigInfo = mapConfigInfo(for: mapName, mapConfigKey: currentMapConfigKey) {
+                        self.runMappingModule(mapConfigInfo)
+                    }
+                    
+                case .shareLocation(let mapName):
+                    if let mapConfigInfo = mapConfigInfo(for: mapName, mapConfigKey: currentMapConfigKey) {
+                        self.runShareLocation(mapConfigInfo)
+                    }
+                }
+            }
+        }
+    }
+    
+    func viewModelDidFinish(_ viewModel: AppLinkViewModel) {
+        navigationController.dismiss(animated: true)
+    }
+}
+
+// MARK: - CLLocationManagerDelegate
+extension AppCoordinator: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        homeToVenueMonitor?.didEnterGeozone(geozoneIdentifier: region.identifier)
+        mappingModule?.didEnterGeozone(geozoneIdentifier: region.identifier)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        homeToVenueMonitor?.didExitGeozone(geozoneIdentifier: region.identifier)
+        mappingModule?.didExitGeozone(geozoneIdentifier: region.identifier)
     }
 }

@@ -1,0 +1,102 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "PhunwareMappingSample"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PhunwareMappingSample"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PhunwareMappingSample"
+          }
+        }
+      }
+    },
+    "NSLocationAlwaysAndWhenInUseUsageDescription" : {
+      "comment" : "Privacy - Location Always and When In Use Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your precise location is used to show your position on the map, get directions, estimate travel times, turn by turn directions."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Su ubicación precisa se utiliza para mostrar su posición en el mapa, obtener direcciones, estimar los tiempos de viaje, indicaciones detalladas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre position précise est utilisée pour afficher votre position sur la carte, obtenir un itinéraire, estimer les temps de trajet, des instructions étape par étape."
+          }
+        }
+      }
+    },
+    "NSLocationAlwaysUsageDescription" : {
+      "comment" : "Privacy - Location Always Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your precise location is used to show your position on the map, get directions, estimate travel times, turn by turn directions."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Su ubicación precisa se utiliza para mostrar su posición en el mapa, obtener direcciones, estimar los tiempos de viaje, indicaciones detalladas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre position précise est utilisée pour afficher votre position sur la carte, obtenir un itinéraire, estimer les temps de trajet, des instructions étape par étape."
+          }
+        }
+      }
+    },
+    "NSLocationWhenInUseUsageDescription" : {
+      "comment" : "Privacy - Location When In Use Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your precise location is used to show your position on the map, get directions, estimate travel times, turn by turn directions."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Su ubicación precisa se utiliza para mostrar su posición en el mapa, obtener direcciones, estimar los tiempos de viaje, indicaciones detalladas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre position précise est utilisée pour afficher votre position sur la carte, obtenir un itinéraire, estimer les temps de trajet, des instructions étape par étape."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

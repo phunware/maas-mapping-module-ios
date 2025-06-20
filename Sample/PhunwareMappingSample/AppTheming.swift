@@ -2,6 +2,7 @@
 //  AppTheming.swift
 //  PhunwareMappingSample
 //
+//  Created by Henry Peng on 3/28/22.
 //  Copyright © 2022 Phunware, Inc. All rights reserved.
 //
 
@@ -9,7 +10,6 @@ import PhunwareTheming
 import PhunwareMapping
 
 extension UIColor {
-    
     enum Palette {
         static let primary = UIColor(named: "Primary")!
         static let secondary = UIColor(named: "Secondary")!
@@ -27,7 +27,6 @@ extension UIColor {
 }
 
 extension MapThemeConfigurator {
-    
     /// This is the starting point where theming can be configured on the mapping module.
     /// The semantic colors from the above `UIColor` extension are defined in the Assets.xcassets
     /// as part of the template project's bundle. It's recommended to update the colors in the assets catalog
@@ -49,16 +48,16 @@ extension MapThemeConfigurator {
                 onError: UIColor.Palette.onError
             ),
             texts: TextStyles(
-                headline1: UIFont.boldSystemFont(ofSize: 28),
-                headline2: UIFont.boldSystemFont(ofSize: 18),
-                headline3: UIFont.systemFont(ofSize: 16),
-                subtitle1: UIFont.boldSystemFont(ofSize: 16),
-                subtitle2: UIFont.boldSystemFont(ofSize: 14),
-                body1: UIFont.systemFont(ofSize: 14),
-                body2: UIFont.systemFont(ofSize: 14),
-                overline: UIFont.systemFont(ofSize: 12),
-                caption: UIFont.boldSystemFont(ofSize: 12),
-                button: UIFont.boldSystemFont(ofSize: 14)
+                headline1: UIFont.OpenSans.bold.of(size: 28),
+                headline2: UIFont.OpenSans.bold.of(size: 18),
+                headline3: UIFont.OpenSans.regular.of(size: 16),
+                subtitle1: UIFont.OpenSans.bold.of(size: 16),
+                subtitle2: UIFont.OpenSans.bold.of(size: 14),
+                body1: UIFont.OpenSans.regular.of(size: 14),
+                body2: UIFont.OpenSans.regular.of(size: 14),
+                overline: UIFont.OpenSans.regular.of(size: 12),
+                caption: UIFont.OpenSans.bold.of(size: 12),
+                button: UIFont.OpenSans.bold.of(size: 14)
             )
         )
     }()
