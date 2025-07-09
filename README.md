@@ -16,7 +16,7 @@ Phunware Mapping is a module that provides mapping and routing functionalities.
 It is required to use [CocoaPods](http://www.cocoapods.org) 1.15.2 or newer. Simply add the following to your Podfile:
 
 ```ruby
-pod 'PhunwareMapping'
+pod 'PhunwareMapping', git: 'https://github.com/phunware/maas-mapping-module-ios.git', :tag => '1.9.2'
 ```
 
 ## Setup
