@@ -5,8 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.5] - 2025-08-16
 
-## [1.9.3] - 2025-06-18
+### Changed
+
+- Integrate shared location with BranchIO SDK 
+
+
+## [1.9.4] - 2025-08-08
+
+### Added
+
+- Added TBT Cards Next Step, Previous Step Controls
+- Added a label to floor switcher button
+
+## [1.9.3] - 2025-06-22
+
+### Changed
+
+- Building overlay now appears above the base maps by default
 
 ### Fixed
 
@@ -128,6 +145,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
+[1.9.4]: https://bitbucket.org/phunware/module-phunware-mapping-ios/branches/compare/1.9.4%0D1.9.3
 [1.9.3]: https://bitbucket.org/phunware/module-phunware-mapping-ios/branches/compare/1.9.3%0D1.9.2
 [1.9.2]: https://bitbucket.org/phunware/module-phunware-mapping-ios/branches/compare/1.9.2%0D1.9.1
 [1.9.1]: https://bitbucket.org/phunware/module-phunware-mapping-ios/branches/compare/1.9.1%0D1.9.0

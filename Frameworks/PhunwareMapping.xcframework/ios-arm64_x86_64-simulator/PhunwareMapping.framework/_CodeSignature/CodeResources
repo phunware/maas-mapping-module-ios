@@ -18,7 +18,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		uO0vBGZHqqeaQrulveJyeJSKQ48=
+		nAiwLKf5DCyA6XoFm3fgtlvwVP0=
 		</data>
 		<key>Browse.storyboardc/BrowseViewController.nib</key>
 		<data>
@@ -114,7 +114,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		iXn3mPgS8h9IkPSky4M2ZhBBbUI=
+		bfZ3QxxqYQHjleV1OdsrjIZYkyE=
 		</data>
 		<key>LICENSE.txt</key>
 		<data>
@@ -122,7 +122,7 @@
 		</data>
 		<key>Map.storyboardc/6St-ZC-2PS-view-Zku-mp-qRA.nib</key>
 		<data>
-		0gX3l9Wq798bmH27H/y2+NSQlGs=
+		dTvKmIQR/kpZrOTt9FcBJ9aHaEI=
 		</data>
 		<key>Map.storyboardc/Info.plist</key>
 		<data>
@@ -150,43 +150,43 @@
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		sYscwNqvGY1tb9Vs2Vn9Km1dE2A=
+		xNF/rXf3RubtpY+tsbGZjw3tAr4=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		CStWma0eqiYJ/xR4q4ls+5i0/Ac=
+		hDhGMWrGBkuYlMJBohnuR0iVl/o=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		oi7CP165aGeCK4HqlPxbho+ooeA=
+		re4NxmEPoyj6GOg9H7GZ9wsoHbE=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		CStWma0eqiYJ/xR4q4ls+5i0/Ac=
+		hDhGMWrGBkuYlMJBohnuR0iVl/o=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		3ehOul4kuoGRSOOupTtC3zmf1AA=
+		KAq+OBWTZihx2k824JV3hB93MpY=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		sYscwNqvGY1tb9Vs2Vn9Km1dE2A=
+		xNF/rXf3RubtpY+tsbGZjw3tAr4=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		eV2oC5MbF3/To7leSLMBH+KO3AU=
+		i8IOhuGJRoARTdDs98pmVPGs+XU=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		JoW58rraR2bEiMiy8ERgogK8b/w=
+		xId6T/GkWiMvRxCTFFFEGAPX6vs=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		eV2oC5MbF3/To7leSLMBH+KO3AU=
+		i8IOhuGJRoARTdDs98pmVPGs+XU=
 		</data>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		MbPgS7WJ39y7AkPZZ3VBVIXJ1Xs=
+		JFJePYtMi7tvHoHoDjAXr3KnS9Y=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -316,7 +316,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			NDYgfW/fz3868kL08/vgC4XCQ3w=
+			XMZ4APeTIFOFUM+KmuwtBQImFR0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -325,7 +325,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			lHOQtW9ab8NveyaQMosd/HiIQYQ=
+			gzZ0gSau+Gj83VV2VcIGPLD7TbE=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -334,7 +334,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			h8+hun/rzUTjapL8uutwOZExLzU=
+			Lk7jb2EtsKUB51kyi/GSQpTyxc4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -367,7 +367,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ec/3hfnMg7SQVW5EDbp5hi8QJXRI8eP59cNXu8065rA=
+			Ub76ietB2f6ZMFFT7UWlcc2UPbntTJEVLdHhUvKwVz8=
 			</data>
 		</dict>
 		<key>Browse.storyboardc/BrowseViewController.nib</key>
@@ -542,7 +542,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			E3ETOQy/f9Bu8nBV5999Z/niCqKPJgoVPT/lceG/y4I=
+			VdHA8G5LmOuc4A7PLaxMco2MsXuqA/BnX8VwNgtH8os=
 			</data>
 		</dict>
 		<key>Map.storyboardc/Info.plist</key>
@@ -591,70 +591,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9hf5oa/GYLPpfW7t6vXp5L8zg6emJwOt/MbtCEbB0M4=
+			PpMKRh6iCsTa/4r6yzMOSo6+lcj9ahQkkawnCPkTAak=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3nLYeQwePpavWuLgszOZ1VApivHuagh2VuTqZlPOPJM=
+			LbOH9k+jzCkyLQ/WbidBKqsVIHGVfGXLzSR4Z6obyak=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rYNWyKm0Ww4gHwTIm3nLB3CUfYUAcRbZAxbxLYOgMsI=
+			h0VfnQnuUyYAeQS+JUzuqqFG3zazxz1LXPtc2fkvSUo=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3nLYeQwePpavWuLgszOZ1VApivHuagh2VuTqZlPOPJM=
+			LbOH9k+jzCkyLQ/WbidBKqsVIHGVfGXLzSR4Z6obyak=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Tozsv53OaWd5+dDIJn9MwI9dY6a/fq/zfE/FvCMwSbg=
+			0v9gR0wEt31UHBAHCOf9+oz2DAaBy0Lib0aJLUHwyR4=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9hf5oa/GYLPpfW7t6vXp5L8zg6emJwOt/MbtCEbB0M4=
+			PpMKRh6iCsTa/4r6yzMOSo6+lcj9ahQkkawnCPkTAak=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DXxIJL8/AgEjE2+LtaS3lLibOu2Fp4a3Ew3bQlqtHtg=
+			VY30waeXVyWX9o0GOXDdW1Cs7Ao4U43yFvAz3ID95cs=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vozuKa8IBgSFyO4B0PkLsFjgI7TE2fJFYgKCh7s/xT8=
+			WLpO6TeJCYH4ez8viTI8/SaBopbG3dkhOhdIcCbU6fo=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DXxIJL8/AgEjE2+LtaS3lLibOu2Fp4a3Ew3bQlqtHtg=
+			VY30waeXVyWX9o0GOXDdW1Cs7Ao4U43yFvAz3ID95cs=
 			</data>
 		</dict>
 		<key>Modules/PhunwareMapping.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			h+1CTklc63av96WSqTE48Y9iHQHjme0AFY/M2EUksjc=
+			J0iZp0F84VdOPPzJwxvI3Ri0dEWicXsXqXRFNs/Ioqs=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -878,7 +878,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EF2WfpxdCAC2+mradIDJWZWR2DTcUOunuh0qwMPoRZI=
+			7q3Qmtt0cudDxbj6r3k8z5rzoIxXxac15ESIdCFNDyE=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -887,7 +887,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fnbtD57e23yIeTIzGZtUQ+ikX6EGNHz+itI+3gYRJDY=
+			+gxIv/8GJnLGzEiop9F8TpMjTDDGCENhRF+sMq27X6k=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -896,7 +896,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			DD6SyMjW9zdDsbu7hV7bmhGG5XXFMDzDhFeeErsBaYE=
+			uBnjGrtDxcF7yilFqTyYHSkrG7ys+7Txf/s28vmPcJc=
 			</data>
 			<key>optional</key>
 			<true/>
