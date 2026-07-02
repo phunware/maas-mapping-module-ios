@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.0.2 effective-5.10 (swiftlang-6.0.2.1.2 clang-1600.0.26.4)
-// swift-module-flags: -target arm64-apple-ios15.5 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name PhunwareMapping
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+// swift-compiler-version: Apple Swift version 6.2.1 effective-5.10 (swiftlang-6.2.1.4.8 clang-1700.4.4.1)
+// swift-module-flags: -target arm64-apple-ios15.5 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name PhunwareMapping
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.1
 import AVFoundation
 import Combine
 import CoreLocation
@@ -69,6 +69,8 @@ public enum POIType : String {
   case hotelRoom
   case information
   case library
+  case lockers
+  case luggageCarts
   case mail
   case marina
   case medicalService
@@ -106,6 +108,7 @@ public enum POIType : String {
   case shopping
   case spa
   case stairs
+  case storage
   case taxiStand
   case theater
   case touristInformation
@@ -116,7 +119,9 @@ public enum POIType : String {
   case vendingMachine
   case waitingArea
   case waterFeature
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
+  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -125,7 +130,7 @@ public enum POIType : String {
 public enum HostingMode : Equatable {
   case tab(_: String, mapName: String, mapConfigKey: String)
   case unhosted(mapName: String)
-  public static func == (a: PhunwareMapping.HostingMode, b: PhunwareMapping.HostingMode) -> Swift.Bool
+  public static func == (a: HostingMode, b: HostingMode) -> Swift.Bool
 }
 public enum MappingDeeplink {
   public enum RouteBuilderDestination {
@@ -138,16 +143,29 @@ public enum MappingDeeplink {
   public enum FeaturedListsDestination {
     case expanded(mapName: String)
     case `default`(mapName: String)
+    case list(mapName: String, featuredListId: String)
+  }
+  public enum POIDetailDestination {
+    case pointOfInterest(mapName: String, id: Int)
+  }
+  public enum SearchDestination {
+    case search(mapName: String, term: String?, categoryId: String?, buildingId: String?)
   }
   case routeBuilder(destination: RouteBuilderDestination)
   case category(destination: CategoryDestination)
   case featuredLists(destination: FeaturedListsDestination)
+  case poiDetail(destination: POIDetailDestination)
+  case search(destination: SearchDestination)
+  #if compiler(>=5.3) && $NonescapableTypes
   public var mapConfigKey: String? {
     get
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public var mapName: String? {
     get
   }
+  #endif
   public var urlHost: String {
     get
   }
@@ -157,14 +175,26 @@ public enum MappingDeeplink {
   public var urlQueryItems: [URLQueryItem] {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(url: URL, allowedURLSchemes: Set<String> = Bundle.main.urlSchemes)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(universalLinkURL: URL, matchingURLString: String?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public func url(withScheme urlScheme: String) -> URL?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public func url(withUniversalLinkDomain domain: String) -> URL?
+  #endif
 }
 extension URLComponents {
+  #if compiler(>=5.3) && $NonescapableTypes
   public static func urlComponentsForRouteBuilder(_ url: URL, location: ShareableLocation, mapConfigKey: String? = nil) -> URLComponents?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public static func urlComponentsForCategoryList(_ url: URL, categoryId: String, mapName: String, mapConfigKey: String? = nil) -> URLComponents?
+  #endif
 }
 extension UIViewController {
   @_Concurrency.MainActor @preconcurrency public var containerViewVisibleBackgroundAreaLayoutGuide: UILayoutGuide {
@@ -177,6 +207,9 @@ extension UIViewController {
     get
   }
   @_Concurrency.MainActor @preconcurrency public var containerViewSafeBottomSheetLayoutGuide: UILayoutGuide {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency public var containerViewBottomSheetSpacerLayoutguide: UILayoutGuide {
     get
   }
 }
@@ -195,9 +228,11 @@ extension UIView {
   public var name: String {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public var building: Building? {
     get
   }
+  #endif
   @objc deinit
 }
 extension Floor : Hashable {
@@ -217,16 +252,22 @@ extension Floor : Hashable {
   public var name: String {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public var center: CLLocation? {
     get
   }
+  #endif
   public var floors: [Floor] {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public var initialFloor: Floor? {
     get
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public func floor(byId id: Int) -> Floor?
+  #endif
   public typealias ID = Swift.ObjectIdentifier
   @objc deinit
 }
@@ -244,17 +285,21 @@ extension Building : MapContaining {
 }
 @_hasMissingDesignatedInitializers public class PhunwareAnalytics {
   public static func disableAutomaticScreenViewEvents()
+  #if compiler(>=5.3) && $NonescapableTypes
   public static func startScreenViewEvent(_ name: String, appSection: String? = nil, parameters: [String : String]? = nil, for viewController: UIViewController)
+  #endif
   public static func endScreenViewEvent(for viewController: UIViewController)
   public static func setScreenName(_ screenName: String)
+  #if compiler(>=5.3) && $NonescapableTypes
   public static func addCustomEvent(_ name: String, parameters: [String : String]? = nil)
+  #endif
   @objc deinit
 }
 public enum PresentationMode {
   case push
   case embed
-  public static let `default`: PhunwareMapping.PresentationMode
-  public static func == (a: PhunwareMapping.PresentationMode, b: PhunwareMapping.PresentationMode) -> Swift.Bool
+  public static let `default`: PresentationMode
+  public static func == (a: PresentationMode, b: PresentationMode) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
@@ -265,17 +310,21 @@ public protocol POICoordinatorDelegate : AnyObject {
   func coordinator(_ coordinator: POICoordinator, didSelectActionLink actionLink: ActionLink)
   func coordinator(_ coordinator: POICoordinator, didStartHomeToVenueRoutingWith geozoneIdentifiers: Set<String>, destination: HomeToVenueDestination)
   func coordinator(_ coordinator: POICoordinator, didStopHomeToVenueRoutingWith geozoneIdentifiers: Set<String>)
+  #if compiler(>=5.3) && $NonescapableTypes
   func coordinator(_ coordinator: POICoordinator, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
+  #endif
 }
 @objc public class POICoordinator : NSObject, Coordinator {
   public var childCoordinators: [Coordinator]
   public var navigationController: UINavigationController
   weak public var delegate: POICoordinatorDelegate?
-  public var childMappingDeeplinkHandlers: [any PhunwareMapping.MappingDeeplinkNavigable] {
+  public var childMappingDeeplinkHandlers: [any MappingDeeplinkNavigable] {
     get
   }
   public var pendingMappingDeeplink: DeferredMappingDeeplink?
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(navigationController: UINavigationController, mapConfig: MapConfig, mapLocalization: MapLocalization, mapContainerSelector: MapContainerSelector, mapTheme: MapTheme, allowsExitButtonToBeShown: Bool = true, hidesBottomBarWhenPushed: Bool = true, tabBarItem: UITabBarItem? = nil, presentationMode: PresentationMode = .default, meetingRoomPOIIdentifiers: [String], initialMeetingRoomPOIImageSize: CGSize?, buildingGroundOverlayRenderers: [BuildingGroundOverlayRenderer]? = nil, showsOverlayAboveLabels: Bool)
+  #endif
   @objc deinit
   public func start()
   public func setMeetingRooms(_ meetingRooms: [MeetingRoom])
@@ -294,38 +343,56 @@ extension POICoordinator : MappingDeeplinkNavigable {
   public func openDeeplink(_ deeplink: MappingDeeplink) -> Bool
 }
 public protocol MappingModuleDelegate : AnyObject {
+  #if compiler(>=5.3) && $NonescapableTypes
   func mappingModuleDidRequestConfiguration(_ module: MappingModule) -> MappingConfiguration?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   func mappingModule(_ module: MappingModule, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   func mappingModule(_ module: MappingModule, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void)
+  #endif
 }
 extension MappingModuleDelegate {
+  #if compiler(>=5.3) && $NonescapableTypes
   public func mappingModule(_ module: MappingModule, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
+  #endif
 }
 public class MappingModule : ModulePlugin {
   public var id: String {
     get
   }
   weak public var delegate: MappingModuleDelegate?
-  public init<T>(themeConfigurator: T, homeToVenueConfiguration: HomeToVenueConfiguration, delegate: MappingModuleDelegate) where T : PhunwareTheming.ThemeConfiguring, T.Theme == PhunwareMapping.MapTheme
+  public init<T>(themeConfigurator: T, homeToVenueConfiguration: HomeToVenueConfiguration, delegate: MappingModuleDelegate) where T : PhunwareTheming.ThemeConfiguring, T.Theme == MapTheme
   public func didEnterGeozone(geozoneIdentifier: String)
   public func didExitGeozone(geozoneIdentifier: String)
   @objc deinit
 }
 extension MappingModule : ModuleTabProviding {
+  #if compiler(>=5.3) && $NonescapableTypes
   public func coordinator(for tabIdentifier: String, using navController: UINavigationController) -> Coordinator?
+  #endif
 }
 extension MappingModule : ModuleUnhostedContentProviding {
+  #if compiler(>=5.3) && $NonescapableTypes
   public func unhostedCoordinator(for deeplink: Deeplink, using navController: UINavigationController) -> UnhostedCustomContentCoordinator?
+  #endif
 }
 extension MappingModule : MappingCoordinatorDelegate {
+  #if compiler(>=5.3) && $NonescapableTypes
   public func coordinatorDidRequestConfiguration(_ coordinator: MappingCoordinator) -> MappingConfiguration?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public func coordinator(_ coordinator: MappingCoordinator, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public func coordinator(_ coordinator: MappingCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void)
+  #endif
 }
 public enum RoutingMode {
   case blueDot
   case `static`
-  public static func == (a: PhunwareMapping.RoutingMode, b: PhunwareMapping.RoutingMode) -> Swift.Bool
+  public static func == (a: RoutingMode, b: RoutingMode) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
@@ -347,24 +414,34 @@ public struct Gradient {
   public var kind: Kind
   public var options: CGGradientDrawingOptions
   public init(stops: [Stop], kind: Kind, options: CGGradientDrawingOptions = [])
+  #if compiler(>=5.3) && $NonescapableTypes
   public var cgGradient: CGGradient? {
     get
   }
+  #endif
 }
 public protocol MappingCoordinatorDelegate : AnyObject {
+  #if compiler(>=5.3) && $NonescapableTypes
   func coordinatorDidRequestConfiguration(_ coordinator: MappingCoordinator) -> MappingConfiguration?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   func coordinator(_ coordinator: MappingCoordinator, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   func coordinator(_ coordinator: MappingCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void)
+  #endif
 }
 public class MappingCoordinator : Coordinator, UnhostedCustomContentCoordinator {
-  public var childMappingDeeplinkHandlers: [any PhunwareMapping.MappingDeeplinkNavigable]
+  public var childMappingDeeplinkHandlers: [any MappingDeeplinkNavigable]
   public var pendingMappingDeeplink: DeferredMappingDeeplink?
   public var pendingDeeplink: DeferredDeeplink?
   weak public var unhostedContentCoordinatorDelegate: UnhostedCustomContentCoordinatorDelegate?
   public var childCoordinators: [any PhunwareFoundation.Coordinator]
   public var navigationController: UINavigationController
   weak public var delegate: MappingCoordinatorDelegate?
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(navigationController: UINavigationController, hostingMode: HostingMode, flow: Flow = .default, configuration: MappingConfiguration?, homeToVenueMonitor: HomeToVenueMonitor, theme: MapTheme, delegate: MappingCoordinatorDelegate)
+  #endif
   public func start()
   public func didEnterGeozone(geozoneIdentifier: String)
   public func didExitGeozone(geozoneIdentifier: String)
@@ -379,7 +456,9 @@ extension MappingCoordinator : DeeplinkNavigable, MappingDeeplinkNavigable {
   public func openDeeplink(_ deeplink: MappingDeeplink) -> Bool
 }
 extension MappingCoordinator : PermissionCoordinatorDelegate {
+  #if compiler(>=5.3) && $NonescapableTypes
   public func coordinator(_ coordinator: PermissionCoordinator, customImageWithName name: String) -> UIImage?
+  #endif
   public func coordinatorDidFinish(_ coordinator: PermissionCoordinator)
 }
 extension MappingCoordinator : POICoordinatorDelegate {
@@ -387,14 +466,20 @@ extension MappingCoordinator : POICoordinatorDelegate {
   public func coordinator(_ coordinator: POICoordinator, didSelectActionLink actionLink: ActionLink)
   public func coordinator(_ coordinator: POICoordinator, didStartHomeToVenueRoutingWith geozoneIdentifiers: Set<String>, destination: HomeToVenueDestination)
   public func coordinator(_ coordinator: POICoordinator, didStopHomeToVenueRoutingWith geozoneIdentifiers: Set<String>)
+  #if compiler(>=5.3) && $NonescapableTypes
   public func coordinator(_ coordinator: POICoordinator, didRequestMeetingRoomsFor poiIdentifiers: [String], completion: @escaping (Result<[MeetingRoom], Error>) -> Void)
+  #endif
 }
 extension MappingCoordinator : ShareLocationCoordinatorDelegate {
   public func coordinatorDidFinish(_ coordinator: ShareLocationCoordinator)
+  #if compiler(>=5.3) && $NonescapableTypes
   public func coordinator(_ coordinator: ShareLocationCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void)
+  #endif
 }
 extension UIButton {
-  @_Concurrency.MainActor @preconcurrency public func setSymbolImage(named name: String, withWeight weight: UIImage.SymbolWeight)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency public func setSymbolImage(named name: String, scale: UIImage.SymbolScale = .default, font: UIFont? = nil)
+  #endif
 }
 public class HomeToVenueMonitor {
   public init(configuration: HomeToVenueConfiguration)
@@ -407,30 +492,40 @@ public class HomeToVenueMonitor {
 public enum Flow {
   case map
   case shareLocation
-  public static let `default`: PhunwareMapping.Flow
-  public static func == (a: PhunwareMapping.Flow, b: PhunwareMapping.Flow) -> Swift.Bool
+  public static let `default`: Flow
+  public static func == (a: Flow, b: Flow) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
 }
 public struct ExternalMappingAppDeeplink {
-  public static let appleMapsDrivingDirections: PhunwareMapping.ExternalMappingAppDeeplink
-  public static let googleMapsDrivingDirections: PhunwareMapping.ExternalMappingAppDeeplink
+  public static let appleMapsDrivingDirections: ExternalMappingAppDeeplink
+  public static let googleMapsDrivingDirections: ExternalMappingAppDeeplink
   public let appName: String
   public let urlScheme: String
   public let urlHost: String
   public let urlPathHandler: (PointOfInterest) -> String
   public let queryItemsHandler: (PointOfInterest) -> [(name: String, value: String?)]
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(appName: String, urlScheme: String, urlHost: String = "", urlPathHandler: @escaping (_ poiForPath: PointOfInterest) -> String = { _ in "" }, queryItemsHandler: @escaping (_ poiForQueryItems: PointOfInterest) -> [(name: String, value: String?)])
+  #endif
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class SolidColorButton : UIButton {
+  #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency public func backgroundImageColor(for state: UIControl.State) -> UIColor?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency public func setBackgroundImageColor(_ color: UIColor?, for state: UIControl.State)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
+  #endif
   @_Concurrency.MainActor @preconcurrency public func configureSolidColorButton(_ config: TextConfiguration, for state: UIControl.State)
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  #endif
   @objc deinit
 }
 public enum ActionLinkType : Codable, RawRepresentable, Equatable {
@@ -456,7 +551,7 @@ public struct ActionLink : Codable, Equatable {
   public var isValid: Bool {
     get
   }
-  public static func == (a: PhunwareMapping.ActionLink, b: PhunwareMapping.ActionLink) -> Swift.Bool
+  public static func == (a: ActionLink, b: ActionLink) -> Swift.Bool
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -465,7 +560,9 @@ public struct ActionLink : Codable, Equatable {
   @objc deinit
 }
 extension NotificationCenter {
+  #if compiler(>=5.3) && $NonescapableTypes
   public func observe(name: NSNotification.Name?, object obj: Any?, queue: OperationQueue?, using block: @escaping (Notification) -> ()) -> NotificationToken
+  #endif
 }
 public struct POIEstimation {
 }
@@ -473,7 +570,7 @@ extension POIEstimation : Comparable {
   public static func == (lhs: POIEstimation, rhs: POIEstimation) -> Bool
   public static func < (lhs: POIEstimation, rhs: POIEstimation) -> Bool
 }
-public protocol CellViewModel : PhunwareMapping.CellIdentifiable {
+public protocol CellViewModel : CellIdentifiable {
 }
 public protocol CellViewModelConfigurable {
   func configure(cellViewModel: CellViewModel)
@@ -484,17 +581,26 @@ extension CellViewModelConfigurable {
   public func configureWillDisplayCell(cellViewModel: CellViewModel)
   public func configureDidEndDisplaying(cellViewModel: CellViewModel)
 }
+public enum ContentEmbeddingContentOffset {
+  case fixed(CGFloat)
+  case bottomOfExitButton
+  case bottomOfDirectionCards(offsetBy: CGFloat = .zero)
+}
 public struct ContentEmbeddingConfig {
 }
 public protocol ShareLocationCoordinatorDelegate : AnyObject {
   func coordinatorDidFinish(_ coordinator: ShareLocationCoordinator)
+  #if compiler(>=5.3) && $NonescapableTypes
   func coordinator(_ coordinator: ShareLocationCoordinator, didRequestShareURLFor location: ShareableLocation, withCompletionHandler completionHandler: @escaping (Result<URL, Error>) -> Void)
+  #endif
 }
 @objc public class ShareLocationCoordinator : NSObject, Coordinator {
   public var childCoordinators: [Coordinator]
   public var navigationController: UINavigationController
   weak public var delegate: ShareLocationCoordinatorDelegate?
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(navigationController: UINavigationController, mapConfig: MapConfig, mapLocalization: MapLocalization, mapContainerSelector: MapContainerSelector, mapTheme: MapTheme, allowsExitButtonToBeShown: Bool = true, hidesBottomBarWhenPushed: Bool = true, presentationMode: PresentationMode = .default, tabBarItem: UITabBarItem? = nil, buildingGroundOverlayRenderers: [BuildingGroundOverlayRenderer]? = nil, showsOverlayAboveLabels: Bool)
+  #endif
   public func start()
   @objc deinit
 }
@@ -526,63 +632,87 @@ public class PointOfInterest : Equatable, Comparable {
   public var floorDisplayName: String {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public var imageURL: URL? {
     get
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public var headerImageURL: URL? {
     get
   }
+  #endif
   public var defaultHeaderImageName: String {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public var summary: String? {
     get
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public var websiteURLString: String? {
     get
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public var audioURL: URL? {
     get
   }
+  #endif
   public var links: [Link] {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public var phoneNumberString: String? {
     get
   }
+  #endif
   public var keywords: [String] {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public var arrivalURL: URL? {
     get
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public var arrivalURLTitle: String? {
     get
   }
+  #endif
   public var poiType: String {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public var floor: Floor? {
     get
   }
+  #endif
   public var coordinate: CLLocationCoordinate2D {
     get
   }
   weak public var parkingPOI: PointOfInterest? {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public var parkingCoordinate: CLLocationCoordinate2D? {
     get
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public var parkingAddress: String? {
     get
   }
+  #endif
   public var effectiveParkingLocation: ParkingLocation {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public var parkingPOIIdentifier: Int? {
     get
   }
+  #endif
   public var isRoutable: Bool {
     get
   }
@@ -610,9 +740,11 @@ extension UIPanGestureRecognizer {
   public var coordinate: CLLocationCoordinate2D {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public var floorIdentifier: Int? {
     get
   }
+  #endif
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class DropShadowView : UIView {
@@ -636,18 +768,24 @@ extension UIPanGestureRecognizer {
     @objc get
     @objc set
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public var backgroundColor: UIColor? {
     @objc get
     @objc set
   }
+  #endif
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CGRect)
+  #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: NSCoder)
+  #endif
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func layoutSubviews()
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func addSubview(_ view: UIView)
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func insertSubview(_ view: UIView, at index: Int)
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func insertSubview(_ view: UIView, belowSubview siblingSubview: UIView)
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func insertSubview(_ view: UIView, aboveSubview siblingSubview: UIView)
+  #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
+  #endif
   @objc deinit
 }
 public enum DeeplinkResolver {
@@ -655,7 +793,9 @@ public enum DeeplinkResolver {
   case map(_: String)
   case shareLocation(_: String)
   case mapping(MappingDeeplink)
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(_ deeplink: Deeplink)
+  #endif
 }
 public struct ShareableLocation {
   public let mapName: String
@@ -697,10 +837,16 @@ public enum MapContainer {
 public protocol MapContaining {
   var container: MapContainer { get }
   var pointOfInterests: [PointOfInterest] { get }
+  #if compiler(>=5.3) && $NonescapableTypes
   var center: CLLocation? { get }
+  #endif
   var floors: [Floor] { get }
+  #if compiler(>=5.3) && $NonescapableTypes
   var initialFloor: Floor? { get }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   func floor(byId id: Int) -> Floor?
+  #endif
 }
 public struct MeetingRoom {
   public enum Status {
@@ -709,7 +855,7 @@ public struct MeetingRoom {
     case unavailable
     case unknown
     case `default`
-    public static func == (a: PhunwareMapping.MeetingRoom.Status, b: PhunwareMapping.MeetingRoom.Status) -> Swift.Bool
+    public static func == (a: MeetingRoom.Status, b: MeetingRoom.Status) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
@@ -718,7 +864,9 @@ public struct MeetingRoom {
   public let maasPOIId: String
   public let status: Status
   public let poiImageSize: CGSize?
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(maasPOIId: String, status: Status, poiImageSize: CGSize?)
+  #endif
 }
 public protocol CellIdentifiable : AnyObject {
   var cellIdentifier: String { get }
@@ -727,7 +875,9 @@ public struct MappingConfiguration {
   public struct MeetingRoom {
     public var meetingRoomPOIIdentifiers: [String]
     public var initialMeetingRoomPOIImageSize: CGSize?
+    #if compiler(>=5.3) && $NonescapableTypes
     public init(meetingRoomPOIIdentifiers: [String] = [], initialMeetingRoomPOIImageSize: CGSize? = nil)
+    #endif
   }
   public var mapConfigKey: String
   public var mapConfig: MapConfig
@@ -738,7 +888,9 @@ public struct MappingConfiguration {
   public init(mapConfigKey: String, mapConfig: MapConfig, mapLocalization: MapLocalization, meetingRoom: MeetingRoom = .init(), mapOverlayRenderers: [BuildingGroundOverlayRenderer] = [], showsOverlayAboveLabels: Bool = true)
 }
 extension String {
+  #if compiler(>=5.3) && $NonescapableTypes
   public func normalizedPhoneURL() -> URL?
+  #endif
 }
 public enum Category : String, Equatable, Identifiable {
   case aquariums
@@ -766,6 +918,7 @@ public enum Category : String, Equatable, Identifiable {
   case information
   case laundry
   case library
+  case luggageCarts
   case medicalServices
   case more
   case nightlife
@@ -785,6 +938,7 @@ public enum Category : String, Equatable, Identifiable {
   case shopping
   case stairs
   case statusBoards
+  case storage
   case taxiRideshare
   case towelStations
   case transportation
@@ -796,19 +950,25 @@ public enum Category : String, Equatable, Identifiable {
   case workspaces
   case unknown
   public init(id: String)
+  #if compiler(>=5.3) && $NonescapableTypes
   public var poiTypes: [POIType]? {
     get
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public var iconImage: UIImage? {
     get
   }
+  #endif
   public var id: String {
     get
   }
   public var titleKey: String {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
+  #endif
   public typealias ID = Swift.String
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -822,23 +982,33 @@ public enum Category : String, Equatable, Identifiable {
   public var identifier: Int {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public var center: CLLocation? {
     get
   }
+  #endif
   public var buildings: [Building] {
     get
   }
   public var floors: [Floor] {
     get
   }
+  #if compiler(>=5.3) && $NonescapableTypes
   public var initialFloor: Floor? {
     get
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public var overviewBuilding: Building? {
     get
   }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public func building(byId id: Int) -> Building?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public func floor(byId id: Int) -> Floor?
+  #endif
   @objc deinit
 }
 extension Campus : Hashable {
@@ -886,7 +1056,7 @@ public struct MapTheme {
     public init(title: TextStyle, detail: TextStyle, handle: UIColor, textFieldBackground: UIColor, background: UIColor)
   }
   public struct Search {
-    public init(title: TextStyle, placeholder: TextStyle, tint: UIColor, topNoResults: TextStyle, bottomNoResults: TextStyle, currentLocation: TextStyle, currentLocationIcon: UIColor, sectionHeader: TextStyle, sectionHeaderBackground: UIColor, cancelButton: TextStyle, searchBarBackground: UIColor, searchByBuildingButton: TextStyle, searchChip: Chip, filterSelectorTitle: TextStyle, filterSelectorList: TextStyle)
+    public init(title: TextStyle, placeholder: TextStyle, tint: UIColor, topNoResults: TextStyle, bottomNoResults: TextStyle, currentLocation: TextStyle, currentLocationIcon: UIColor, sectionHeader: TextStyle, sectionHeaderBackground: UIColor, cancelButton: TextStyle, searchBarBackground: UIColor, searchByBuildingButton: TextStyle, searchChip: Chip, filterSelectorTitle: TextStyle, filterSelectorCancel: TextStyle, filterSelectorList: TextStyle)
   }
   public struct NavigationBar {
     public init(title: TextStyle, tint: UIColor)
@@ -930,8 +1100,8 @@ public struct MapTheme {
   public struct OffRoute {
     public init(title: TextStyle, message: TextStyle, dismiss: TextStyle, reroute: TextStyle, dontShowAgain: TextStyle)
   }
-  public struct LoadingSpinner {
-    public init(title: TextStyle, tint: UIColor, overlay: UIColor)
+  public struct Loading {
+    public init(message: TextStyle, background: UIColor, errorBackground: UIColor)
   }
   public struct LocationPermissionPrimer {
     public init(iconTint: UIColor, title: TextStyle, body: TextStyle, bulletedList: TextStyle, proceedButton: SolidColorButton, cancelButton: SolidColorButton)
@@ -946,7 +1116,9 @@ public struct MapTheme {
     public struct InfoSheet {
       public init(title: TextStyle, detail: TextStyle, okayButton: TextStyle, okayButtonBackground: UIColor)
     }
+    #if compiler(>=5.3) && $NonescapableTypes
     public init(infoButton: InfoButton, shareButton: ShareButton, infoSheet: InfoSheet, annotationImage: UIImage?)
+    #endif
   }
   public struct MapViewSelection {
     public init(title: TextStyle, closeButtonColor: UIColor, buildingTitle: TextStyle, buildingName: TextStyle, floorTitle: TextStyle, floorName: TextStyle, changeBuildingButton: TextStyle, changeFloorButton: TextStyle)
@@ -981,10 +1153,14 @@ public struct MapTheme {
     }
     public init(normalState: State, selectedState: State)
   }
-  public init(colorPalette: ColorPalette, textStyles: TextStyles, moduleNavigation: ModuleNavigation? = nil, bottomSheet: BottomSheet? = nil, search: Search? = nil, navigationBar: NavigationBar? = nil, category: Category? = nil, featuredList: FeaturedList? = nil, featuredListPOI: FeaturedListPOI? = nil, floorSelector: FloorSelector? = nil, poi: POI? = nil, textField: TextField? = nil, accessibleRoute: AccessibleRoute? = nil, startRoute: SolidColorButton? = nil, detail: Detail? = nil, directions: DirectionList? = nil, offRoute: OffRoute? = nil, loadingSpinner: LoadingSpinner? = nil, locationPermission: LocationPermissionPrimer? = nil, shareLocation: ShareLocation? = nil, mapViewSelection: MapViewSelection? = nil, buildingPicker: GenericPicker? = nil, floorPicker: GenericPicker? = nil, poiList: POIList? = nil, buildingSearch: BuildingSearch? = nil, arrivalCard: ArrivalCard? = nil, soundButton: MapTheme.RoundToggleButton? = nil)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(colorPalette: ColorPalette, textStyles: TextStyles, moduleNavigation: ModuleNavigation? = nil, bottomSheet: BottomSheet? = nil, search: Search? = nil, navigationBar: NavigationBar? = nil, category: Category? = nil, featuredList: FeaturedList? = nil, featuredListPOI: FeaturedListPOI? = nil, floorSelector: FloorSelector? = nil, poi: POI? = nil, textField: TextField? = nil, accessibleRoute: AccessibleRoute? = nil, startRoute: SolidColorButton? = nil, detail: Detail? = nil, directions: DirectionList? = nil, offRoute: OffRoute? = nil, loading: Loading? = nil, locationPermission: LocationPermissionPrimer? = nil, shareLocation: ShareLocation? = nil, mapViewSelection: MapViewSelection? = nil, buildingPicker: GenericPicker? = nil, floorPicker: GenericPicker? = nil, poiList: POIList? = nil, buildingSearch: BuildingSearch? = nil, arrivalCard: ArrivalCard? = nil, soundButton: MapTheme.RoundToggleButton? = nil)
+  #endif
 }
 public protocol PermissionCoordinatorDelegate : AnyObject {
+  #if compiler(>=5.3) && $NonescapableTypes
   func coordinator(_ coordinator: PermissionCoordinator, customImageWithName name: String) -> UIImage?
+  #endif
   func coordinatorDidFinish(_ coordinator: PermissionCoordinator)
 }
 public class PermissionCoordinator : Coordinator {
@@ -996,14 +1172,18 @@ public class PermissionCoordinator : Coordinator {
   @objc deinit
 }
 extension PermissionCoordinator : PermissionPrimingCoordinatorDelegate {
+  #if compiler(>=5.3) && $NonescapableTypes
   public func coordinator(_ coordinator: PermissionPrimingCoordinator, didCompleteWithPrimedPermissions primedPermissions: Set<Permission>?, fulfilledPermissions: Set<Permission>?, unfulfilledPermissions: Set<Permission>?, failedPermissions: Set<Permission>?) -> PermissionPrimingCompletionNavigationAction
+  #endif
   public func displayTemplate(for coordinator: PermissionPrimingCoordinator, permissions: OrderedSet<Permission>) -> DisplayTemplate
 }
 public protocol MapContainerConfiguring {
   var identifier: Int { get }
   var onCampusGeozoneIdentifiers: [Int] { get }
   var languageCode: String { get }
+  #if compiler(>=5.3) && $NonescapableTypes
   var featuredListConfig: MapConfig.FeaturedListConfig? { get }
+  #endif
   var mapContainerConfigValue: MapConfig.MapContainerConfig { get }
 }
 public struct MapConfig : Codable {
@@ -1050,9 +1230,9 @@ public struct MapConfig : Codable {
   public struct FeaturedListConfig : Codable, Hashable {
     public let featuredListHeader: String?
     public let featuredLists: [FeaturedList]
-    public func hash(into hasher: inout Swift.Hasher)
-    public static func == (a: PhunwareMapping.MapConfig.FeaturedListConfig, b: PhunwareMapping.MapConfig.FeaturedListConfig) -> Swift.Bool
+    public static func == (a: MapConfig.FeaturedListConfig, b: MapConfig.FeaturedListConfig) -> Swift.Bool
     public func encode(to encoder: any Swift.Encoder) throws
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
@@ -1064,9 +1244,9 @@ public struct MapConfig : Codable {
     public let subTitle: String?
     public let imageURL: String?
     public let pois: [POI]
-    public func hash(into hasher: inout Swift.Hasher)
-    public static func == (a: PhunwareMapping.MapConfig.FeaturedList, b: PhunwareMapping.MapConfig.FeaturedList) -> Swift.Bool
+    public static func == (a: MapConfig.FeaturedList, b: MapConfig.FeaturedList) -> Swift.Bool
     public func encode(to encoder: any Swift.Encoder) throws
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
@@ -1074,11 +1254,11 @@ public struct MapConfig : Codable {
   }
   public struct POI : Codable, Hashable {
     public let identifier: String?
-    public let title: String?
+    public let title: String
     public let imageURL: String?
-    public func hash(into hasher: inout Swift.Hasher)
-    public static func == (a: PhunwareMapping.MapConfig.POI, b: PhunwareMapping.MapConfig.POI) -> Swift.Bool
+    public static func == (a: MapConfig.POI, b: MapConfig.POI) -> Swift.Bool
     public func encode(to encoder: any Swift.Encoder) throws
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
@@ -1133,7 +1313,9 @@ public struct DeferredMappingDeeplink {
 public protocol MappingDeeplinkNavigable : AnyObject {
   var childMappingDeeplinkHandlers: [MappingDeeplinkNavigable] { get }
   var isMappingDeeplinkingAvailable: Bool { get }
+  #if compiler(>=5.3) && $NonescapableTypes
   var pendingMappingDeeplink: DeferredMappingDeeplink? { get set }
+  #endif
   func queryCanOpenDirectly(_ deeplink: MappingDeeplink, completion: @escaping (Bool) -> Void)
   func openDeeplink(_ deeplink: MappingDeeplink) -> Bool
   func prepareForNavigation(to deeplink: MappingDeeplink)
@@ -1153,12 +1335,20 @@ public enum CommonError : Error {
   case invalidURL
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class GradientBackgroundButton : UIButton {
+  #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency public func backgroundImageGradient(for state: UIControl.State) -> Gradient?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency public func setBackgroundImageGradient(_ gradient: Gradient?, withSize size: CGSize? = nil, for state: UIControl.State)
+  #endif
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func layoutSubviews()
+  #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?)
+  #endif
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  #endif
   @objc deinit
 }
 public struct MapThemeConfigurator : ThemeConfiguring {
@@ -1166,7 +1356,7 @@ public struct MapThemeConfigurator : ThemeConfiguring {
   public let texts: TextStyles
   public init(colors: ColorPalette, texts: TextStyles)
   public func configureTheme() -> MapTheme
-  public typealias Theme = PhunwareMapping.MapTheme
+  public typealias Theme = MapTheme
 }
 public struct MapContainerSelector {
   public init(languageCode: String, mapName: String)
@@ -1174,7 +1364,9 @@ public struct MapContainerSelector {
 public typealias MapLocalizationDictionary = Dictionary<String, Dictionary<String, String>>
 public class MapLocalization {
   public init(with defaultLanguageCode: String)
+  #if compiler(>=5.3) && $NonescapableTypes
   public func setLocalization(localizationDictionary: MapLocalizationDictionary?)
+  #endif
   @objc deinit
 }
 extension MapLocalization {
@@ -1182,18 +1374,18 @@ extension MapLocalization {
     get
   }
 }
-extension PhunwareMapping.POIType : Swift.Equatable {}
-extension PhunwareMapping.POIType : Swift.Hashable {}
-extension PhunwareMapping.POIType : Swift.RawRepresentable {}
-extension PhunwareMapping.PresentationMode : Swift.Equatable {}
-extension PhunwareMapping.PresentationMode : Swift.Hashable {}
-extension PhunwareMapping.RoutingMode : Swift.Equatable {}
-extension PhunwareMapping.RoutingMode : Swift.Hashable {}
-extension PhunwareMapping.Flow : Swift.Equatable {}
-extension PhunwareMapping.Flow : Swift.Hashable {}
+extension POIType : Swift.Equatable {}
+extension POIType : Swift.Hashable {}
+extension POIType : Swift.RawRepresentable {}
+extension PresentationMode : Swift.Equatable {}
+extension PresentationMode : Swift.Hashable {}
+extension RoutingMode : Swift.Equatable {}
+extension RoutingMode : Swift.Hashable {}
+extension Flow : Swift.Equatable {}
+extension Flow : Swift.Hashable {}
 extension UIKit.UIPanGestureRecognizer.VerticalDirection : Swift.Equatable {}
 extension UIKit.UIPanGestureRecognizer.VerticalDirection : Swift.Hashable {}
-extension PhunwareMapping.MeetingRoom.Status : Swift.Equatable {}
-extension PhunwareMapping.MeetingRoom.Status : Swift.Hashable {}
-extension PhunwareMapping.Category : Swift.Hashable {}
-extension PhunwareMapping.Category : Swift.RawRepresentable {}
+extension MeetingRoom.Status : Swift.Equatable {}
+extension MeetingRoom.Status : Swift.Hashable {}
+extension Category : Swift.Hashable {}
+extension Category : Swift.RawRepresentable {}

@@ -5,12 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.10.1] - 2026-05-15
+
+### Fixed
+
+- Featured list images not rendered with correct sizes
+
+## [1.10.0] - 2026-05-05
+
+### Added
+
+- Added support for Dynamic Type and landscape orientation.
+
+## [1.9.6] - 2025-11-19
+
+### Fixed
+
+- The Floors button doesn’t show the floor list when the map has four floors or fewer.
+
 ## [1.9.5] - 2025-08-16
 
 ### Changed
 
 - Integrate shared location with BranchIO SDK 
-
 
 ## [1.9.4] - 2025-08-08
 
@@ -145,6 +162,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
+[1.10.1]: https://bitbucket.org/phunware/module-phunware-mapping-ios/branches/compare/1.10.1%0D1.10.0
+[1.10.0]: https://bitbucket.org/phunware/module-phunware-mapping-ios/branches/compare/1.10.0%0D1.9.6
+[1.9.6]: https://bitbucket.org/phunware/module-phunware-mapping-ios/branches/compare/1.9.6%0D1.9.5
+[1.9.5]: https://bitbucket.org/phunware/module-phunware-mapping-ios/branches/compare/1.9.5%0D1.9.4
 [1.9.4]: https://bitbucket.org/phunware/module-phunware-mapping-ios/branches/compare/1.9.4%0D1.9.3
 [1.9.3]: https://bitbucket.org/phunware/module-phunware-mapping-ios/branches/compare/1.9.3%0D1.9.2
 [1.9.2]: https://bitbucket.org/phunware/module-phunware-mapping-ios/branches/compare/1.9.2%0D1.9.1
