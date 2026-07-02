@@ -55,7 +55,7 @@ let package = Package(
         ),
         .binaryTarget(
             name: "PhunwareMappingBinary",
-            path: "FrameworksStaticLinks/PhunwareMapping.xcframework"
+            path: "Frameworks/PhunwareMapping.xcframework"
         )
     ]
 )
